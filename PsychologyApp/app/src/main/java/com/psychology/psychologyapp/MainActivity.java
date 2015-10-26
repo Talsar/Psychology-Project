@@ -2,19 +2,46 @@
 
 package com.psychology.psychologyapp;
 
+import android.net.Uri;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener {
+
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    AssessmentFragment mAssessmentFragment;
+    Button mInitiaveAssessmentButton;
+    MainMenuFragment mMainMenuFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mMainMenuFragment = new MainMenuFragment();
+        getFragmentManager().beginTransaction().add(R.id.scrollViewMainActivity,
+                mMainMenuFragment).commit();
+        mAssessmentFragment = new AssessmentFragment();
+        mInitiaveAssessmentButton = (Button)findViewById(R.id.initiaveAssessmentButton);
+        mInitiaveAssessmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
 
+            public void onClick(View view) {
+
+            }
+
+        });
+
+
+    }
+
+    public void switchToAssessmentFragment() {
+        FragmentTransaction replace = transaction.replace(R.id.scrollViewMainActivity, mAssessmentFragment);
     }
 
     @Override
@@ -37,5 +64,10 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

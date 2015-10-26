@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.psychology.psychologyapp.MainMenu">
+    android:layout_height="match_parent" tools:context="com.psychology.psychologyapp.MainMenuFragment">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
@@ -41,27 +41,28 @@
                 android:layout_height="wrap_content"
                 android:text="Take Random Assessment"
                 android:id="@+id/randomAssessmentButton"
-                android:layout_above="@+id/eodAssessmentButton"
+                android:layout_below="@+id/initiaveAssessmentButton"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="56dp" />
+                android:layout_marginTop="35dp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Take End of Day Assessment"
                 android:id="@+id/eodAssessmentButton"
-                android:layout_above="@+id/editSettingsButton"
+                android:layout_below="@+id/randomAssessmentButton"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="53dp" />
+                android:layout_marginTop="35dp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit Settings"
                 android:id="@+id/editSettingsButton"
+                android:layout_below="@+id/eodAssessmentButton"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="62dp" />
+                android:layout_marginTop="35dp" />
         </RelativeLayout>
 
     </LinearLayout>
