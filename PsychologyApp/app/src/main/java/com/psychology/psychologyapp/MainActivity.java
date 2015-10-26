@@ -12,36 +12,59 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener {
+public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, AssessmentFragment.OnFragmentInteractionListener {
 
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    AssessmentFragment mAssessmentFragment;
-    Button mInitiaveAssessmentButton;
+    //FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    //Button mInitiaveAssessmentButton;
     MainMenuFragment mMainMenuFragment;
+    AssessmentFragment mAssessmentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mMainMenuFragment = new MainMenuFragment();
-        getFragmentManager().beginTransaction().add(R.id.scrollViewMainActivity,
-                mMainMenuFragment).commit();
-        mAssessmentFragment = new AssessmentFragment();
-        mInitiaveAssessmentButton = (Button)findViewById(R.id.initiaveAssessmentButton);
-        mInitiaveAssessmentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
 
-            public void onClick(View view) {
+        if (findViewById(R.id.fragment_container) != null) {
 
+            // If we're being restored from a previous state,
+            // then we don't need to do anything and should return or else
+            // we could end up with overlapping fragments.
+            if (savedInstanceState != null) {
+                return;
             }
 
-        });
+            mMainMenuFragment = new MainMenuFragment();
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, mMainMenuFragment).commit();
+
+
+
+
+        }
+
+
+
+
+//        getFragmentManager().beginTransaction().add(R.id.scrollViewMainActivity,
+//                mMainMenuFragment).commit();
+//        mAssessmentFragment = new AssessmentFragment();
+//        mInitiaveAssessmentButton = (Button)findViewById(R.id.initiaveAssessmentButton);
+//        mInitiaveAssessmentButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//
+//            public void onClick(View view) {
+//
+//            }
+//
+//        });
 
 
     }
 
     public void switchToAssessmentFragment() {
-        FragmentTransaction replace = transaction.replace(R.id.scrollViewMainActivity, mAssessmentFragment);
+        //FragmentTransaction replace = transaction.replace(R.id.scrollViewMainActivity, mAssessmentFragment);
     }
 
     @Override

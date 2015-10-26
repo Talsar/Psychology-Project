@@ -68,10 +68,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="Are you on campus?"
+                            android:text="Where are you now?"
                             android:layout_below="@+id/headlineQuestionOne"
 
                             android:id="@+id/textView2" />
+
+                        <Spinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/location_spinner"
+                            android:spinnerMode="dropdown"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/textView2"/>
 
                     </RelativeLayout>
 
@@ -86,7 +94,7 @@
                     android:layout_marginRight="8dp"
                     android:elevation="8dp"
                     android:layout_below="@+id/card1"
-                    android:visibility="invisible">
+                    android:visibility="visible">
 
 
                     <RelativeLayout
@@ -117,7 +125,7 @@
                     android:layout_marginRight="8dp"
                     android:elevation="8dp"
                     android:layout_below="@+id/card2"
-                    android:visibility="invisible">
+                    android:visibility="visible">
 
 
                     <RelativeLayout

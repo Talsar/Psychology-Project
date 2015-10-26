@@ -7,6 +7,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 
 /**
@@ -23,6 +27,7 @@ public class AssessmentFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    Spinner mSpinner;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -59,13 +64,31 @@ public class AssessmentFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        ArrayList<String> locations = new ArrayList<>();
+        locations.add(0, "On Campus");
+        locations.add(1, "Home");
+        locations.add(2, "Work");
+        locations.add(3, "Bar/Restaurant");
+        locations.add(4, "Friend's Home");
+        locations.add(5, "Car");
+        locations.add(6, "Other");
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_assessment, container, false);
+        View view = inflater.inflate(R.layout.fragment_assessment, container, false);
+
+        mSpinner = (Spinner) view.findViewById(R.id.location_spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.locations, android.R.layout.simple_spinner_item);
+        mSpinner.setAdapter(adapter);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

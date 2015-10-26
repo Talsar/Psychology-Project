@@ -1,6 +1,7 @@
 package com.psychology.psychologyapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -25,7 +26,6 @@ public class MainMenuFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private AssessmentFragment mAssessmentFragment;
-    private Button mInitiaveAssessmentButton;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -69,7 +69,28 @@ public class MainMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
+        final Button mInitiaveAssessmentButton = (Button) view.findViewById(R.id.initiaveAssessmentButton);
+        mInitiaveAssessmentButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Create fragment
+                mAssessmentFragment = new AssessmentFragment();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack so the user can navigate back
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, mAssessmentFragment)
+                        .addToBackStack(null)
+                        .commit();
+                //Intent myIntent = new Intent(getActivity(), MainActivity.class);
+                //startActivity(myIntent);    // change to startActivity
+
+
+            }
+        });
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
