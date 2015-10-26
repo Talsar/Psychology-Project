@@ -1,7 +1,6 @@
 package com.psychology.psychologyapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -70,8 +69,8 @@ public class MainMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
-        final Button mInitiaveAssessmentButton = (Button) view.findViewById(R.id.initiaveAssessmentButton);
-        mInitiaveAssessmentButton.setOnClickListener(new View.OnClickListener() {
+        final Button mInitiativeAssessmentButton = (Button) view.findViewById(R.id.initiativeAssessmentButton);
+        mInitiativeAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Create fragment
                 mAssessmentFragment = new AssessmentFragment();

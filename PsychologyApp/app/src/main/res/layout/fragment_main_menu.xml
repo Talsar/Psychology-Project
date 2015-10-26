@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="take Initiative Assessment"
-                android:id="@+id/initiaveAssessmentButton"
+                android:id="@+id/initiativeAssessmentButton"
                 android:layout_marginTop="35dp"
                 android:layout_below="@+id/textView"
                 android:layout_centerHorizontal="true" />
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="Take Random Assessment"
                 android:id="@+id/randomAssessmentButton"
-                android:layout_below="@+id/initiaveAssessmentButton"
+                android:layout_below="@+id/initiativeAssessmentButton"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="35dp" />
 

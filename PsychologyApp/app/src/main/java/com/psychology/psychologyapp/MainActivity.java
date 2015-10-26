@@ -37,7 +37,9 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
 
             // Add the fragment to the 'fragment_container' FrameLayout
             getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, mMainMenuFragment).commit();
+                    .add(R.id.fragment_container, mMainMenuFragment)
+                    .addToBackStack(null)
+                    .commit();
 
 
 

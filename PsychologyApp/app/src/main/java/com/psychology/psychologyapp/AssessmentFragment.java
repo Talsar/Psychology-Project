@@ -7,8 +7,11 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,7 +24,7 @@ import java.util.ArrayList;
  * Use the {@link AssessmentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AssessmentFragment extends Fragment {
+public class AssessmentFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,18 +67,6 @@ public class AssessmentFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        ArrayList<String> locations = new ArrayList<>();
-        locations.add(0, "On Campus");
-        locations.add(1, "Home");
-        locations.add(2, "Work");
-        locations.add(3, "Bar/Restaurant");
-        locations.add(4, "Friend's Home");
-        locations.add(5, "Car");
-        locations.add(6, "Other");
-
-
-
-
     }
 
     @Override
@@ -87,6 +78,7 @@ public class AssessmentFragment extends Fragment {
         mSpinner = (Spinner) view.findViewById(R.id.location_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.locations, android.R.layout.simple_spinner_item);
         mSpinner.setAdapter(adapter);
+        mSpinner.setOnItemSelectedListener(this);
 
         return view;
     }
@@ -113,6 +105,17 @@ public class AssessmentFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        TextView myText = (TextView) view;
+        Toast.makeText(getActivity(), "You selected "+myText.getText(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
     /**
