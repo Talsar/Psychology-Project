@@ -12,9 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -27,21 +30,35 @@ import java.util.ArrayList;
  * Use the {@link AssessmentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AssessmentFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class AssessmentFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    ArrayList<ArrayList<String>> questionAnswerGroup;
     private View fragmentView;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
+    private TextView textSeekBarQuestionTwo;
+    private TextView headlineQuestionOne;
+    private TextView headlineQuestionOneA;
+    private TextView headlineQuestionOneB;
+    private TextView headlineQuestionOneC;
+    private TextView headlineQuestionOneD;
+    private TextView headlineQuestionOneE;
     private RadioGroup radioGroupQuestionOne;
+    private RadioGroup radioGroupQuestionOneA;
+    private RadioGroup radioGroupQuestionOneB;
+    private RadioGroup radioGroupQuestionOneC;
+    private RadioGroup radioGroupQuestionOneD;
+    private RadioGroup radioGroupQuestionOneE;
     private CardView cardViewQuestion1;
     private CardView cardViewQuestion2;
     private CardView cardViewQuestion3;
+    private SeekBar seekBarQuestionTwo;
     private Spinner locationSpinnerQuestion1;
 
     private OnFragmentInteractionListener mListener;
@@ -79,8 +96,98 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
         cardViewQuestion3 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion3);
         cardViewQuestion3.setVisibility(View.GONE);
 
+        textSeekBarQuestionTwo = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionTwo);
+        textSeekBarQuestionTwo.setText("0");
+
+        headlineQuestionOne = (TextView) fragmentView.findViewById(R.id.headlineQuestionOne);
+        headlineQuestionOneA = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneA);
+        headlineQuestionOneA.setVisibility(View.GONE);
+        headlineQuestionOneB = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneB);
+        headlineQuestionOneB.setVisibility(View.GONE);
+        headlineQuestionOneC = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneC);
+        headlineQuestionOneC.setVisibility(View.GONE);
+        headlineQuestionOneD = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneD);
+        headlineQuestionOneD.setVisibility(View.GONE);
+        headlineQuestionOneE = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneE);
+        headlineQuestionOneE.setVisibility(View.GONE);
+
         radioGroupQuestionOne = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOne);
+        radioGroupQuestionOneA = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneA);
+        radioGroupQuestionOneA.setVisibility(View.GONE);
+        radioGroupQuestionOneB = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneB);
+        radioGroupQuestionOneB.setVisibility(View.GONE);
+        radioGroupQuestionOneC = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneC);
+        radioGroupQuestionOneC.setVisibility(View.GONE);
+        radioGroupQuestionOneD = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneD);
+        radioGroupQuestionOneD.setVisibility(View.GONE);
+        radioGroupQuestionOneE = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneE);
+        radioGroupQuestionOneE.setVisibility(View.GONE);
+
+        seekBarQuestionTwo = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionTwo);
+        seekBarQuestionTwo.setMax(10);
+        seekBarQuestionTwo.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // TODO Auto-generated method stub
+
+                textSeekBarQuestionTwo.setText(""+progress);
+
+            }
+        });
+
+
         radioGroupQuestionOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked) {
+                    // Changes the textview's text to "Checked: example radiobutton text"
+                    Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    if (checkedRadioButton.getText().equals("Yes")) {
+                        //locationSpinnerQuestion1.setVisibility(View.GONE);
+                        headlineQuestionOneD.setVisibility(View.GONE);
+                        radioGroupQuestionOneD.setVisibility(View.GONE);
+                        headlineQuestionOneA.setVisibility(View.VISIBLE);
+                        radioGroupQuestionOneA.setVisibility(View.VISIBLE);
+
+                        cardViewQuestion2.setVisibility(View.GONE);
+
+
+                    } else {
+                        //locationSpinnerQuestion1.setVisibility(View.VISIBLE);
+                        headlineQuestionOneD.setVisibility(View.VISIBLE);
+                        radioGroupQuestionOneD.setVisibility(View.VISIBLE);
+                        headlineQuestionOneA.setVisibility(View.GONE);
+                        radioGroupQuestionOneA.setVisibility(View.GONE);
+                        headlineQuestionOneB.setVisibility(View.GONE);
+                        radioGroupQuestionOneB.setVisibility(View.GONE);
+                        headlineQuestionOneC.setVisibility(View.GONE);
+                        radioGroupQuestionOneC.setVisibility(View.GONE);
+                        headlineQuestionOneE.setVisibility(View.GONE);
+                        radioGroupQuestionOneE.setVisibility(View.GONE);
+
+                        cardViewQuestion2.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
+
+
+        radioGroupQuestionOneA.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
                 // This will get the radiobutton that has changed in its check state
                 RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
@@ -91,22 +198,92 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
                     // Changes the textview's text to "Checked: example radiobutton text"
                     Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
-                        locationSpinnerQuestion1.setVisibility(View.GONE);
-                        cardViewQuestion2.setVisibility(View.VISIBLE);
+                        headlineQuestionOneB.setVisibility(View.VISIBLE);
+                        radioGroupQuestionOneB.setVisibility(View.VISIBLE);
+                        headlineQuestionOneE.setVisibility(View.GONE);
+                        radioGroupQuestionOneE.setVisibility(View.GONE);
 
+                        cardViewQuestion2.setVisibility(View.GONE);
                     }else{
-                        locationSpinnerQuestion1.setVisibility(View.VISIBLE);
+                        headlineQuestionOneB.setVisibility(View.GONE);
+                        radioGroupQuestionOneB.setVisibility(View.GONE);
+                        headlineQuestionOneC.setVisibility(View.GONE);
+                        radioGroupQuestionOneC.setVisibility(View.GONE);
+                        headlineQuestionOneE.setVisibility(View.VISIBLE);
+                        radioGroupQuestionOneE.setVisibility(View.VISIBLE);
+
                         cardViewQuestion2.setVisibility(View.GONE);
                     }
                 }
             }
         });
 
-        locationSpinnerQuestion1 = (Spinner) fragmentView.findViewById(R.id.location_spinner);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.locations, android.R.layout.simple_spinner_item);
-        locationSpinnerQuestion1.setAdapter(adapter);
-        locationSpinnerQuestion1.setVisibility(View.GONE);
-        locationSpinnerQuestion1.setOnItemSelectedListener(this);
+        radioGroupQuestionOneB.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked) {
+                    // Changes the textview's text to "Checked: example radiobutton text"
+                    Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    if (checkedRadioButton.getText().equals("Yes")) {
+                        headlineQuestionOneC.setVisibility(View.VISIBLE);
+                        radioGroupQuestionOneC.setVisibility(View.VISIBLE);
+
+                        cardViewQuestion2.setVisibility(View.GONE);
+                    }else{
+                        headlineQuestionOneC.setVisibility(View.GONE);
+                        radioGroupQuestionOneC.setVisibility(View.GONE);
+
+                        cardViewQuestion2.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
+
+        radioGroupQuestionOneC.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                cardViewQuestion2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        radioGroupQuestionOneD.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                cardViewQuestion2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        radioGroupQuestionOneE.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                cardViewQuestion2.setVisibility(View.VISIBLE);
+            }
+        });
+
+        //locationSpinnerQuestion1 = (Spinner) fragmentView.findViewById(R.id.location_spinner);
+        //ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.locations, android.R.layout.simple_spinner_item);
+        //locationSpinnerQuestion1.setAdapter(adapter);
+        //locationSpinnerQuestion1.setVisibility(View.GONE);
+        //locationSpinnerQuestion1.setOnItemSelectedListener(this);
 
 
 
@@ -162,7 +339,7 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
         super.onDetach();
         mListener = null;
     }
-
+/*
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         TextView myText = (TextView) view;
@@ -177,11 +354,12 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
 
     }
 
+
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
+*/
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
