@@ -365,11 +365,11 @@
                     android:id="@+id/cardViewQuestion2"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:elevation="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
                     android:layout_marginRight="8dp"
+                    android:elevation="8dp"
                     android:layout_below="@+id/cardViewQuestion1"
                     android:visibility="visible">
 
@@ -443,6 +443,180 @@
                             android:textColor="#1296E1"
                             android:text="Question 3"
                             android:id="@+id/headlineQuestionThree" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="What is your mood? (from 1= no urge to 5 = extremely)"
+                            android:padding="6dp"
+                            android:layout_below="@+id/headlineQuestionThree"
+                            android:id="@+id/questionThreeText"
+                            android:gravity="center_horizontal" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Sad:"
+                            android:layout_below="@+id/questionThreeText"
+                            android:id="@+id/questionThreeTextA"
+                            android:gravity="center_horizontal" />
+
+                        <SeekBar
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/questionThreeTextA"
+                            android:id="@+id/seekBarQuestionThreeA" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=""
+                            android:paddingBottom="0dp"
+                            android:layout_below="@+id/seekBarQuestionThreeA"
+                            android:id="@+id/textSeekBarQuestionThreeA"
+                            android:gravity="center_horizontal" />
+
+
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Anxious:"
+                            android:layout_below="@+id/textSeekBarQuestionThreeA"
+                            android:id="@+id/questionThreeTextB"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="20dp" />
+
+                        <SeekBar
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/questionThreeTextB"
+                            android:id="@+id/seekBarQuestionThreeB" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=""
+                            android:paddingBottom="0dp"
+                            android:layout_below="@+id/seekBarQuestionThreeB"
+                            android:id="@+id/textSeekBarQuestionThreeB"
+                            android:gravity="center_horizontal" />
+
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Distressed:"
+                            android:layout_below="@+id/textSeekBarQuestionThreeB"
+                            android:id="@+id/questionThreeTextC"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="20dp" />
+
+                        <SeekBar
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/questionThreeTextC"
+                            android:id="@+id/seekBarQuestionThreeC" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=""
+                            android:paddingBottom="0dp"
+                            android:layout_below="@+id/seekBarQuestionThreeC"
+                            android:id="@+id/textSeekBarQuestionThreeC"
+                            android:gravity="center_horizontal" />
+
+
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Enthusiastic:"
+                            android:layout_below="@+id/textSeekBarQuestionThreeC"
+                            android:id="@+id/questionThreeTextD"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="20dp" />
+
+                        <SeekBar
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/questionThreeTextD"
+                            android:id="@+id/seekBarQuestionThreeD" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=""
+                            android:paddingBottom="0dp"
+                            android:layout_below="@+id/seekBarQuestionThreeD"
+                            android:id="@+id/textSeekBarQuestionThreeD"
+                            android:gravity="center_horizontal" />
+
+
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Excited:"
+                            android:layout_below="@+id/textSeekBarQuestionThreeD"
+                            android:id="@+id/questionThreeTextE"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="20dp" />
+
+                        <SeekBar
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/questionThreeTextE"
+                            android:id="@+id/seekBarQuestionThreeE" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=""
+                            android:paddingBottom="0dp"
+                            android:layout_below="@+id/seekBarQuestionThreeE"
+                            android:id="@+id/textSeekBarQuestionThreeE"
+                            android:gravity="center_horizontal" />
+
+
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Happy:"
+                            android:layout_below="@+id/textSeekBarQuestionThreeE"
+                            android:id="@+id/questionThreeTextF"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="20dp" />
+
+                        <SeekBar
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/questionThreeTextF"
+                            android:id="@+id/seekBarQuestionThreeF" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text=""
+                            android:paddingBottom="0dp"
+                            android:layout_below="@+id/seekBarQuestionThreeF"
+                            android:id="@+id/textSeekBarQuestionThreeF"
+                            android:gravity="center_horizontal" />
 
 
 

@@ -42,7 +42,18 @@ public class AssessmentFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    int iSeekBarQuestionThree;
+
+    private ArrayList<SeekBar> seekBars;
+    private ArrayList<TextView> seekBarTexts;
+
     private TextView textSeekBarQuestionTwo;
+    private TextView textSeekBarQuestionThreeA;
+    private TextView textSeekBarQuestionThreeB;
+    private TextView textSeekBarQuestionThreeC;
+    private TextView textSeekBarQuestionThreeD;
+    private TextView textSeekBarQuestionThreeE;
+    private TextView textSeekBarQuestionThreeF;
     private TextView headlineQuestionOne;
     private TextView headlineQuestionOneA;
     private TextView headlineQuestionOneB;
@@ -59,6 +70,12 @@ public class AssessmentFragment extends Fragment {
     private CardView cardViewQuestion2;
     private CardView cardViewQuestion3;
     private SeekBar seekBarQuestionTwo;
+    private SeekBar seekBarQuestionThreeA;
+    private SeekBar seekBarQuestionThreeB;
+    private SeekBar seekBarQuestionThreeC;
+    private SeekBar seekBarQuestionThreeD;
+    private SeekBar seekBarQuestionThreeE;
+    private SeekBar seekBarQuestionThreeF;
     private Spinner locationSpinnerQuestion1;
 
     private OnFragmentInteractionListener mListener;
@@ -87,6 +104,68 @@ public class AssessmentFragment extends Fragment {
 
     private void initiateAssessment() {
 
+        seekBars = new ArrayList<>(6);
+        seekBarQuestionThreeA = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeA);
+        seekBars.add(seekBarQuestionThreeA);
+        seekBarQuestionThreeA.setMax(5);
+        seekBarQuestionThreeB = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeB);
+        seekBars.add(seekBarQuestionThreeB);
+        seekBarQuestionThreeC = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeC);
+        seekBars.add(seekBarQuestionThreeC);
+        seekBarQuestionThreeD = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeD);
+        seekBars.add(seekBarQuestionThreeD);
+        seekBarQuestionThreeE = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeE);
+        seekBars.add(seekBarQuestionThreeE);
+        seekBarQuestionThreeF = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeF);
+        seekBars.add(seekBarQuestionThreeF);
+
+        seekBarTexts = new ArrayList<>(6);
+        textSeekBarQuestionThreeA = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeA);
+        textSeekBarQuestionThreeA.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeA);
+        textSeekBarQuestionThreeB = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeB);
+        textSeekBarQuestionThreeB.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeB);
+        textSeekBarQuestionThreeC = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeC);
+        textSeekBarQuestionThreeC.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeC);
+        textSeekBarQuestionThreeD = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeD);
+        textSeekBarQuestionThreeD.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeD);
+        textSeekBarQuestionThreeE = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeE);
+        textSeekBarQuestionThreeE.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeE);
+        textSeekBarQuestionThreeF = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeF);
+        textSeekBarQuestionThreeF.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeF);
+
+        for (iSeekBarQuestionThree=0; iSeekBarQuestionThree>6; iSeekBarQuestionThree++) {
+            seekBars.get(iSeekBarQuestionThree).setMax(5);
+            seekBars.get(iSeekBarQuestionThree).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    // TODO Auto-generated method stub
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                    // TODO Auto-generated method stub
+                }
+
+
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    // TODO Auto-generated method stub
+
+                    seekBarTexts.get(iSeekBarQuestionThree).setText("" + progress);
+
+
+
+                }
+            });
+        }
+
         cardViewQuestion1 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion1);
         cardViewQuestion1.setVisibility(View.VISIBLE);
 
@@ -98,6 +177,8 @@ public class AssessmentFragment extends Fragment {
 
         textSeekBarQuestionTwo = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionTwo);
         textSeekBarQuestionTwo.setText("0");
+
+
 
         headlineQuestionOne = (TextView) fragmentView.findViewById(R.id.headlineQuestionOne);
         headlineQuestionOneA = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneA);
@@ -136,13 +217,15 @@ public class AssessmentFragment extends Fragment {
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
-            
+
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // TODO Auto-generated method stub
 
-                textSeekBarQuestionTwo.setText(""+progress);
+                textSeekBarQuestionTwo.setText("" + progress);
+
+
 
             }
         });
@@ -166,6 +249,7 @@ public class AssessmentFragment extends Fragment {
                         radioGroupQuestionOneA.setVisibility(View.VISIBLE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
 
 
                     } else {
@@ -182,6 +266,7 @@ public class AssessmentFragment extends Fragment {
                         radioGroupQuestionOneE.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
                     }
                 }
             }
@@ -205,6 +290,7 @@ public class AssessmentFragment extends Fragment {
                         radioGroupQuestionOneE.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
                     }else{
                         headlineQuestionOneB.setVisibility(View.GONE);
                         radioGroupQuestionOneB.setVisibility(View.GONE);
@@ -214,6 +300,7 @@ public class AssessmentFragment extends Fragment {
                         radioGroupQuestionOneE.setVisibility(View.VISIBLE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
                     }
                 }
             }
@@ -234,11 +321,13 @@ public class AssessmentFragment extends Fragment {
                         radioGroupQuestionOneC.setVisibility(View.VISIBLE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
                     }else{
                         headlineQuestionOneC.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
                     }
                 }
             }
@@ -253,6 +342,7 @@ public class AssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                 cardViewQuestion2.setVisibility(View.VISIBLE);
+                cardViewQuestion3.setVisibility(View.VISIBLE);
             }
         });
 
@@ -265,6 +355,7 @@ public class AssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                 cardViewQuestion2.setVisibility(View.VISIBLE);
+                cardViewQuestion3.setVisibility(View.VISIBLE);
             }
         });
 
@@ -277,6 +368,7 @@ public class AssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                 cardViewQuestion2.setVisibility(View.VISIBLE);
+                cardViewQuestion3.setVisibility(View.VISIBLE);
             }
         });
 
