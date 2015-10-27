@@ -60,9 +60,9 @@
                 android:text="Edit Settings"
                 android:id="@+id/editSettingsButton"
                 android:layout_below="@+id/eodAssessmentButton"
-                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="35dp" />
+
         </RelativeLayout>
 
     </LinearLayout>

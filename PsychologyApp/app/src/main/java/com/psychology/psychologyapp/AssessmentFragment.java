@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,10 +33,16 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    Spinner mSpinner;
+    private View fragmentView;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private RadioGroup radioGroupQuestionOne;
+    private CardView cardViewQuestion1;
+    private CardView cardViewQuestion2;
+    private CardView cardViewQuestion3;
+    private Spinner locationSpinnerQuestion1;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,6 +68,58 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
         // Required empty public constructor
     }
 
+    private void initiateAssessment() {
+
+        cardViewQuestion1 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion1);
+        cardViewQuestion1.setVisibility(View.VISIBLE);
+
+        cardViewQuestion2 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion2);
+        cardViewQuestion2.setVisibility(View.GONE);
+
+        cardViewQuestion3 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion3);
+        cardViewQuestion3.setVisibility(View.GONE);
+
+        radioGroupQuestionOne = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOne);
+        radioGroupQuestionOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked) {
+                    // Changes the textview's text to "Checked: example radiobutton text"
+                    Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    if (checkedRadioButton.getText().equals("Yes")) {
+                        locationSpinnerQuestion1.setVisibility(View.GONE);
+                        cardViewQuestion2.setVisibility(View.VISIBLE);
+
+                    }else{
+                        locationSpinnerQuestion1.setVisibility(View.VISIBLE);
+                        cardViewQuestion2.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
+
+        locationSpinnerQuestion1 = (Spinner) fragmentView.findViewById(R.id.location_spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.locations, android.R.layout.simple_spinner_item);
+        locationSpinnerQuestion1.setAdapter(adapter);
+        locationSpinnerQuestion1.setVisibility(View.GONE);
+        locationSpinnerQuestion1.setOnItemSelectedListener(this);
+
+
+
+
+
+
+
+
+
+
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +134,9 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_assessment, container, false);
-
-        mSpinner = (Spinner) view.findViewById(R.id.location_spinner);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.locations, android.R.layout.simple_spinner_item);
-        mSpinner.setAdapter(adapter);
-        mSpinner.setOnItemSelectedListener(this);
-
-        return view;
+        fragmentView = inflater.inflate(R.layout.fragment_assessment, container, false);
+        initiateAssessment();
+        return fragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -110,7 +166,15 @@ public class AssessmentFragment extends Fragment implements AdapterView.OnItemSe
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         TextView myText = (TextView) view;
-        Toast.makeText(getActivity(), "You selected "+myText.getText(), Toast.LENGTH_SHORT).show();
+        if (!myText.getText().equals("Nothing Selected")) {
+            cardViewQuestion2.setVisibility(View.VISIBLE);
+            Toast.makeText(getActivity(), "You selected "+myText.getText(), Toast.LENGTH_SHORT).show();
+
+        } else {
+            cardViewQuestion2.setVisibility(View.GONE);
+        }
+
+
     }
 
     @Override

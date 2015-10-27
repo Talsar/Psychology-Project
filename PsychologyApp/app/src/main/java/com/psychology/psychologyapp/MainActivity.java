@@ -46,27 +46,6 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
 
         }
 
-
-
-
-//        getFragmentManager().beginTransaction().add(R.id.scrollViewMainActivity,
-//                mMainMenuFragment).commit();
-//        mAssessmentFragment = new AssessmentFragment();
-//        mInitiaveAssessmentButton = (Button)findViewById(R.id.initiaveAssessmentButton);
-//        mInitiaveAssessmentButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//
-//            public void onClick(View view) {
-//
-//            }
-//
-//        });
-
-
-    }
-
-    public void switchToAssessmentFragment() {
-        //FragmentTransaction replace = transaction.replace(R.id.scrollViewMainActivity, mAssessmentFragment);
     }
 
     @Override
