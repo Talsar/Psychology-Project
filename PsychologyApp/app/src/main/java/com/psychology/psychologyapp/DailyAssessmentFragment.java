@@ -7,26 +7,21 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MainMenuFragment.OnFragmentInteractionListener} interface
+ * {@link DailyAssessmentFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MainMenuFragment#newInstance} factory method to
+ * Use the {@link DailyAssessmentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainMenuFragment extends Fragment {
+public class DailyAssessmentFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    private InitiativeAssessmentFragment mInitiativeAssessmentFragment;
-    private RandomAssessmentFragment mRandomAssessmentFragment;
-    private DailyAssessmentFragment mDailyAssessmentFragment;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -40,11 +35,11 @@ public class MainMenuFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MainMenuFragment.
+     * @return A new instance of fragment DailyAssessmentFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MainMenuFragment newInstance(String param1, String param2) {
-        MainMenuFragment fragment = new MainMenuFragment();
+    public static DailyAssessmentFragment newInstance(String param1, String param2) {
+        DailyAssessmentFragment fragment = new DailyAssessmentFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -52,7 +47,7 @@ public class MainMenuFragment extends Fragment {
         return fragment;
     }
 
-    public MainMenuFragment() {
+    public DailyAssessmentFragment() {
         // Required empty public constructor
     }
 
@@ -63,61 +58,13 @@ public class MainMenuFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
-        final Button mInitiativeAssessmentButton = (Button) view.findViewById(R.id.initiativeAssessmentButton);
-        mInitiativeAssessmentButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Create fragment
-                mInitiativeAssessmentFragment = new InitiativeAssessmentFragment();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mInitiativeAssessmentFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        final Button mRandomAssessmentButton = (Button) view.findViewById(R.id.randomAssessmentButton);
-        mRandomAssessmentButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Create fragment
-                mRandomAssessmentFragment= new RandomAssessmentFragment();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mRandomAssessmentFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        final Button mDailyAssessmentButton = (Button) view.findViewById(R.id.eodAssessmentButton);
-        mDailyAssessmentButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Create fragment
-                mDailyAssessmentFragment = new DailyAssessmentFragment();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mDailyAssessmentFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_daily_assessment, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
