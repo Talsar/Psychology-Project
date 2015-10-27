@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -48,6 +49,7 @@ public class InitiativeAssessmentFragment extends Fragment {
     private ArrayList<SeekBar> seekBars;
     private ArrayList<TextView> seekBarTexts;
 
+    private Button submitButton;
     private TextView textSeekBarQuestionTwo;
     private TextView textSeekBarQuestionThreeA;
     private TextView textSeekBarQuestionThreeB;
@@ -140,6 +142,17 @@ public class InitiativeAssessmentFragment extends Fragment {
         seekBarTexts.add(textSeekBarQuestionThreeF);
         textSeekBarMap = new HashMap<>(6);
 
+        submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
+        submitButton.setVisibility(View.GONE);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
         for (iSeekBarQuestionThree=0; iSeekBarQuestionThree<6; iSeekBarQuestionThree++) {
             seekBars.get(iSeekBarQuestionThree).setMax(5);
             textSeekBarMap.put(seekBars.get(iSeekBarQuestionThree), seekBarTexts.get(iSeekBarQuestionThree));
@@ -161,9 +174,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                     // TODO Auto-generated method stub
 
                     textSeekBarMap.get(seekBar).setText(""+progress);
-
-
-
+                    submitButton.setVisibility(View.VISIBLE);
 
                 }
             });
