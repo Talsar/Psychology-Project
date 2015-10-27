@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -43,6 +44,7 @@ public class InitiativeAssessmentFragment extends Fragment {
 
     int iSeekBarQuestionThree;
 
+    private HashMap<SeekBar, TextView> textSeekBarMap;
     private ArrayList<SeekBar> seekBars;
     private ArrayList<TextView> seekBarTexts;
 
@@ -136,10 +138,11 @@ public class InitiativeAssessmentFragment extends Fragment {
         textSeekBarQuestionThreeF = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeF);
         textSeekBarQuestionThreeF.setText("0");
         seekBarTexts.add(textSeekBarQuestionThreeF);
+        textSeekBarMap = new HashMap<>(6);
 
         for (iSeekBarQuestionThree=0; iSeekBarQuestionThree<6; iSeekBarQuestionThree++) {
             seekBars.get(iSeekBarQuestionThree).setMax(5);
-
+            textSeekBarMap.put(seekBars.get(iSeekBarQuestionThree), seekBarTexts.get(iSeekBarQuestionThree));
             seekBars.get(iSeekBarQuestionThree).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 @Override
@@ -157,9 +160,9 @@ public class InitiativeAssessmentFragment extends Fragment {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     // TODO Auto-generated method stub
 
-                    Toast.makeText(getActivity(), "You selected " + seekBar.getContext(), Toast.LENGTH_SHORT).show();
+                    textSeekBarMap.get(seekBar).setText(""+progress);
 
-                    
+
 
 
                 }
@@ -262,7 +265,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                         radioGroupQuestionOneB.setVisibility(View.GONE);
                         questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
-                        questionOneDText.setVisibility(View.GONE);
+                        questionOneEText.setVisibility(View.GONE);
                         radioGroupQuestionOneE.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
@@ -287,6 +290,8 @@ public class InitiativeAssessmentFragment extends Fragment {
                         questionOneBText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneB.setVisibility(View.VISIBLE);
                         questionOneDText.setVisibility(View.GONE);
+                        radioGroupQuestionOneD.setVisibility(View.GONE);
+                        questionOneEText.setVisibility(View.GONE);
                         radioGroupQuestionOneE.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
@@ -296,7 +301,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                         radioGroupQuestionOneB.setVisibility(View.GONE);
                         questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
-                        questionOneDText.setVisibility(View.VISIBLE);
+                        questionOneEText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneE.setVisibility(View.VISIBLE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
@@ -326,8 +331,8 @@ public class InitiativeAssessmentFragment extends Fragment {
                         questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
 
-                        cardViewQuestion2.setVisibility(View.GONE);
-                        cardViewQuestion3.setVisibility(View.GONE);
+                        cardViewQuestion2.setVisibility(View.VISIBLE);
+                        cardViewQuestion3.setVisibility(View.VISIBLE);
                     }
                 }
             }
