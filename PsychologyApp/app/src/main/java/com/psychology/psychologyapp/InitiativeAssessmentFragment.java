@@ -40,6 +40,7 @@ public class InitiativeAssessmentFragment extends Fragment {
 
     private View fragmentView;
 
+
     int iSeekBarQuestionThree;
 
     private ArrayList<SeekBar> seekBars;
@@ -52,12 +53,12 @@ public class InitiativeAssessmentFragment extends Fragment {
     private TextView textSeekBarQuestionThreeD;
     private TextView textSeekBarQuestionThreeE;
     private TextView textSeekBarQuestionThreeF;
-    private TextView headlineQuestionOne;
-    private TextView headlineQuestionOneA;
-    private TextView headlineQuestionOneB;
-    private TextView headlineQuestionOneC;
-    private TextView headlineQuestionOneD;
-    private TextView headlineQuestionOneE;
+    private TextView questionOneText;
+    private TextView questionOneAText;
+    private TextView questionOneBText;
+    private TextView questionOneCText;
+    private TextView questionOneDText;
+    private TextView questionOneEText;
     private RadioGroup radioGroupQuestionOne;
     private RadioGroup radioGroupQuestionOneA;
     private RadioGroup radioGroupQuestionOneB;
@@ -105,7 +106,6 @@ public class InitiativeAssessmentFragment extends Fragment {
         seekBars = new ArrayList<>(6);
         seekBarQuestionThreeA = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeA);
         seekBars.add(seekBarQuestionThreeA);
-        seekBarQuestionThreeA.setMax(5);
         seekBarQuestionThreeB = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeB);
         seekBars.add(seekBarQuestionThreeB);
         seekBarQuestionThreeC = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeC);
@@ -137,8 +137,9 @@ public class InitiativeAssessmentFragment extends Fragment {
         textSeekBarQuestionThreeF.setText("0");
         seekBarTexts.add(textSeekBarQuestionThreeF);
 
-        for (iSeekBarQuestionThree=0; iSeekBarQuestionThree>6; iSeekBarQuestionThree++) {
+        for (iSeekBarQuestionThree=0; iSeekBarQuestionThree<6; iSeekBarQuestionThree++) {
             seekBars.get(iSeekBarQuestionThree).setMax(5);
+
             seekBars.get(iSeekBarQuestionThree).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 @Override
@@ -156,8 +157,8 @@ public class InitiativeAssessmentFragment extends Fragment {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     // TODO Auto-generated method stub
 
-                    seekBarTexts.get(iSeekBarQuestionThree).setText("" + progress);
-
+                    Toast.makeText(getActivity(), "You selected " + seekBar.getContext(), Toast.LENGTH_SHORT).show();
+                    
 
 
                 }
@@ -178,9 +179,17 @@ public class InitiativeAssessmentFragment extends Fragment {
 
 
 
-        headlineQuestionOne = (TextView) fragmentView.findViewById(R.id.headlineQuestionOne);
-        headlineQuestionOneA = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneA);
-        headlineQuestionOneA.setVisibility(View.GONE);
+        questionOneText = (TextView) fragmentView.findViewById(R.id.questionOneText);
+        questionOneAText = (TextView) fragmentView.findViewById(R.id.questionOneAText);
+        questionOneAText.setVisibility(View.GONE);
+        questionOneBText = (TextView) fragmentView.findViewById(R.id.questionOneBText);
+        questionOneBText.setVisibility(View.GONE);
+        questionOneCText = (TextView) fragmentView.findViewById(R.id.questionOneCText);
+        questionOneCText.setVisibility(View.GONE);
+        questionOneDText = (TextView) fragmentView.findViewById(R.id.questionOneDText);
+        questionOneDText.setVisibility(View.GONE);
+        questionOneEText = (TextView) fragmentView.findViewById(R.id.questionOneEText);
+        questionOneEText.setVisibility(View.GONE);
 
         radioGroupQuestionOne = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOne);
         radioGroupQuestionOneA = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneA);
@@ -233,9 +242,9 @@ public class InitiativeAssessmentFragment extends Fragment {
                     Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
                         //locationSpinnerQuestion1.setVisibility(View.GONE);
-                        headlineQuestionOneD.setVisibility(View.GONE);
+                        questionOneDText.setVisibility(View.GONE);
                         radioGroupQuestionOneD.setVisibility(View.GONE);
-                        headlineQuestionOneA.setVisibility(View.VISIBLE);
+                        questionOneAText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneA.setVisibility(View.VISIBLE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
@@ -244,15 +253,15 @@ public class InitiativeAssessmentFragment extends Fragment {
 
                     } else {
                         //locationSpinnerQuestion1.setVisibility(View.VISIBLE);
-                        headlineQuestionOneD.setVisibility(View.VISIBLE);
+                        questionOneDText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneD.setVisibility(View.VISIBLE);
-                        headlineQuestionOneA.setVisibility(View.GONE);
+                        questionOneAText.setVisibility(View.GONE);
                         radioGroupQuestionOneA.setVisibility(View.GONE);
-                        headlineQuestionOneB.setVisibility(View.GONE);
+                        questionOneBText.setVisibility(View.GONE);
                         radioGroupQuestionOneB.setVisibility(View.GONE);
-                        headlineQuestionOneC.setVisibility(View.GONE);
+                        questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
-                        headlineQuestionOneE.setVisibility(View.GONE);
+                        questionOneDText.setVisibility(View.GONE);
                         radioGroupQuestionOneE.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
@@ -274,19 +283,19 @@ public class InitiativeAssessmentFragment extends Fragment {
                     // Changes the textview's text to "Checked: example radiobutton text"
                     Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
-                        headlineQuestionOneB.setVisibility(View.VISIBLE);
+                        questionOneBText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneB.setVisibility(View.VISIBLE);
-                        headlineQuestionOneE.setVisibility(View.GONE);
+                        questionOneDText.setVisibility(View.GONE);
                         radioGroupQuestionOneE.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
                         cardViewQuestion3.setVisibility(View.GONE);
                     }else{
-                        headlineQuestionOneB.setVisibility(View.GONE);
+                        questionOneBText.setVisibility(View.GONE);
                         radioGroupQuestionOneB.setVisibility(View.GONE);
-                        headlineQuestionOneC.setVisibility(View.GONE);
+                        questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
-                        headlineQuestionOneE.setVisibility(View.VISIBLE);
+                        questionOneDText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneE.setVisibility(View.VISIBLE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
@@ -307,13 +316,13 @@ public class InitiativeAssessmentFragment extends Fragment {
                     // Changes the textview's text to "Checked: example radiobutton text"
                     Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
-                        headlineQuestionOneC.setVisibility(View.VISIBLE);
+                        questionOneCText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneC.setVisibility(View.VISIBLE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
                         cardViewQuestion3.setVisibility(View.GONE);
                     }else{
-                        headlineQuestionOneC.setVisibility(View.GONE);
+                        questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.GONE);
