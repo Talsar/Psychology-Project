@@ -181,14 +181,6 @@ public class InitiativeAssessmentFragment extends Fragment {
         headlineQuestionOne = (TextView) fragmentView.findViewById(R.id.headlineQuestionOne);
         headlineQuestionOneA = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneA);
         headlineQuestionOneA.setVisibility(View.GONE);
-        headlineQuestionOneB = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneB);
-        headlineQuestionOneB.setVisibility(View.GONE);
-        headlineQuestionOneC = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneC);
-        headlineQuestionOneC.setVisibility(View.GONE);
-        headlineQuestionOneD = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneD);
-        headlineQuestionOneD.setVisibility(View.GONE);
-        headlineQuestionOneE = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneE);
-        headlineQuestionOneE.setVisibility(View.GONE);
 
         radioGroupQuestionOne = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOne);
         radioGroupQuestionOneA = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneA);
