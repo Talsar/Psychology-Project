@@ -3,21 +3,18 @@
 package com.psychology.psychologyapp;
 
 import android.net.Uri;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, AssessmentFragment.OnFragmentInteractionListener {
+public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener {
 
     //FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     //Button mInitiaveAssessmentButton;
     MainMenuFragment mMainMenuFragment;
-    AssessmentFragment mAssessmentFragment;
+    InitiativeAssessmentFragment mInitiativeAssessmentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

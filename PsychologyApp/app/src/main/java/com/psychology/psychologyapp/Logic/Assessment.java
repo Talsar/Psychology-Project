@@ -1,6 +1,6 @@
 package com.psychology.psychologyapp.Logic;
 
-import com.psychology.psychologyapp.AssessmentFragment;
+import com.psychology.psychologyapp.InitiativeAssessmentFragment;
 
 import java.util.ArrayList;
 
@@ -10,12 +10,12 @@ import java.util.ArrayList;
 public class Assessment {
 
     ArrayList<ArrayList<String>> questions;
-    AssessmentFragment mAssessmentFragment;
+    InitiativeAssessmentFragment mInitiativeAssessmentFragment;
 
 
 
-    public Assessment(AssessmentFragment mAssessmentFragment) {
-        this.mAssessmentFragment=mAssessmentFragment;
+    public Assessment(InitiativeAssessmentFragment mInitiativeAssessmentFragment) {
+        this.mInitiativeAssessmentFragment = mInitiativeAssessmentFragment;
         questions = new ArrayList<>();
 
     }

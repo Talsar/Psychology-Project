@@ -24,7 +24,7 @@ public class MainMenuFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private AssessmentFragment mAssessmentFragment;
+    private InitiativeAssessmentFragment mInitiativeAssessmentFragment;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -73,12 +73,12 @@ public class MainMenuFragment extends Fragment {
         mInitiativeAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Create fragment
-                mAssessmentFragment = new AssessmentFragment();
+                mInitiativeAssessmentFragment = new InitiativeAssessmentFragment();
 
                 // Replace whatever is in the fragment_container view with this fragment,
                 // and add the transaction to the back stack so the user can navigate back
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mAssessmentFragment)
+                        .replace(R.id.fragment_container, mInitiativeAssessmentFragment)
                         .addToBackStack(null)
                         .commit();
                 //Intent myIntent = new Intent(getActivity(), MainActivity.class);
