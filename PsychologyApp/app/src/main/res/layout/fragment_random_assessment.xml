@@ -3,6 +3,488 @@
     android:layout_height="match_parent"
     tools:context="com.psychology.psychologyapp.RandomAssessmentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal" android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:id="@+id/scrollView">
 
-</FrameLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:id="@+id/relativeLayout">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#1296E1"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/textHeadline"
+                        android:text="Assessment"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:gravity="center_horizontal" />
+
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardViewQuestion1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:elevation="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_below="@+id/textHeadline">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#1296E1"
+                                android:id="@+id/headlineQuestionOne"
+                                android:text="Question 1"
+                                android:paddingBottom="6dp" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="Where are you?"
+                                android:padding="6dp"
+                                android:layout_below="@+id/headlineQuestionOne"
+                                android:id="@+id/questionOneText"
+                                android:gravity="center_horizontal" />
+
+                            <RadioGroup
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:padding="6dp"
+                                android:id="@+id/radioGroupQuestionOne"
+                                android:orientation="vertical"
+                                android:layout_below="@+id/headlineQuestionOne"
+                                android:layout_centerHorizontal="true">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Work"
+                                    android:id="@+id/optionOneRadioButtonQuestionOne"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Home"
+                                    android:id="@+id/optionTwoRadioButtonQuestionOne"
+                                    android:layout_below="@+id/optionOneRadioButtonQuestionOne"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Bar/Restaurant"
+                                    android:id="@+id/optionThreeRadioButtonQuestionOne"
+                                    android:layout_below="@+id/optionTwoRadioButtonQuestionOne"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Friend's Home"
+                                    android:id="@+id/optionFourRadioButtonQuestionOne"
+                                    android:layout_below="@+id/optionThreeRadioButtonQuestionOne"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Car"
+                                    android:id="@+id/optionFiveRadioButtonQuestionOne"
+                                    android:layout_below="@+id/optionFourRadioButtonQuestionOne"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="On Campus"
+                                    android:id="@+id/optionSixRadioButtonQuestionOne"
+                                    android:layout_below="@+id/optionFiveRadioButtonQuestionOne"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Other"
+                                    android:id="@+id/optionSevenRadioButtonQuestionOne"
+                                    android:layout_below="@+id/optionSixRadioButtonQuestionOne"
+                                    android:checked="false" />
+
+                            </RadioGroup>
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="What are you doing now??"
+                                android:padding="6dp"
+                                android:layout_below="@+id/radioGroupQuestionOne"
+                                android:id="@+id/headlineQuestionOneA"
+                                android:gravity="center_horizontal" />
+
+                            <RadioGroup
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:padding="6dp"
+                                android:id="@+id/radioGroupQuestionOneA"
+                                android:orientation="vertical"
+                                android:layout_below="@+id/headlineQuestionOneA"
+                                android:layout_centerHorizontal="true">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Working"
+                                    android:id="@+id/optionOneRadioButtonQuestionOneA"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Socializing"
+                                    android:id="@+id/optionTwoRadioButtonQuestionOneA"
+                                    android:layout_below="@+id/optionOneRadioButtonQuestionOneA"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Waiting"
+                                    android:id="@+id/optionThreeRadioButtonQuestionOneA"
+                                    android:layout_below="@+id/optionTwoRadioButtonQuestionOneA"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Relaxing"
+                                    android:id="@+id/optionFourRadioButtonQuestionOneA"
+                                    android:layout_below="@+id/optionThreeRadioButtonQuestionOneA"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="2dp"
+                                    android:text="Car"
+                                    android:id="@+id/optionFiveRadioButtonQuestionOneA"
+                                    android:layout_below="@+id/optionFourRadioButtonQuestionOneA"
+                                    android:checked="false" />
+
+                            </RadioGroup>
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardViewQuestion2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="8dp"
+                        android:elevation="8dp"
+                        android:layout_below="@+id/cardViewQuestion1"
+                        android:visibility="visible">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#1296E1"
+                                android:text="Question 2"
+                                android:id="@+id/headlineQuestionTwo"
+                                android:paddingBottom="6dp"/>
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="What is your urge to smoke? (from 0= no urge to 10 = maximum urge)"
+                                android:padding="6dp"
+                                android:layout_below="@+id/headlineQuestionTwo"
+                                android:id="@+id/questionTwoText"
+                                android:gravity="center_horizontal" />
+
+                            <SeekBar
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/questionTwoText"
+                                android:id="@+id/seekBarQuestionTwo" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text=""
+                                android:padding="6dp"
+                                android:layout_below="@+id/seekBarQuestionTwo"
+                                android:id="@+id/textSeekBarQuestionTwo"
+                                android:gravity="center_horizontal" />
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardViewQuestion3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginRight="8dp"
+                        android:elevation="8dp"
+                        android:layout_below="@+id/cardViewQuestion2"
+                        android:visibility="visible">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#1296E1"
+                                android:text="Question 3"
+                                android:id="@+id/headlineQuestionThree" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="What is your mood? (from 1= no urge to 5 = extremely)"
+                                android:padding="6dp"
+                                android:layout_below="@+id/headlineQuestionThree"
+                                android:id="@+id/questionThreeText"
+                                android:gravity="center_horizontal" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Sad:"
+                                android:layout_below="@+id/questionThreeText"
+                                android:id="@+id/questionThreeTextA"
+                                android:gravity="center_horizontal" />
+
+                            <SeekBar
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/questionThreeTextA"
+                                android:id="@+id/seekBarQuestionThreeA" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text=""
+                                android:paddingBottom="0dp"
+                                android:layout_below="@+id/seekBarQuestionThreeA"
+                                android:id="@+id/textSeekBarQuestionThreeA"
+                                android:gravity="center_horizontal" />
+
+
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Anxious:"
+                                android:layout_below="@+id/textSeekBarQuestionThreeA"
+                                android:id="@+id/questionThreeTextB"
+                                android:gravity="center_horizontal"
+                                android:paddingTop="20dp" />
+
+                            <SeekBar
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/questionThreeTextB"
+                                android:id="@+id/seekBarQuestionThreeB" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text=""
+                                android:paddingBottom="0dp"
+                                android:layout_below="@+id/seekBarQuestionThreeB"
+                                android:id="@+id/textSeekBarQuestionThreeB"
+                                android:gravity="center_horizontal" />
+
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Distressed:"
+                                android:layout_below="@+id/textSeekBarQuestionThreeB"
+                                android:id="@+id/questionThreeTextC"
+                                android:gravity="center_horizontal"
+                                android:paddingTop="20dp" />
+
+                            <SeekBar
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/questionThreeTextC"
+                                android:id="@+id/seekBarQuestionThreeC" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text=""
+                                android:paddingBottom="0dp"
+                                android:layout_below="@+id/seekBarQuestionThreeC"
+                                android:id="@+id/textSeekBarQuestionThreeC"
+                                android:gravity="center_horizontal" />
+
+
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Enthusiastic:"
+                                android:layout_below="@+id/textSeekBarQuestionThreeC"
+                                android:id="@+id/questionThreeTextD"
+                                android:gravity="center_horizontal"
+                                android:paddingTop="20dp" />
+
+                            <SeekBar
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/questionThreeTextD"
+                                android:id="@+id/seekBarQuestionThreeD" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text=""
+                                android:paddingBottom="0dp"
+                                android:layout_below="@+id/seekBarQuestionThreeD"
+                                android:id="@+id/textSeekBarQuestionThreeD"
+                                android:gravity="center_horizontal" />
+
+
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Excited:"
+                                android:layout_below="@+id/textSeekBarQuestionThreeD"
+                                android:id="@+id/questionThreeTextE"
+                                android:gravity="center_horizontal"
+                                android:paddingTop="20dp" />
+
+                            <SeekBar
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/questionThreeTextE"
+                                android:id="@+id/seekBarQuestionThreeE" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text=""
+                                android:paddingBottom="0dp"
+                                android:layout_below="@+id/seekBarQuestionThreeE"
+                                android:id="@+id/textSeekBarQuestionThreeE"
+                                android:gravity="center_horizontal" />
+
+
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="Happy:"
+                                android:layout_below="@+id/textSeekBarQuestionThreeE"
+                                android:id="@+id/questionThreeTextF"
+                                android:gravity="center_horizontal"
+                                android:paddingTop="20dp" />
+
+                            <SeekBar
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/questionThreeTextF"
+                                android:id="@+id/seekBarQuestionThreeF" />
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text=""
+                                android:paddingBottom="0dp"
+                                android:layout_below="@+id/seekBarQuestionThreeF"
+                                android:id="@+id/textSeekBarQuestionThreeF"
+                                android:gravity="center_horizontal" />
+
+
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Submit"
+                        android:layout_below="@+id/cardViewQuestion3"
+                        android:id="@+id/button"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+            </ScrollView>
+        </LinearLayout>
+
+    </FrameLayout>

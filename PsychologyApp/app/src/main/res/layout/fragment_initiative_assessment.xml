@@ -102,7 +102,7 @@
                             android:text="Are you in a designated campus smoking area?"
                             android:padding="6dp"
                             android:layout_below="@+id/radioGroupQuestionOne"
-                            android:id="@+id/headlineQuestionOneA"
+                            android:id="@+id/questionOneAText"
                             android:gravity="center_horizontal" />
 
                         <RadioGroup
@@ -111,7 +111,7 @@
                             android:padding="6dp"
                             android:id="@+id/radioGroupQuestionOneA"
                             android:orientation="horizontal"
-                            android:layout_below="@+id/headlineQuestionOneA"
+                            android:layout_below="@+id/questionOneAText"
                             android:layout_centerHorizontal="true">
 
                             <RadioButton
@@ -139,7 +139,7 @@
                             android:text="Are other people smoking in the smoking area?"
                             android:padding="6dp"
                             android:layout_below="@+id/radioGroupQuestionOneA"
-                            android:id="@+id/headlineQuestionOneB"
+                            android:id="@+id/questionOneBText"
                             android:gravity="center_horizontal" />
 
                         <RadioGroup
@@ -148,7 +148,7 @@
                             android:padding="6dp"
                             android:id="@+id/radioGroupQuestionOneB"
                             android:orientation="horizontal"
-                            android:layout_below="@+id/headlineQuestionOneB"
+                            android:layout_below="@+id/questionOneBText"
                             android:layout_centerHorizontal="true">
 
                             <RadioButton
@@ -176,7 +176,7 @@
                             android:text="Are you talking with or socializing with other people in the smoking area??"
                             android:padding="6dp"
                             android:layout_below="@+id/radioGroupQuestionOneB"
-                            android:id="@+id/headlineQuestionOneC"
+                            android:id="@+id/questionOneCText"
                             android:gravity="center_horizontal" />
 
                         <RadioGroup
@@ -185,7 +185,7 @@
                             android:padding="6dp"
                             android:id="@+id/radioGroupQuestionOneC"
                             android:orientation="horizontal"
-                            android:layout_below="@+id/headlineQuestionOneC"
+                            android:layout_below="@+id/questionOneCText"
                             android:layout_centerHorizontal="true">
 
                             <RadioButton
@@ -213,7 +213,7 @@
                             android:text="Where are you?"
                             android:padding="6dp"
                             android:layout_below="@+id/radioGroupQuestionOne"
-                            android:id="@+id/headlineQuestionOneD"
+                            android:id="@+id/questionOneDText"
                             android:gravity="center_horizontal" />
 
                         <RadioGroup
@@ -222,7 +222,7 @@
                             android:padding="6dp"
                             android:id="@+id/radioGroupQuestionOneD"
                             android:orientation="vertical"
-                            android:layout_below="@+id/headlineQuestionOneD"
+                            android:layout_below="@+id/questionOneDText"
                             android:layout_centerHorizontal="true">
 
                             <RadioButton
@@ -287,7 +287,7 @@
                             android:text="What are you doing now??"
                             android:padding="6dp"
                             android:layout_below="@+id/radioGroupQuestionOneA"
-                            android:id="@+id/headlineQuestionOneE"
+                            android:id="@+id/questionOneEText"
                             android:gravity="center_horizontal" />
 
                         <RadioGroup
@@ -296,7 +296,7 @@
                             android:padding="6dp"
                             android:id="@+id/radioGroupQuestionOneE"
                             android:orientation="vertical"
-                            android:layout_below="@+id/headlineQuestionOneE"
+                            android:layout_below="@+id/questionOneEText"
                             android:layout_centerHorizontal="true">
 
                             <RadioButton

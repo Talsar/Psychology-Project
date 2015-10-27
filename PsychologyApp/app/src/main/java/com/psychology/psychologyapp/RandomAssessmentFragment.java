@@ -4,9 +4,17 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -26,6 +34,35 @@ public class RandomAssessmentFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View fragmentView;
+
+    int iSeekBarQuestionThree;
+
+    private ArrayList<SeekBar> seekBars;
+    private ArrayList<TextView> seekBarTexts;
+
+    private TextView textSeekBarQuestionTwo;
+    private TextView textSeekBarQuestionThreeA;
+    private TextView textSeekBarQuestionThreeB;
+    private TextView textSeekBarQuestionThreeC;
+    private TextView textSeekBarQuestionThreeD;
+    private TextView textSeekBarQuestionThreeE;
+    private TextView textSeekBarQuestionThreeF;
+    private TextView headlineQuestionOne;
+    private TextView headlineQuestionOneA;
+    private RadioGroup radioGroupQuestionOne;
+    private RadioGroup radioGroupQuestionOneA;
+    private CardView cardViewQuestion1;
+    private CardView cardViewQuestion2;
+    private CardView cardViewQuestion3;
+    private SeekBar seekBarQuestionTwo;
+    private SeekBar seekBarQuestionThreeA;
+    private SeekBar seekBarQuestionThreeB;
+    private SeekBar seekBarQuestionThreeC;
+    private SeekBar seekBarQuestionThreeD;
+    private SeekBar seekBarQuestionThreeE;
+    private SeekBar seekBarQuestionThreeF;
 
     private OnFragmentInteractionListener mListener;
 
@@ -49,6 +86,175 @@ public class RandomAssessmentFragment extends Fragment {
 
     public RandomAssessmentFragment() {
         // Required empty public constructor
+    }
+
+    private void initiateAssessment() {
+
+        seekBars = new ArrayList<>(6);
+        seekBarQuestionThreeA = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeA);
+        seekBars.add(seekBarQuestionThreeA);
+        seekBarQuestionThreeA.setMax(5);
+        seekBarQuestionThreeB = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeB);
+        seekBars.add(seekBarQuestionThreeB);
+        seekBarQuestionThreeC = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeC);
+        seekBars.add(seekBarQuestionThreeC);
+        seekBarQuestionThreeD = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeD);
+        seekBars.add(seekBarQuestionThreeD);
+        seekBarQuestionThreeE = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeE);
+        seekBars.add(seekBarQuestionThreeE);
+        seekBarQuestionThreeF = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeF);
+        seekBars.add(seekBarQuestionThreeF);
+
+        seekBarTexts = new ArrayList<>(6);
+        textSeekBarQuestionThreeA = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeA);
+        textSeekBarQuestionThreeA.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeA);
+        textSeekBarQuestionThreeB = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeB);
+        textSeekBarQuestionThreeB.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeB);
+        textSeekBarQuestionThreeC = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeC);
+        textSeekBarQuestionThreeC.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeC);
+        textSeekBarQuestionThreeD = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeD);
+        textSeekBarQuestionThreeD.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeD);
+        textSeekBarQuestionThreeE = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeE);
+        textSeekBarQuestionThreeE.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeE);
+        textSeekBarQuestionThreeF = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeF);
+        textSeekBarQuestionThreeF.setText("0");
+        seekBarTexts.add(textSeekBarQuestionThreeF);
+
+        for (iSeekBarQuestionThree=0; iSeekBarQuestionThree>6; iSeekBarQuestionThree++) {
+            seekBars.get(iSeekBarQuestionThree).setMax(5);
+            seekBars.get(iSeekBarQuestionThree).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    // TODO Auto-generated method stub
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                    // TODO Auto-generated method stub
+                }
+
+
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    // TODO Auto-generated method stub
+
+                    seekBarTexts.get(iSeekBarQuestionThree).setText("" + progress);
+
+
+
+                }
+            });
+        }
+
+        cardViewQuestion1 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion1);
+        cardViewQuestion1.setVisibility(View.VISIBLE);
+
+        cardViewQuestion2 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion2);
+        cardViewQuestion2.setVisibility(View.GONE);
+
+        cardViewQuestion3 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion3);
+        cardViewQuestion3.setVisibility(View.GONE);
+
+        textSeekBarQuestionTwo = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionTwo);
+        textSeekBarQuestionTwo.setText("0");
+
+
+
+        headlineQuestionOne = (TextView) fragmentView.findViewById(R.id.headlineQuestionOne);
+        headlineQuestionOneA = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneA);
+        headlineQuestionOneA.setVisibility(View.GONE);
+
+
+        radioGroupQuestionOne = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOne);
+        radioGroupQuestionOneA = (RadioGroup) fragmentView.findViewById(R.id.radioGroupQuestionOneA);
+        radioGroupQuestionOneA.setVisibility(View.GONE);
+
+        seekBarQuestionTwo = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionTwo);
+        seekBarQuestionTwo.setMax(10);
+        seekBarQuestionTwo.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // TODO Auto-generated method stub
+
+                textSeekBarQuestionTwo.setText("" + progress);
+
+
+            }
+        });
+
+
+        radioGroupQuestionOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked) {
+                    // Changes the textview's text to "Checked: example radiobutton text"
+                    Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    if (checkedRadioButton.getText().equals("Yes")) {
+                        //locationSpinnerQuestion1.setVisibility(View.GONE);
+                        headlineQuestionOneA.setVisibility(View.VISIBLE);
+                        radioGroupQuestionOneA.setVisibility(View.VISIBLE);
+
+                        cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
+
+
+                    } else {
+                        //locationSpinnerQuestion1.setVisibility(View.VISIBLE);
+                        headlineQuestionOneA.setVisibility(View.VISIBLE);
+                        radioGroupQuestionOneA.setVisibility(View.VISIBLE);
+                        cardViewQuestion2.setVisibility(View.GONE);
+                        cardViewQuestion3.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
+
+
+        radioGroupQuestionOneA.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton) rGroup.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked) {
+                    // Changes the textview's text to "Checked: example radiobutton text"
+                    Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    if (checkedRadioButton.getText().equals("Yes")) {
+                        cardViewQuestion2.setVisibility(View.VISIBLE);
+                        cardViewQuestion3.setVisibility(View.VISIBLE);
+                    }else{
+                        cardViewQuestion2.setVisibility(View.VISIBLE);
+                        cardViewQuestion3.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
+
+
+
     }
 
     @Override

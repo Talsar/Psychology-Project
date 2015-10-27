@@ -33,10 +33,12 @@ public class InitiativeAssessmentFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     ArrayList<ArrayList<String>> questionAnswerGroup;
-    private View fragmentView;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View fragmentView;
 
     int iSeekBarQuestionThree;
 
@@ -368,22 +370,6 @@ public class InitiativeAssessmentFragment extends Fragment {
             }
         });
 
-        //locationSpinnerQuestion1 = (Spinner) fragmentView.findViewById(R.id.location_spinner);
-        //ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.locations, android.R.layout.simple_spinner_item);
-        //locationSpinnerQuestion1.setAdapter(adapter);
-        //locationSpinnerQuestion1.setVisibility(View.GONE);
-        //locationSpinnerQuestion1.setOnItemSelectedListener(this);
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -400,7 +386,7 @@ public class InitiativeAssessmentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        fragmentView = inflater.inflate(R.layout.fragment_assessment, container, false);
+        fragmentView = inflater.inflate(R.layout.fragment_initiative_assessment, container, false);
         initiateAssessment();
         return fragmentView;
     }
