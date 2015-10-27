@@ -136,6 +136,7 @@ public class AssessmentFragment extends Fragment {
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
+            
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
