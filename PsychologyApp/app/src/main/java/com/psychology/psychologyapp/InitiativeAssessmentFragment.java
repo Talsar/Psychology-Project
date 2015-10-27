@@ -158,6 +158,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                     // TODO Auto-generated method stub
 
                     Toast.makeText(getActivity(), "You selected " + seekBar.getContext(), Toast.LENGTH_SHORT).show();
+
                     
 
 

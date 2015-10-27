@@ -280,11 +280,12 @@
 
                         </RadioGroup>
 
+
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="What are you doing now??"
+                            android:text="What are you doing now?"
                             android:padding="6dp"
                             android:layout_below="@+id/radioGroupQuestionOneA"
                             android:id="@+id/questionOneEText"
@@ -338,7 +339,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="2dp"
-                                android:text="Car"
+                                android:text="Other"
                                 android:id="@+id/optionFiveRadioButtonQuestionOneE"
                                 android:layout_below="@+id/optionFourRadioButtonQuestionOneE"
                                 android:checked="false" />

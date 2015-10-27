@@ -167,7 +167,7 @@ public class RandomAssessmentFragment extends Fragment {
 
 
         headlineQuestionOne = (TextView) fragmentView.findViewById(R.id.headlineQuestionOne);
-        headlineQuestionOneA = (TextView) fragmentView.findViewById(R.id.headlineQuestionOneA);
+        headlineQuestionOneA = (TextView) fragmentView.findViewById(R.id.questionOneAText);
         headlineQuestionOneA.setVisibility(View.GONE);
 
 

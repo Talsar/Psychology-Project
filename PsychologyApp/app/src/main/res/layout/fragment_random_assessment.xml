@@ -74,7 +74,7 @@
                                 android:padding="6dp"
                                 android:id="@+id/radioGroupQuestionOne"
                                 android:orientation="vertical"
-                                android:layout_below="@+id/headlineQuestionOne"
+                                android:layout_below="@+id/questionOneText"
                                 android:layout_centerHorizontal="true">
 
                                 <RadioButton
@@ -148,7 +148,7 @@
                                 android:text="What are you doing now??"
                                 android:padding="6dp"
                                 android:layout_below="@+id/radioGroupQuestionOne"
-                                android:id="@+id/headlineQuestionOneA"
+                                android:id="@+id/questionOneAText"
                                 android:gravity="center_horizontal" />
 
                             <RadioGroup
@@ -157,7 +157,7 @@
                                 android:padding="6dp"
                                 android:id="@+id/radioGroupQuestionOneA"
                                 android:orientation="vertical"
-                                android:layout_below="@+id/headlineQuestionOneA"
+                                android:layout_below="@+id/questionOneAText"
                                 android:layout_centerHorizontal="true">
 
                                 <RadioButton
