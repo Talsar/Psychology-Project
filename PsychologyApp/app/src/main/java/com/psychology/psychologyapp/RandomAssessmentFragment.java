@@ -289,7 +289,9 @@ public class RandomAssessmentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_random_assessment, container, false);
+        fragmentView = inflater.inflate(R.layout.fragment_random_assessment, container, false);
+        initiateAssessment();
+        return fragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
