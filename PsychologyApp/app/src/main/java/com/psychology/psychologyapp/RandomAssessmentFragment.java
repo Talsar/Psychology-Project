@@ -46,6 +46,7 @@ public class RandomAssessmentFragment extends Fragment {
 
     private HashMap<SeekBar, TextView> textSeekBarMap;
 
+
     private Button submitButton;
     private TextView textSeekBarQuestionTwo;
     private TextView textSeekBarQuestionThreeA;
@@ -138,6 +139,7 @@ public class RandomAssessmentFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
+
                 Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
             }
 
@@ -164,8 +166,9 @@ public class RandomAssessmentFragment extends Fragment {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     // TODO Auto-generated method stub
 
+
                     textSeekBarMap.get(seekBar).setText("" + progress);
-                    submitButton.setVisibility(View.VISIBLE);
+
 
                 }
             });
@@ -264,9 +267,11 @@ public class RandomAssessmentFragment extends Fragment {
                     if (checkedRadioButton.getText().equals("Yes")) {
                         cardViewQuestion2.setVisibility(View.VISIBLE);
                         cardViewQuestion3.setVisibility(View.VISIBLE);
+                        submitButton.setVisibility(View.VISIBLE);
                     }else{
                         cardViewQuestion2.setVisibility(View.VISIBLE);
                         cardViewQuestion3.setVisibility(View.VISIBLE);
+                        submitButton.setVisibility(View.VISIBLE);
                     }
                 }
             }

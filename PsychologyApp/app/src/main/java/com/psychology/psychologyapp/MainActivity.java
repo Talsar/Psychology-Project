@@ -53,6 +53,16 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
     }
 
     @Override
+    public void onBackPressed()
+    {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long

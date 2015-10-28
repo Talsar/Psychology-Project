@@ -66,6 +66,8 @@ public class MainMenuFragment extends Fragment {
 
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,7 +83,7 @@ public class MainMenuFragment extends Fragment {
                 // and add the transaction to the back stack so the user can navigate back
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, mInitiativeAssessmentFragment)
-                        .addToBackStack(null)
+                        .addToBackStack(mInitiativeAssessmentFragment.getClass().getName())
                         .commit();
             }
         });

@@ -173,8 +173,8 @@ public class InitiativeAssessmentFragment extends Fragment {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     // TODO Auto-generated method stub
 
-                    textSeekBarMap.get(seekBar).setText(""+progress);
-                    submitButton.setVisibility(View.VISIBLE);
+                    textSeekBarMap.get(seekBar).setText("" + progress);
+
 
                 }
             });
@@ -239,8 +239,6 @@ public class InitiativeAssessmentFragment extends Fragment {
 
                 textSeekBarQuestionTwo.setText("" + progress);
 
-
-
             }
         });
 
@@ -264,6 +262,7 @@ public class InitiativeAssessmentFragment extends Fragment {
 
                         cardViewQuestion2.setVisibility(View.GONE);
                         cardViewQuestion3.setVisibility(View.GONE);
+                        submitButton.setVisibility(View.GONE);
 
 
                     } else {
@@ -281,6 +280,7 @@ public class InitiativeAssessmentFragment extends Fragment {
 
                         cardViewQuestion2.setVisibility(View.GONE);
                         cardViewQuestion3.setVisibility(View.GONE);
+                        submitButton.setVisibility(View.GONE);
                     }
                 }
             }
@@ -307,6 +307,7 @@ public class InitiativeAssessmentFragment extends Fragment {
 
                         cardViewQuestion2.setVisibility(View.GONE);
                         cardViewQuestion3.setVisibility(View.GONE);
+                        submitButton.setVisibility(View.GONE);
                     }else{
                         questionOneBText.setVisibility(View.GONE);
                         radioGroupQuestionOneB.setVisibility(View.GONE);
@@ -317,6 +318,7 @@ public class InitiativeAssessmentFragment extends Fragment {
 
                         cardViewQuestion2.setVisibility(View.GONE);
                         cardViewQuestion3.setVisibility(View.GONE);
+                        submitButton.setVisibility(View.GONE);
                     }
                 }
             }
@@ -338,12 +340,14 @@ public class InitiativeAssessmentFragment extends Fragment {
 
                         cardViewQuestion2.setVisibility(View.GONE);
                         cardViewQuestion3.setVisibility(View.GONE);
+                        submitButton.setVisibility(View.GONE);
                     }else{
                         questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
 
                         cardViewQuestion2.setVisibility(View.VISIBLE);
                         cardViewQuestion3.setVisibility(View.VISIBLE);
+                        submitButton.setVisibility(View.VISIBLE);
                     }
                 }
             }
@@ -359,6 +363,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                 Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                 cardViewQuestion2.setVisibility(View.VISIBLE);
                 cardViewQuestion3.setVisibility(View.VISIBLE);
+                submitButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -372,6 +377,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                 Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                 cardViewQuestion2.setVisibility(View.VISIBLE);
                 cardViewQuestion3.setVisibility(View.VISIBLE);
+                submitButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -385,6 +391,8 @@ public class InitiativeAssessmentFragment extends Fragment {
                 Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                 cardViewQuestion2.setVisibility(View.VISIBLE);
                 cardViewQuestion3.setVisibility(View.VISIBLE);
+                submitButton.setVisibility(View.VISIBLE);
+
             }
         });
 
