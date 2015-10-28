@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -42,6 +44,9 @@ public class RandomAssessmentFragment extends Fragment {
     private ArrayList<SeekBar> seekBars;
     private ArrayList<TextView> seekBarTexts;
 
+    private HashMap<SeekBar, TextView> textSeekBarMap;
+
+    private Button submitButton;
     private TextView textSeekBarQuestionTwo;
     private TextView textSeekBarQuestionThreeA;
     private TextView textSeekBarQuestionThreeB;
@@ -104,6 +109,7 @@ public class RandomAssessmentFragment extends Fragment {
         seekBars.add(seekBarQuestionThreeE);
         seekBarQuestionThreeF = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeF);
         seekBars.add(seekBarQuestionThreeF);
+        seekBarQuestionThreeA.setMax(5);
 
         seekBarTexts = new ArrayList<>(6);
         textSeekBarQuestionThreeA = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeA);
@@ -124,9 +130,23 @@ public class RandomAssessmentFragment extends Fragment {
         textSeekBarQuestionThreeF = (TextView) fragmentView.findViewById(R.id.textSeekBarQuestionThreeF);
         textSeekBarQuestionThreeF.setText("0");
         seekBarTexts.add(textSeekBarQuestionThreeF);
+        textSeekBarMap = new HashMap<>(6);
 
-        for (iSeekBarQuestionThree=0; iSeekBarQuestionThree>6; iSeekBarQuestionThree++) {
+        submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
+        submitButton.setVisibility(View.GONE);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
+        for (iSeekBarQuestionThree=0; iSeekBarQuestionThree<6; iSeekBarQuestionThree++) {
             seekBars.get(iSeekBarQuestionThree).setMax(5);
+            textSeekBarMap.put(seekBars.get(iSeekBarQuestionThree), seekBarTexts.get(iSeekBarQuestionThree));
             seekBars.get(iSeekBarQuestionThree).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 @Override
@@ -144,9 +164,8 @@ public class RandomAssessmentFragment extends Fragment {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     // TODO Auto-generated method stub
 
-                    seekBarTexts.get(iSeekBarQuestionThree).setText("" + progress);
-
-
+                    textSeekBarMap.get(seekBar).setText("" + progress);
+                    submitButton.setVisibility(View.VISIBLE);
 
                 }
             });

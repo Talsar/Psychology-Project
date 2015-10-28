@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -26,6 +31,11 @@ public class DailyAssessmentFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View fragmentView;
+
+    private Button submitButton;
+    private EditText editText;
 
     private OnFragmentInteractionListener mListener;
 
@@ -51,6 +61,25 @@ public class DailyAssessmentFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+    private void initiateAssessment() {
+        submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
+        editText = (EditText) fragmentView.findViewById(R.id.editText);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                if (!(editText.getText().length()==0)) {
+
+                    Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +93,9 @@ public class DailyAssessmentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_daily_assessment, container, false);
+        fragmentView = inflater.inflate(R.layout.fragment_daily_assessment, container, false);
+        initiateAssessment();
+        return fragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
