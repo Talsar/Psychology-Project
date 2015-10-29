@@ -31,16 +31,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         mBuilder.setContentTitle("Assessment");
         mBuilder.setContentText("An Assessment is due!");
 
-        Intent resultIntent = new Intent();
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(this);
-
-
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-
-        mBuilder.notify();
+        //mBuilder.notify();
 
         if (findViewById(R.id.fragment_container) != null) {
 
