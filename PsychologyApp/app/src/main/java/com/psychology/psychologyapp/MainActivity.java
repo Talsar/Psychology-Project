@@ -2,9 +2,14 @@
 
 package com.psychology.psychologyapp;
 
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,11 +20,27 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
     //Button mInitiaveAssessmentButton;
     MainMenuFragment mMainMenuFragment;
     InitiativeAssessmentFragment mInitiativeAssessmentFragment;
+    NotificationCompat.Builder mBuilder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mBuilder = new NotificationCompat.Builder(this);
+        mBuilder.setContentTitle("Assessment");
+        mBuilder.setContentText("An Assessment is due!");
+
+        Intent resultIntent = new Intent();
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(this);
+
+
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        mBuilder.notify();
 
         if (findViewById(R.id.fragment_container) != null) {
 
