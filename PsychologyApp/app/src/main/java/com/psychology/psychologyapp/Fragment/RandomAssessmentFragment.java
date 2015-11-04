@@ -15,6 +15,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.psychology.psychologyapp.Logic.StoredData;
 import com.psychology.psychologyapp.R;
 
 import java.util.ArrayList;
@@ -142,6 +143,9 @@ public class RandomAssessmentFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
+                ArrayList<Boolean> bools = new ArrayList<Boolean>(5);
+                bools.add(true);bools.add(true);bools.add(true);bools.add(true);bools.add(true);
+                StoredData.saveAssessments(bools, getActivity());
                 Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
             }
 

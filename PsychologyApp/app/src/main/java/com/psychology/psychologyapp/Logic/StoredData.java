@@ -28,6 +28,17 @@ public class StoredData {
         editor.commit();
     }
 
+    public static void saveAssessments(ArrayList<Boolean> assessmentsDone, Context context){
+
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        for (int i = 0; i < 5; i++) {
+            editor.putBoolean("assessment" + (i + 1), assessmentsDone.get(i));
+        }
+        editor.commit();
+
+    }
+
     public static int getStartTime(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("startTime", 10);
