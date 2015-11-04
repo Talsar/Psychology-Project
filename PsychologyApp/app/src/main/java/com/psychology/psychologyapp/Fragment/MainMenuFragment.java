@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.psychology.psychologyapp.Logic.StoredData;
 import com.psychology.psychologyapp.R;
 
 
@@ -122,7 +123,7 @@ public class MainMenuFragment extends Fragment {
         });
 
         final Button mEditSettingsButton = (Button) view.findViewById(R.id.editSettingsButton);
-        mRandomAssessmentButton.setOnClickListener(new View.OnClickListener() {
+        mEditSettingsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Create fragment
                 mSettingsFragment = new SettingsFragment();

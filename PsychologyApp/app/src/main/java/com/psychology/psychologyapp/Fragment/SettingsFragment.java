@@ -89,13 +89,21 @@ public class SettingsFragment extends Fragment {
 
         });
 
+
+
         loadButton = (Button) fragmentView.findViewById(R.id.loadSettingsButton);
         loadButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
-                loadText.setText("test");
+                int a = StoredData.getStartTime(getActivity());
+                int b = StoredData.getEndTime(getActivity());
+                ArrayList<Boolean> bools = StoredData.getAssessmentsDone(getActivity());
+                loadText.setText("StartTime: "+a+"\n"+
+                                 "EndTime: "+b+"\n"+
+                                 "Assessments: "+bools.get(0)+", "+bools.get(1)+", "
+                        +bools.get(2)+", "+bools.get(3)+", "+bools.get(4));
 
             }
 
@@ -112,7 +120,7 @@ public class SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        initiateAssessment();
+
     }
 
     @Override
