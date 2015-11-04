@@ -19,11 +19,12 @@ import com.psychology.psychologyapp.Fragment.DailyAssessmentFragment;
 import com.psychology.psychologyapp.Fragment.InitiativeAssessmentFragment;
 import com.psychology.psychologyapp.Fragment.MainMenuFragment;
 import com.psychology.psychologyapp.Fragment.RandomAssessmentFragment;
+import com.psychology.psychologyapp.Fragment.SettingsFragment;
 import com.psychology.psychologyapp.Logic.AssessmentNotification;
 import com.psychology.psychologyapp.R;
 
 
-public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
+public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
 
     MainMenuFragment mMainMenuFragment;
     AssessmentNotification mAssessmentNotification;
