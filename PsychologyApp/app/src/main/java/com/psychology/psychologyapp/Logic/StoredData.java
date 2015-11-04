@@ -22,11 +22,31 @@ public class StoredData {
         editor.putInt("startTime", startTime);
         editor.putInt("endTime", startTime);
         for (int i = 0; i < 5; i++) {
-            editor.putBoolean("assessment"+(i+1), assessmentsDone.get(i));
+            editor.putBoolean("assessment" + (i + 1), assessmentsDone.get(i));
+        }
+        editor.commit();
+    }
+
+    public static int getStartTime(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("startTime", 10);
+
+    }
+
+    public static int getEndTime(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("endTime", 22);
+
+    }
+
+    public static ArrayList<Boolean> getAssessmentsDone(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        ArrayList<Boolean> assessmentsDone = new ArrayList<>(5);
+        for (int i = 0; i < 5; i++) {
+            assessmentsDone.add(settings.getBoolean("assessment" + (i + 1), false));
         }
 
-
-
+        return assessmentsDone;
 
     }
 
