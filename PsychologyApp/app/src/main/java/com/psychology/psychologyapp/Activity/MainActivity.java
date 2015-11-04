@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAssessmentNotification = new AssessmentNotification();
-        mAssessmentNotification.notificationRandomAssessment(this);
+        //mAssessmentNotification.notificationRandomAssessment(this);
         
 
         if (findViewById(R.id.fragment_container) != null) {
@@ -54,6 +54,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
                     .addToBackStack(null)
                     .commit();
 
+            mAssessmentNotification.alarm(this, findViewById(R.id.fragment_container));
 
 
 
