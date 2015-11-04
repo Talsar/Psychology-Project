@@ -16,10 +16,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
 
-    //FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    //Button mInitiaveAssessmentButton;
     MainMenuFragment mMainMenuFragment;
-    InitiativeAssessmentFragment mInitiativeAssessmentFragment;
     NotificationCompat.Builder mBuilder;
 
 

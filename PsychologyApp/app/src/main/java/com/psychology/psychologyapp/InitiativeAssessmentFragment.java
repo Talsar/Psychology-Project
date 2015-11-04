@@ -440,27 +440,7 @@ public class InitiativeAssessmentFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-/*
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        TextView myText = (TextView) view;
-        if (!myText.getText().equals("Nothing Selected")) {
-            cardViewQuestion2.setVisibility(View.VISIBLE);
-            Toast.makeText(getActivity(), "You selected "+myText.getText(), Toast.LENGTH_SHORT).show();
 
-        } else {
-            cardViewQuestion2.setVisibility(View.GONE);
-        }
-
-
-    }
-
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-*/
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
