@@ -2,7 +2,6 @@
 
 package com.psychology.psychologyapp;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -28,7 +27,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         setContentView(R.layout.activity_main);
         mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setContentTitle("Assessment");
-        mBuilder.setSmallIcon(R.drawable.autoreperatur);
+        mBuilder.setSmallIcon(R.drawable.icon_assessment);
         mBuilder.setContentText("An Assessment is due!");
 
         Intent resultIntent = new Intent(this, MainActivity.class);
