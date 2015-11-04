@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.psychology.psychologyapp.Fragment.SettingsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Settings"
+            android:id="@+id/confirmSettingsButton"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load Settings"
+            android:id="@+id/loadSettingsButton"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/confirmSettingsButton"
+            android:layout_gravity="center_horizontal|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loadText"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/loadSettingsButton"
+            android:layout_gravity="center_horizontal|top"/>
+
+    </RelativeLayout>
+</FrameLayout>

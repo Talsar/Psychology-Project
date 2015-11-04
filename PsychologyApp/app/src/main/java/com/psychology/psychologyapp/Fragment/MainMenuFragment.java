@@ -29,6 +29,7 @@ public class MainMenuFragment extends Fragment {
     private InitiativeAssessmentFragment mInitiativeAssessmentFragment;
     private RandomAssessmentFragment mRandomAssessmentFragment;
     private DailyAssessmentFragment mDailyAssessmentFragment;
+    private SettingsFragment mSettingsFragment;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -94,7 +95,7 @@ public class MainMenuFragment extends Fragment {
         mRandomAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Create fragment
-                mRandomAssessmentFragment= new RandomAssessmentFragment();
+                mRandomAssessmentFragment = new RandomAssessmentFragment();
 
                 // Replace whatever is in the fragment_container view with this fragment,
                 // and add the transaction to the back stack so the user can navigate back
@@ -115,6 +116,21 @@ public class MainMenuFragment extends Fragment {
                 // and add the transaction to the back stack so the user can navigate back
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, mDailyAssessmentFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        final Button mEditSettingsButton = (Button) view.findViewById(R.id.editSettingsButton);
+        mRandomAssessmentButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Create fragment
+                mSettingsFragment = new SettingsFragment();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack so the user can navigate back
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, mSettingsFragment)
                         .addToBackStack(null)
                         .commit();
             }
