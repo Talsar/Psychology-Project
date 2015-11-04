@@ -51,7 +51,7 @@ public class AssessmentNotification {
     }
 
     public void alarm(Context context, View view) {
-        Long time = SystemClock.elapsedRealtime()+10*1000;
+        Long time = SystemClock.elapsedRealtime()+15*1000;
         Intent intentAlarm = new Intent(context, AlarmReceiver.class);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, time, PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
