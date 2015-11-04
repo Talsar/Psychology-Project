@@ -1,7 +1,8 @@
 //Oliver
 
-package com.psychology.psychologyapp;
+package com.psychology.psychologyapp.Activity;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -14,37 +15,26 @@ import android.support.v7.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.psychology.psychologyapp.Fragment.DailyAssessmentFragment;
+import com.psychology.psychologyapp.Fragment.InitiativeAssessmentFragment;
+import com.psychology.psychologyapp.Fragment.MainMenuFragment;
+import com.psychology.psychologyapp.Fragment.RandomAssessmentFragment;
+import com.psychology.psychologyapp.Logic.AssessmentNotification;
+import com.psychology.psychologyapp.R;
+
 
 public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
 
     MainMenuFragment mMainMenuFragment;
-    NotificationCompat.Builder mBuilder;
+    AssessmentNotification mAssessmentNotification;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mBuilder = new NotificationCompat.Builder(this);
-        mBuilder.setContentTitle("Assessment");
-        mBuilder.setSmallIcon(R.drawable.icon_assessment);
-        mBuilder.setContentText("An Assessment is due!");
-
-        Intent resultIntent = new Intent(this, MainActivity.class);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(MainActivity.class);
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(
-                        0,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        // mId allows you to update the notification later on.
-        int mId = 0;
-        mNotificationManager.notify(mId, mBuilder.build());
+        mAssessmentNotification = new AssessmentNotification();
+        mAssessmentNotification.notificationRandomAssessment(this);
         
 
         if (findViewById(R.id.fragment_container) != null) {

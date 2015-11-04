@@ -1,6 +1,6 @@
 package com.psychology.psychologyapp.Logic;
 
-import com.psychology.psychologyapp.InitiativeAssessmentFragment;
+import com.psychology.psychologyapp.Fragment.InitiativeAssessmentFragment;
 
 import java.util.ArrayList;
 
