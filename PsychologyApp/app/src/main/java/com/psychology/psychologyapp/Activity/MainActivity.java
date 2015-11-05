@@ -1,7 +1,12 @@
-//Oliver
-
 package com.psychology.psychologyapp.Activity;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -33,7 +38,8 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         setContentView(R.layout.activity_main);
         mAssessmentNotification = new AssessmentNotification();
         //mAssessmentNotification.notificationRandomAssessment(this);
-        
+
+        String menuFragment = getIntent().getStringExtra("menuFragment");
 
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -43,21 +49,42 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
             if (savedInstanceState != null) {
                 return;
             }
-            Toast.makeText(this, "restart", Toast.LENGTH_SHORT).show();
-            if (DataIO.isLogInInformationExisting(this)) {
-                mMainMenuFragment = new MainMenuFragment();
-                // Add the fragment to the 'fragment_container' FrameLayout
-                getFragmentManager().beginTransaction()
-                        .add(R.id.fragment_container, mMainMenuFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }else{
 
-                mLogInFragment = new LogInFragment();
-                // Add the fragment to the 'fragment_container' FrameLayout
-                getFragmentManager().beginTransaction()
-                        .add(R.id.fragment_container, mLogInFragment)
-                        .commit();
+            mMainMenuFragment = new MainMenuFragment();
+
+            if (menuFragment != null) {
+                if (menuFragment.equals("randomAssessmentFragment")) {
+                    RandomAssessmentFragment mRandomAssessmentFragment = new RandomAssessmentFragment();
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, mMainMenuFragment)
+                            .addToBackStack(null)
+                            .commit();
+
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, mRandomAssessmentFragment)
+                            .addToBackStack(null)
+                            .commit();
+
+                }
+            } else {
+
+                Toast.makeText(this, "restart", Toast.LENGTH_SHORT).show();
+                if (DataIO.isLogInInformationExisting(this)) {
+                    mMainMenuFragment = new MainMenuFragment();
+                    // Add the fragment to the 'fragment_container' FrameLayout
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.fragment_container, mMainMenuFragment)
+                            .addToBackStack(null)
+                            .commit();
+                } else {
+
+                    mLogInFragment = new LogInFragment();
+                    // Add the fragment to the 'fragment_container' FrameLayout
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.fragment_container, mLogInFragment)
+                            .commit();
+                }
+
             }
 
             mAssessmentNotification.alarm(this, findViewById(R.id.fragment_container));
