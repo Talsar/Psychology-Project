@@ -52,7 +52,7 @@ public class AssessmentNotification {
     }
 
     public void alarm(Context context, View view) {
-        Long time = SystemClock.elapsedRealtime()+15*1000;
+        Long time = SystemClock.elapsedRealtime()+10*1000;
         Intent intentAlarm = new Intent(context, AlarmReceiver.class);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, time, PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
@@ -78,22 +78,27 @@ public class AssessmentNotification {
             if (savedInstanceState != null) {
                 return;
             }
-
+            mMainMenuFragment = new MainMenuFragment();
 
             if (menuFragment != null) {
                 if (menuFragment.equals("randomAssessmentFragment")) {
-                    RandomAssessmentFragment randomAssessmentFragment = new RandomAssessmentFragment();
+                    RandomAssessmentFragment mRandomAssessmentFragment = new RandomAssessmentFragment();
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, randomAssessmentFragment)
+                            .replace(R.id.fragment_container, mMainMenuFragment)
                             .addToBackStack(null)
                             .commit();
+
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, mRandomAssessmentFragment)
+                            .addToBackStack(null)
+                            .commit();
+
                 }
             } else {
-                mMainMenuFragment = new MainMenuFragment();
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getFragmentManager().beginTransaction()
-                        .add(R.id.fragment_container, mMainMenuFragment)
+                        .replace(R.id.fragment_container, mMainMenuFragment)
                         .addToBackStack(null)
                         .commit();
 
