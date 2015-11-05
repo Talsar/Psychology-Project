@@ -2,30 +2,27 @@
 
 package com.psychology.psychologyapp.Activity;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.psychology.psychologyapp.Fragment.DailyAssessmentFragment;
 import com.psychology.psychologyapp.Fragment.InitiativeAssessmentFragment;
+import com.psychology.psychologyapp.Fragment.LogInFragment;
 import com.psychology.psychologyapp.Fragment.MainMenuFragment;
 import com.psychology.psychologyapp.Fragment.RandomAssessmentFragment;
 import com.psychology.psychologyapp.Fragment.SettingsFragment;
 import com.psychology.psychologyapp.Logic.AssessmentNotification;
+import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
 
-public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
+public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, LogInFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
 
+    LogInFragment mLogInFragment;
     MainMenuFragment mMainMenuFragment;
     AssessmentNotification mAssessmentNotification;
 
@@ -46,14 +43,22 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
             if (savedInstanceState != null) {
                 return;
             }
+            Toast.makeText(this, "restart", Toast.LENGTH_SHORT).show();
+            if (DataIO.isLogInInformationExisting(this)) {
+                mMainMenuFragment = new MainMenuFragment();
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container, mMainMenuFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }else{
 
-            mMainMenuFragment = new MainMenuFragment();
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, mMainMenuFragment)
-                    .addToBackStack(null)
-                    .commit();
+                mLogInFragment = new LogInFragment();
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container, mLogInFragment)
+                        .commit();
+            }
 
             mAssessmentNotification.alarm(this, findViewById(R.id.fragment_container));
 
@@ -69,6 +74,8 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
 
     @Override
     public void onBackPressed()

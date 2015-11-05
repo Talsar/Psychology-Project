@@ -15,7 +15,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.psychology.psychologyapp.Logic.StoredData;
+import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
 import java.util.ArrayList;
@@ -51,6 +51,7 @@ public class RandomAssessmentFragment extends Fragment {
 
 
     private Button submitButton;
+    private Button loadButton;
     private TextView textSeekBarQuestionTwo;
     private TextView textSeekBarQuestionThreeA;
     private TextView textSeekBarQuestionThreeB;
@@ -136,6 +137,45 @@ public class RandomAssessmentFragment extends Fragment {
         seekBarTexts.add(textSeekBarQuestionThreeF);
         textSeekBarMap = new HashMap<>(6);
 
+        loadButton = (Button) fragmentView.findViewById(R.id.loadButton);
+        loadButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                ArrayList<String> answers = DataIO.getRandomAssessment(getActivity());
+
+
+
+                if (!(answers.get(0).equals(""))) {
+                    RadioButton buttonOne = (RadioButton) radioGroupQuestionOne.findViewWithTag(answers.get(0));
+                    buttonOne.setChecked(true);
+                    headlineQuestionOneA.setVisibility(View.VISIBLE);
+                    radioGroupQuestionOneA.setVisibility(View.VISIBLE);
+                }
+
+                if (!(answers.get(1).equals(""))) {
+                    RadioButton buttonOneA = (RadioButton) radioGroupQuestionOneA.findViewWithTag(answers.get(1));
+                    buttonOneA.setChecked(true);
+                    cardViewQuestion2.setVisibility(View.VISIBLE);
+                    cardViewQuestion3.setVisibility(View.VISIBLE);
+                    submitButton.setVisibility(View.VISIBLE);
+                }
+                seekBarQuestionTwo.setProgress(Integer.parseInt(answers.get(2)));
+                seekBarQuestionThreeA.setProgress(Integer.parseInt(answers.get(3)));
+                seekBarQuestionThreeB.setProgress(Integer.parseInt(answers.get(4)));
+                seekBarQuestionThreeC.setProgress(Integer.parseInt(answers.get(5)));
+                seekBarQuestionThreeD.setProgress(Integer.parseInt(answers.get(6)));
+                seekBarQuestionThreeE.setProgress(Integer.parseInt(answers.get(7)));
+                seekBarQuestionThreeF.setProgress(Integer.parseInt(answers.get(8)));
+
+
+
+
+            }
+
+        });
+
         submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
         submitButton.setVisibility(View.GONE);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -144,9 +184,22 @@ public class RandomAssessmentFragment extends Fragment {
             public void onClick(View arg0) {
 
                 ArrayList<Boolean> bools = new ArrayList<Boolean>(5);
-                bools.add(true);bools.add(true);bools.add(true);bools.add(true);bools.add(true);
-                StoredData.saveAssessments(bools, getActivity());
-                Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+                bools.add(false);bools.add(true);bools.add(true);bools.add(false);bools.add(false);
+                DataIO.setAssessmentDone(bools, getActivity());
+                RadioButton radioButtonQOne = (RadioButton)radioGroupQuestionOne.findViewById(radioGroupQuestionOne.getCheckedRadioButtonId());
+                RadioButton radioButtonQOneA = (RadioButton)radioGroupQuestionOneA.findViewById(radioGroupQuestionOneA.getCheckedRadioButtonId());
+                Toast.makeText(getActivity(), radioButtonQOneA.getText(), Toast.LENGTH_SHORT).show();
+                ArrayList<String> moods = new ArrayList<String>(6);
+                for (int i = 0; i < 6; i++){
+                    moods.add(i, Integer.toString(seekBars.get(i).getProgress()));
+                }
+                DataIO.saveRandomAssessment(radioButtonQOne.getText().toString(),
+                        radioButtonQOneA.getText().toString(),
+                        Integer.toString(seekBarQuestionTwo.getProgress()),
+                        moods,
+                        getActivity());
+
+
             }
 
         });
@@ -270,15 +323,11 @@ public class RandomAssessmentFragment extends Fragment {
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
                     Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
-                    if (checkedRadioButton.getText().equals("Yes")) {
-                        cardViewQuestion2.setVisibility(View.VISIBLE);
-                        cardViewQuestion3.setVisibility(View.VISIBLE);
-                        submitButton.setVisibility(View.VISIBLE);
-                    }else{
-                        cardViewQuestion2.setVisibility(View.VISIBLE);
-                        cardViewQuestion3.setVisibility(View.VISIBLE);
-                        submitButton.setVisibility(View.VISIBLE);
-                    }
+                    cardViewQuestion2.setVisibility(View.VISIBLE);
+                    cardViewQuestion3.setVisibility(View.VISIBLE);
+                    submitButton.setVisibility(View.VISIBLE);
+                    loadButton.setVisibility(View.VISIBLE);
+
                 }
             }
         });

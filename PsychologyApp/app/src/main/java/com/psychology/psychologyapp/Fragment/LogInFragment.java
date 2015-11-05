@@ -8,23 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
-import java.util.ArrayList;
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SettingsFragment.OnFragmentInteractionListener} interface
+ * {@link LogInFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SettingsFragment#newInstance} factory method to
+ * Use the {@link LogInFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingsFragment extends Fragment {
+public class LogInFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,12 +32,10 @@ public class SettingsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private EditText editFName;
+    private EditText editLName;
+    private Button logInButton;
     private View fragmentView;
-    private TextView loadText;
-
-    private Button submitButton;
-    private Button loadButton;
-
     private OnFragmentInteractionListener mListener;
 
     /**
@@ -48,11 +44,11 @@ public class SettingsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingsFragment.
+     * @return A new instance of fragment LogInFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SettingsFragment newInstance(String param1, String param2) {
-        SettingsFragment fragment = new SettingsFragment();
+    public static LogInFragment newInstance(String param1, String param2) {
+        LogInFragment fragment = new LogInFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,58 +56,34 @@ public class SettingsFragment extends Fragment {
         return fragment;
     }
 
-    public SettingsFragment() {
+    public LogInFragment() {
         // Required empty public constructor
     }
 
-
-    private void initiateAssessment() {
-
-        loadText = (TextView) fragmentView.findViewById(R.id.loadText);
-
-        submitButton = (Button) fragmentView.findViewById(R.id.confirmSettingsButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
+    public void initiateAssessment() {
+        logInButton = (Button) fragmentView.findViewById(R.id.logInButton);
+        editFName = (EditText) fragmentView.findViewById(R.id.editFName);
+        editLName = (EditText) fragmentView.findViewById(R.id.editLName);
+        logInButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
-                int a = 11;
-                int b = 23;
-                ArrayList<Boolean> bools = new ArrayList(5);
-                bools.add(false);
-                bools.add(false);
-                bools.add(true);
-                bools.add(false);
-                bools.add(false);
-                DataIO.saveSettings(a, b, getActivity());
-                Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
-            }
+                if (editFName.getText().toString().equals("") ||
+                        editFName.getText().toString().equals("First Name") ||
+                        editLName.getText().toString().equals("") ||
+                        editLName.getText().toString().equals("Last Name")) {
+                    Toast.makeText(getActivity(), "Please type in a real First and Last Name", Toast.LENGTH_SHORT).show();
+                } else {
+                    DataIO.setLogInInformation(editFName.getText().toString(), editLName.getText().toString(), getActivity());
+                    getActivity().recreate();
+                }
 
-        });
-
-
-
-        loadButton = (Button) fragmentView.findViewById(R.id.loadSettingsButton);
-        loadButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                int a = DataIO.getStartTime(getActivity());
-                int b = DataIO.getEndTime(getActivity());
-                ArrayList<Boolean> bools = DataIO.getAssessmentsDone(getActivity());
-                loadText.setText("StartTime: "+a+"\n"+
-                                 "EndTime: "+b+"\n"+
-                                 "Assessments: "+bools.get(0)+", "+bools.get(1)+", "
-                        +bools.get(2)+", "+bools.get(3)+", "+bools.get(4));
 
             }
 
         });
-
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,17 +92,18 @@ public class SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        fragmentView = inflater.inflate(R.layout.fragment_settings, container, false);
+        fragmentView = inflater.inflate(R.layout.fragment_log_in, container, false);
         initiateAssessment();
         return fragmentView;
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
