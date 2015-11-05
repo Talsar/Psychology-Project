@@ -51,6 +51,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
             }
 
             mMainMenuFragment = new MainMenuFragment();
+            //DataIO.pushTheRedButton(this);
 
             if (menuFragment != null) {
                 if (menuFragment.equals("randomAssessmentFragment")) {
@@ -68,8 +69,9 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
                 }
             } else {
 
-                Toast.makeText(this, "restart", Toast.LENGTH_SHORT).show();
+
                 if (DataIO.isLogInInformationExisting(this)) {
+                    Toast.makeText(this, "Hello, "+DataIO.getLogInName(this), Toast.LENGTH_SHORT).show();
                     mMainMenuFragment = new MainMenuFragment();
                     // Add the fragment to the 'fragment_container' FrameLayout
                     getFragmentManager().beginTransaction()
@@ -102,7 +104,12 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         return true;
     }
 
-
+    @Override
+    public void recreate(){
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+    }
 
     @Override
     public void onBackPressed()

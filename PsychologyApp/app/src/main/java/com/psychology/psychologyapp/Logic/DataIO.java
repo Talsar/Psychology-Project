@@ -115,6 +115,12 @@ public class DataIO {
         editor.commit();
     }
 
+    public static String getLogInName(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+
+        return settings.getString("firstName", "")+" "+settings.getString("lastName", "");
+    }
+
 
 
 
