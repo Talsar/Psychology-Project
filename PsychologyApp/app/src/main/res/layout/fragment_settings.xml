@@ -11,10 +11,20 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/timePicker"
+            android:text="Time Picker"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Save Settings"
             android:id="@+id/confirmSettingsButton"
             android:layout_marginTop="6dp"
             android:layout_centerHorizontal="true"
+            android:layout_below="@id/timePicker"
             android:layout_gravity="center_horizontal|top" />
 
         <Button

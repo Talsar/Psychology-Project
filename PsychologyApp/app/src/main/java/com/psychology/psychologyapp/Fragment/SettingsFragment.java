@@ -1,6 +1,7 @@
 package com.psychology.psychologyapp.Fragment;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -65,7 +66,7 @@ public class SettingsFragment extends Fragment {
     }
 
 
-    private void initiateAssessment() {
+    private void initiateSettings() {
 
         loadText = (TextView) fragmentView.findViewById(R.id.loadText);
 
@@ -100,17 +101,16 @@ public class SettingsFragment extends Fragment {
                 int a = DataIO.getStartTime(getActivity());
                 int b = DataIO.getEndTime(getActivity());
                 ArrayList<Boolean> bools = DataIO.getAssessmentsDone(getActivity());
-                loadText.setText("StartTime: "+a+"\n"+
-                                 "EndTime: "+b+"\n"+
-                                 "Assessments: "+bools.get(0)+", "+bools.get(1)+", "
-                        +bools.get(2)+", "+bools.get(3)+", "+bools.get(4));
+                loadText.setText("StartTime: " + a + "\n" +
+                        "EndTime: " + b + "\n" +
+                        "Assessments: " + bools.get(0) + ", " + bools.get(1) + ", "
+                        + bools.get(2) + ", " + bools.get(3) + ", " + bools.get(4));
 
             }
 
         });
 
     }
-
 
 
     @Override
@@ -128,9 +128,29 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_settings, container, false);
-        initiateAssessment();
+        initiateSettings();
+        initiateTimepicker();
+
         return fragmentView;
     }
+
+    private void initiateTimepicker() {
+        Button timePicker = (Button) fragmentView.findViewById(R.id.timePicker);
+        timePicker.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                showTimePickerDialog(fragmentView);
+            }
+
+        });
+    }
+
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getFragmentManager(), "timePicker");
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
