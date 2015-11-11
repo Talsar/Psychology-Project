@@ -20,10 +20,9 @@ public class TimePickerEndFragment extends DialogFragment
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the current time as the default values for the picker
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+        // Use the start time + 1 hour as the default values for the picker
+        int hour = DataIO.getStartTimeHrs(getActivity())+1;
+        int minute = DataIO.getStartTimeMin(getActivity());
 
         // Create a new instance of TimePickerDialog and return it
         return new TimePickerDialog(getActivity(), this, hour, minute,

@@ -100,8 +100,8 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
-                int a = DataIO.getStartTime(getActivity());
-                int b = DataIO.getEndTime(getActivity());
+                int a = DataIO.getStartTimeHrs(getActivity());
+                int b = DataIO.getEndTimeHrs(getActivity());
                 ArrayList<Boolean> bools = DataIO.getAssessmentsDone(getActivity());
                 loadText.setText("StartTime: " + a + "\n" +
                         "EndTime: " + b + "\n" +

@@ -65,17 +65,30 @@ public class DataIO {
 
 
 
-    public static int getStartTime(Context context){
+    public static int getStartTimeHrs(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("startTimeHrs", 10);
 
     }
 
-    public static int getEndTime(Context context){
+    public static int getEndTimeHrs(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("endTimeHrs", 22);
 
     }
+
+    public static int getStartTimeMin(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("startTimeMin", 0);
+
+    }
+
+    public static int getEndTimeMin(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("endTimeMin", 0);
+
+    }
+
 
     public static void setStartTime(Context context, int startTimeHrs, int startTimeMin) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
