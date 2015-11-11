@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.psychology.psychologyapp.Logic.DataIO;
@@ -40,6 +41,8 @@ public class SettingsFragment extends Fragment {
 
     private Button submitButton;
     private Button loadButton;
+
+    private TimePicker mTimePicker;
 
     private OnFragmentInteractionListener mListener;
 
@@ -91,7 +94,6 @@ public class SettingsFragment extends Fragment {
         });
 
 
-
         loadButton = (Button) fragmentView.findViewById(R.id.loadSettingsButton);
         loadButton.setOnClickListener(new View.OnClickListener() {
 
@@ -135,21 +137,58 @@ public class SettingsFragment extends Fragment {
     }
 
     private void initiateTimepicker() {
-        Button timePicker = (Button) fragmentView.findViewById(R.id.timePicker);
-        timePicker.setOnClickListener(new View.OnClickListener() {
+        Button startTimePicker = (Button) fragmentView.findViewById(R.id.timePickerStart);
+        startTimePicker.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                showTimePickerDialog(fragmentView);
+                showStartTimePickerDialog(fragmentView);
             }
 
         });
+
+        Button endTimePicker = (Button) fragmentView.findViewById(R.id.timePickerEnd);
+        endTimePicker.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                showEndTimePickerDialog(fragmentView);
+            }
+
+        });
+
     }
 
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(), "timePicker");
+    public void showStartTimePickerDialog(View v) {
+        DialogFragment mDialogFragment = new TimePickerStartFragment();
+        mDialogFragment.show(getFragmentManager(), "timePicker");
+
     }
+
+    public void showEndTimePickerDialog(View v) {
+        DialogFragment mDialogFragment = new TimePickerEndFragment();
+        mDialogFragment.show(getFragmentManager(), "timePicker");
+
+    }
+
+    /*@Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // Use the current time as the default values for the picker
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        // Create a new instance of TimePickerDialog and return it
+        return new TimePickerDialog(getActivity(), timePickerListener, hour, minute,
+                DateFormat.is24HourFormat(getActivity()));
+    }
+
+    private TimePickerDialog.OnTimeSetListener timePickerListener =
+            new TimePickerDialog.OnTimeSetListener() {
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    // Do something with the time chosen by the user
+                }
+            };*/
 
 
     // TODO: Rename method, update argument and hook method into UI event

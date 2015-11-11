@@ -6,13 +6,16 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.psychology.psychologyapp.Logic.DataIO;
 
 import java.util.Calendar;
 
 /**
  * Created by oliverbammann on 11.11.15.
  */
-public class TimePickerFragment extends DialogFragment
+public class TimePickerStartFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
 
     @Override
@@ -29,5 +32,7 @@ public class TimePickerFragment extends DialogFragment
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // Do something with the time chosen by the user
+        DataIO.setStartTime(getActivity(), hourOfDay, minute);
+        Toast.makeText(getActivity(), hourOfDay + " : " + minute, Toast.LENGTH_SHORT).show();
     }
 }
