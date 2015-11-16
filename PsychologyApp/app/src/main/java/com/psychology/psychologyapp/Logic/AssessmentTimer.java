@@ -1,8 +1,8 @@
 package com.psychology.psychologyapp.Logic;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
-import java.util.GregorianCalendar;
 import java.util.Random;
 
 /**
@@ -10,8 +10,8 @@ import java.util.Random;
  */
 public class AssessmentTimer {
 
-    GregorianCalendar assessmentDatetime;
-    ArrayList<Integer> assessmentTimes;
+    ArrayList<Integer> assessmentTimesHrs;
+    ArrayList<Integer> assessmentTimesMin;
     int numberOfAssessments;
 
     public AssessmentTimer(int earliestTime, int latestTime, int numberOfAssessments) {
@@ -19,24 +19,50 @@ public class AssessmentTimer {
     }
 
 
+    public int getNumberOfAssessments() {
+        return numberOfAssessments;
+    }
+
+    public void setNumberOfAssessments(int numberOfAssessments) {
+        this.numberOfAssessments = numberOfAssessments;
+    }
+
+    public int getAssessmentHrByIndex(int index) {
+        return assessmentTimesHrs.get(index);
+    }
+
+    public int getAssessmentMinByIndex(int index) {
+        return assessmentTimesMin.get(index);
+    }
+
+
     private void initAssessmentTimes(int earliestTime, int latestTime, int numberOfAssessments) {
-        assessmentTimes = new ArrayList<>();
+        assessmentTimesHrs = new ArrayList<>();
         this.numberOfAssessments = numberOfAssessments;
         Random random = new Random();
         for (int i=0; i<numberOfAssessments; i++) {
             int randomNumber = random.nextInt(latestTime-earliestTime)+earliestTime;
-            while (assessmentTimes.contains(randomNumber)) {
-                randomNumber = random.nextInt(latestTime-earliestTime)+earliestTime;
+            if (latestTime-earliestTime >= numberOfAssessments) {
+                while (assessmentTimesHrs.contains(randomNumber)) {
+                    randomNumber = random.nextInt(latestTime - earliestTime) + earliestTime;
+                }
             }
-            assessmentTimes.add(randomNumber);
+            assessmentTimesHrs.add(randomNumber);
         }
-        Collections.sort(assessmentTimes);
+        Collections.sort(assessmentTimesHrs);
+
+        for (int i=0; i<numberOfAssessments; i++) {
+            int randomNumber = random.nextInt(59);
+            if (i>0 && latestTime-earliestTime >= numberOfAssessments) {
+                while ((assessmentTimesHrs.get(i)*60+randomNumber)-
+                        (assessmentTimesHrs.get(i-1)*60+assessmentTimesMin.get(i-1))<30) {
+                    randomNumber = random.nextInt(59);
+                }
+            }
+            assessmentTimesMin.add(randomNumber);
+        }
     }
 
-    private void createAssessmentDatetime(int time) {
-        Random random = new Random();
-
-    }
 
 
 }
