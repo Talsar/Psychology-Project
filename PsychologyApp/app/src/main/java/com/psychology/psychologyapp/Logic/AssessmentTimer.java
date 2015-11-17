@@ -14,8 +14,8 @@ public class AssessmentTimer {
     ArrayList<Integer> assessmentTimesMin;
     int numberOfAssessments;
 
-    public AssessmentTimer(int earliestTime, int latestTime, int numberOfAssessments) {
-        this.initAssessmentTimes(earliestTime, latestTime, numberOfAssessments);
+    public AssessmentTimer(int earliestTimeHrs, int earliestTimeMin, int latestTimeHrs, int latestTimeMin, int numberOfAssessments) {
+        this.initAssessmentTimes(earliestTimeHrs, earliestTimeMin, latestTimeHrs, latestTimeMin, numberOfAssessments);
     }
 
 
@@ -35,16 +35,34 @@ public class AssessmentTimer {
         return assessmentTimesMin.get(index);
     }
 
+    public int getAssessmentTimeInMin(int hrs, int min) {
+        return hrs*60+min;
+    }
 
-    private void initAssessmentTimes(int earliestTime, int latestTime, int numberOfAssessments) {
+
+    private void initAssessmentTimes(int earliestTimeHrs, int earliestTimeMin, int latestTimeHrs, int latestTimeMin, int numberOfAssessments) {
         assessmentTimesHrs = new ArrayList<>();
+        assessmentTimesMin = new ArrayList<>();
         this.numberOfAssessments = numberOfAssessments;
         Random random = new Random();
         for (int i=0; i<numberOfAssessments; i++) {
-            int randomNumber = random.nextInt(latestTime-earliestTime)+earliestTime;
-            if (latestTime-earliestTime >= numberOfAssessments) {
+            int earliestTimeMinTotal = earliestTimeHrs*60+earliestTimeMin;
+            int latestTimeMinTotal = latestTimeHrs*60+latestTimeMin;
+            int randomNumber = random.nextInt(latestTimeMinTotal-earliestTimeMinTotal)+earliestTimeMinTotal;
+            assessmentTimesMin.add(randomNumber);
+            /*if ((latestTimeMin-earliestTimeMin)/numberOfAssessments>30){
+                for (int k : assessmentTimesMin) {
+
+                }
+            }*/
+        }
+        Collections.sort(assessmentTimesMin);
+
+        /*for (int i=0; i<numberOfAssessments; i++) {
+            int randomNumber = random.nextInt(latestTimeMin-earliestTimeMin)+earliestTimeMin;
+            if (latestTimeHrs-earliestTimeHrs >= numberOfAssessments) {
                 while (assessmentTimesHrs.contains(randomNumber)) {
-                    randomNumber = random.nextInt(latestTime - earliestTime) + earliestTime;
+                    randomNumber = random.nextInt(latestTimeHrs - earliestTimeHrs) + earliestTimeHrs;
                 }
             }
             assessmentTimesHrs.add(randomNumber);
@@ -53,14 +71,14 @@ public class AssessmentTimer {
 
         for (int i=0; i<numberOfAssessments; i++) {
             int randomNumber = random.nextInt(59);
-            if (i>0 && latestTime-earliestTime >= numberOfAssessments) {
+            if (i>0 && latestTimeHrs-earliestTimeHrs >= numberOfAssessments) {
                 while ((assessmentTimesHrs.get(i)*60+randomNumber)-
                         (assessmentTimesHrs.get(i-1)*60+assessmentTimesMin.get(i-1))<30) {
                     randomNumber = random.nextInt(59);
                 }
             }
             assessmentTimesMin.add(randomNumber);
-        }
+        }*/
     }
 
 

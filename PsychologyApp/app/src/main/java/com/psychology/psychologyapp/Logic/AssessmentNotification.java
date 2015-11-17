@@ -14,6 +14,8 @@ import com.psychology.psychologyapp.Activity.MainActivity;
 import com.psychology.psychologyapp.Fragment.RandomAssessmentFragment;
 import com.psychology.psychologyapp.R;
 
+import java.util.Calendar;
+
 
 /**
  * Created by oliverbammann on 03.11.15.
@@ -21,6 +23,7 @@ import com.psychology.psychologyapp.R;
 public class AssessmentNotification {
 
     NotificationCompat.Builder mBuilder;
+    AssessmentTimer mAssessmentTimer;
 
     public AssessmentNotification() {
 
@@ -51,11 +54,12 @@ public class AssessmentNotification {
         mNotificationManager.notify(mId, mBuilder.build());
     }
 
-    public void alarm(Context context, View view) {
-        Long time = SystemClock.elapsedRealtime()+10*1000;
+    public void nextNotification(Context context, View view) {
+        Calendar calendar = Calendar.getInstance();
+        Long notificationTime = SystemClock.elapsedRealtime()+10*1000;
         Intent intentAlarm = new Intent(context, AlarmReceiver.class);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME, time, PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME, notificationTime, PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
 }

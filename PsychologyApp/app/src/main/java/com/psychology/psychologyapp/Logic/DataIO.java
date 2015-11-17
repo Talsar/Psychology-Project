@@ -89,6 +89,18 @@ public class DataIO {
 
     }
 
+    public static void setFinishedRandomAssessments(Context context, int finishedAssessments) {
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("finishedRandomAssessments", finishedAssessments);
+        editor.commit();
+    }
+
+    public static int getFinishedRandomAssessments(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("finishedRandomAssessments", 0);
+
+    }
 
     public static void setStartTime(Context context, int startTimeHrs, int startTimeMin) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);

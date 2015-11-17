@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.psychology.psychologyapp.Logic.AssessmentTimer;
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
@@ -42,6 +43,8 @@ public class SettingsFragment extends Fragment {
     private Button submitButton;
     private Button loadButton;
 
+    private AssessmentTimer mAssessmentTimer;
+
     private TimePicker mTimePicker;
 
     private OnFragmentInteractionListener mListener;
@@ -70,7 +73,6 @@ public class SettingsFragment extends Fragment {
 
 
     private void initiateSettings() {
-
         loadText = (TextView) fragmentView.findViewById(R.id.loadText);
 
         submitButton = (Button) fragmentView.findViewById(R.id.confirmSettingsButton);
@@ -78,7 +80,11 @@ public class SettingsFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-
+                int startTimeHrs = DataIO.getStartTimeHrs(getActivity());
+                int startTimeMin = DataIO.getStartTimeMin(getActivity());
+                int endTimeHrs = DataIO.getEndTimeHrs(getActivity());
+                int endTimeMin = DataIO.getEndTimeMin(getActivity());
+                mAssessmentTimer = new AssessmentTimer(startTimeHrs, startTimeMin, endTimeHrs, endTimeMin, 5);
                 int a = 11;
                 int b = 23;
                 ArrayList<Boolean> bools = new ArrayList(5);

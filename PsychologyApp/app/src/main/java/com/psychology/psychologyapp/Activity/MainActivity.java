@@ -1,11 +1,5 @@
 package com.psychology.psychologyapp.Activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
@@ -89,7 +83,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
 
             }
 
-            mAssessmentNotification.alarm(this, findViewById(R.id.fragment_container));
+            mAssessmentNotification.nextNotification(this, findViewById(R.id.fragment_container));
 
 
 
