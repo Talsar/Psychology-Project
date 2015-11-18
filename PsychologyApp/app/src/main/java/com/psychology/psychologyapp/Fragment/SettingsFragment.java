@@ -5,6 +5,7 @@ import android.app.DialogFragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,14 +99,15 @@ public class SettingsFragment extends Fragment {
                 DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
-                int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()));
+                /*int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
+                int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()))-currentTimeInMin;
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
                 nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
                 nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+2);
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
                 nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+3);
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();*/
             }
 
         });
