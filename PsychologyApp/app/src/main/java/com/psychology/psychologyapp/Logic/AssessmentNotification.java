@@ -54,9 +54,9 @@ public class AssessmentNotification {
         mNotificationManager.notify(mId, mBuilder.build());
     }
 
-    public void nextNotification(Context context, View view) {
-        Calendar calendar = Calendar.getInstance();
-        Long notificationTime = SystemClock.elapsedRealtime()+10*1000;
+    public void nextNotification(Context context) {
+        int nextAssessment = DataIO.getRandomAssessmentTime(context, DataIO.getFinishedRandomAssessments(context));
+        Long notificationTime = (nextAssessment*60000) - SystemClock.elapsedRealtime();
         Intent intentAlarm = new Intent(context, AlarmReceiver.class);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, notificationTime, PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));

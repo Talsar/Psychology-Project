@@ -83,10 +83,6 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
 
             }
 
-            mAssessmentNotification.nextNotification(this, findViewById(R.id.fragment_container));
-
-
-
         }
 
     }

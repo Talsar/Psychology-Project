@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import com.psychology.psychologyapp.Logic.DataIO;
 
-import java.util.Calendar;
-
 /**
  * Created by oliverbammann on 11.11.15.
  */
@@ -31,7 +29,7 @@ public class TimePickerEndFragment extends DialogFragment
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // Do something with the time chosen by the user
-        DataIO.setEndTime(getActivity(), hourOfDay, minute);
+        DataIO.setEndTimeMin(getActivity(), hourOfDay*60+minute);
         Toast.makeText(getActivity(), hourOfDay + " : " + minute, Toast.LENGTH_SHORT).show();
     }
 }

@@ -15,6 +15,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.psychology.psychologyapp.Logic.AssessmentNotification;
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
@@ -199,6 +200,10 @@ public class RandomAssessmentFragment extends Fragment {
                         moods,
                         getActivity());
 
+                //Increase the number of finished assessments for today by one
+                DataIO.setFinishedRandomAssessments(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
+                AssessmentNotification mAssessmentNotification = new AssessmentNotification();
+                mAssessmentNotification.nextNotification(getActivity());
 
             }
 

@@ -32,7 +32,7 @@ public class TimePickerStartFragment extends DialogFragment
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // Do something with the time chosen by the user
-        DataIO.setStartTime(getActivity(), hourOfDay, minute);
+        DataIO.setStartTimeMin(getActivity(), hourOfDay*60+minute);
         Toast.makeText(getActivity(), hourOfDay + " : " + minute, Toast.LENGTH_SHORT).show();
     }
 }

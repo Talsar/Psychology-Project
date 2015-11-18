@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.psychology.psychologyapp.Logic.AssessmentNotification;
 import com.psychology.psychologyapp.Logic.AssessmentTimer;
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
@@ -80,11 +81,6 @@ public class SettingsFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                int startTimeHrs = DataIO.getStartTimeHrs(getActivity());
-                int startTimeMin = DataIO.getStartTimeMin(getActivity());
-                int endTimeHrs = DataIO.getEndTimeHrs(getActivity());
-                int endTimeMin = DataIO.getEndTimeMin(getActivity());
-                mAssessmentTimer = new AssessmentTimer(startTimeHrs, startTimeMin, endTimeHrs, endTimeMin, 5);
                 int a = 11;
                 int b = 23;
                 ArrayList<Boolean> bools = new ArrayList(5);
@@ -95,6 +91,21 @@ public class SettingsFragment extends Fragment {
                 bools.add(false);
                 DataIO.saveSettings(a, b, getActivity());
                 Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+
+                int startTimeMin = DataIO.getStartTimeMin(getActivity());
+                int endTimeMin = DataIO.getEndTimeMin(getActivity());
+                AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
+                DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+                AssessmentNotification mAssessmentNotification = new AssessmentNotification();
+                mAssessmentNotification.nextNotification(getActivity());
+                int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()));
+                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
+                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
+                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
+                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+2);
+                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
+                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+3);
+                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
             }
 
         });

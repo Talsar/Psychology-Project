@@ -102,18 +102,31 @@ public class DataIO {
 
     }
 
-    public static void setStartTime(Context context, int startTimeHrs, int startTimeMin) {
+    public static int getRandomAssessmentTime(Context context, int assessmentIndex){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("randomAssessmentTime"+assessmentIndex, 0);
+
+    }
+
+    public static void setRandomAssessmentTimes(Context context, ArrayList<Integer> randomAssessmentTimes) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("startTimeHrs", startTimeHrs);
+        for (int i=0; i<randomAssessmentTimes.size();i++) {
+            editor.putInt("randomAssessmentTime"+i, randomAssessmentTimes.get(i));
+        }
+        editor.commit();
+    }
+
+    public static void setStartTimeMin(Context context, int startTimeMin) {
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
         editor.putInt("startTimeMin", startTimeMin);
         editor.commit();
     }
 
-    public static void setEndTime(Context context, int endTimeHrs, int endTimeMin) {
+    public static void setEndTimeMin(Context context, int endTimeMin) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("endTimeHrs", endTimeHrs);
         editor.putInt("endTimeMin", endTimeMin);
         editor.commit();
     }

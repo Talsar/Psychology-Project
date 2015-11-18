@@ -10,14 +10,22 @@ import java.util.Random;
  */
 public class AssessmentTimer {
 
-    ArrayList<Integer> assessmentTimesHrs;
     ArrayList<Integer> assessmentTimesMin;
     int numberOfAssessments;
 
-    public AssessmentTimer(int earliestTimeHrs, int earliestTimeMin, int latestTimeHrs, int latestTimeMin, int numberOfAssessments) {
-        this.initAssessmentTimes(earliestTimeHrs, earliestTimeMin, latestTimeHrs, latestTimeMin, numberOfAssessments);
+
+    public AssessmentTimer(int earliestTimeMin, int latestTimeMin, int numberOfAssessments) {
+        this.initAssessmentTimes(earliestTimeMin, latestTimeMin, numberOfAssessments);
     }
 
+
+    public ArrayList<Integer> getAssessmentTimesMin() {
+        return assessmentTimesMin;
+    }
+
+    public void setAssessmentTimesMin(ArrayList<Integer> assessmentTimesMin) {
+        this.assessmentTimesMin = assessmentTimesMin;
+    }
 
     public int getNumberOfAssessments() {
         return numberOfAssessments;
@@ -27,28 +35,17 @@ public class AssessmentTimer {
         this.numberOfAssessments = numberOfAssessments;
     }
 
-    public int getAssessmentHrByIndex(int index) {
-        return assessmentTimesHrs.get(index);
-    }
-
     public int getAssessmentMinByIndex(int index) {
         return assessmentTimesMin.get(index);
     }
 
-    public int getAssessmentTimeInMin(int hrs, int min) {
-        return hrs*60+min;
-    }
 
-
-    private void initAssessmentTimes(int earliestTimeHrs, int earliestTimeMin, int latestTimeHrs, int latestTimeMin, int numberOfAssessments) {
-        assessmentTimesHrs = new ArrayList<>();
+    private void initAssessmentTimes(int earliestTimeMin, int latestTimeMin, int numberOfAssessments) {
         assessmentTimesMin = new ArrayList<>();
         this.numberOfAssessments = numberOfAssessments;
         Random random = new Random();
         for (int i=0; i<numberOfAssessments; i++) {
-            int earliestTimeMinTotal = earliestTimeHrs*60+earliestTimeMin;
-            int latestTimeMinTotal = latestTimeHrs*60+latestTimeMin;
-            int randomNumber = random.nextInt(latestTimeMinTotal-earliestTimeMinTotal)+earliestTimeMinTotal;
+            int randomNumber = random.nextInt(latestTimeMin-earliestTimeMin)+earliestTimeMin;
             assessmentTimesMin.add(randomNumber);
             /*if ((latestTimeMin-earliestTimeMin)/numberOfAssessments>30){
                 for (int k : assessmentTimesMin) {
