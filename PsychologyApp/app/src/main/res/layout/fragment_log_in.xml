@@ -8,13 +8,12 @@
         android:layout_height="fill_parent">
 
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="First Name"
-            android:ems="10"
-            android:id="@+id/editFName"
+            android:id="@+id/textFName"
             android:layout_marginTop="6dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal|top"
@@ -23,9 +22,34 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editFName"
             android:inputType="textPersonName"
+            android:layout_below="@+id/textFName"
+            android:text=""
+            android:ems="10"
+            android:id="@+id/editFName"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Last Name"
+            android:layout_below="@+id/editFName"
+            android:id="@+id/textLName"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top"
+            android:textAlignment="center" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textLName"
+            android:inputType="textPersonName"
+            android:text=""
             android:id="@+id/editLName"
             android:ems="10"
             android:layout_marginTop="6dp"
@@ -42,6 +66,7 @@
             android:layout_marginTop="6dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal|top" />
+
     </RelativeLayout>
 
 </FrameLayout>
