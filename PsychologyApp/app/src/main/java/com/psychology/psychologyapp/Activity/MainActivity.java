@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
             } else {
 
 
-            //    DataIO.pushTheRedButton(this);
+                //DataIO.pushTheRedButton(this);
 
                 if (DataIO.isLogInInformationExisting(this)) {
                     Toast.makeText(this, "Hello, "+DataIO.getLogInName(this), Toast.LENGTH_SHORT).show();

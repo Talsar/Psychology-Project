@@ -55,7 +55,7 @@ public class AssessmentNotification {
     }
 
     public void nextNotification(Context context) {
-        int nextAssessment = DataIO.getRandomAssessmentTime(context, DataIO.getFinishedRandomAssessments(context));
+        //int nextAssessment = DataIO.getRandomAssessmentTime(context, DataIO.getFinishedRandomAssessments(context));
         Long notificationTime = SystemClock.elapsedRealtime()+10*1000;
         //Long notificationTime = (nextAssessment*60000) - SystemClock.elapsedRealtime();
         Intent intentAlarm = new Intent(context, AlarmReceiver.class);

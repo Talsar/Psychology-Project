@@ -95,8 +95,8 @@ public class SettingsFragment extends Fragment {
 
                 int startTimeMin = DataIO.getStartTimeMin(getActivity());
                 int endTimeMin = DataIO.getEndTimeMin(getActivity());
-                AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
-                DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+                //AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
+                //DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
                 /*int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
