@@ -2,6 +2,7 @@ package com.psychology.psychologyapp.Activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,6 +31,13 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         mAssessmentNotification = new AssessmentNotification();
         //mAssessmentNotification.notificationRandomAssessment(this);
 
@@ -88,6 +96,8 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         }
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

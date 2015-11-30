@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.psychology.psychologyapp.DBConnection;
 import com.psychology.psychologyapp.R;
 
 
@@ -70,6 +71,8 @@ public class DailyAssessmentFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
                 if (!(editText.getText().length()==0)) {
+
+                    DBConnection mDBConnection = new DBConnection();
 
                     Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
 
