@@ -47,7 +47,7 @@ public class DBConnection extends AsyncTask<Void, Integer, Boolean> {
 
             Statement dateQueryStmt = con.createStatement();
 
-            String dateQueryString = "select sysdate " + "from dual;";
+            String dateQueryString = "select sysdate " + "from dual";
 
             ResultSet rS = dateQueryStmt.executeQuery(dateQueryString);
 
