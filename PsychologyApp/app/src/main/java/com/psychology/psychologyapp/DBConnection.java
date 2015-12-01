@@ -7,7 +7,7 @@ import java.sql.* ;
 /**
  * Created by oliverbammann on 29.11.15.
  */
-public class DBConnection extends AsyncTask<Void, Integer, Boolean> {
+public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
 
     public String getDate() {
         return date;
@@ -20,13 +20,14 @@ public class DBConnection extends AsyncTask<Void, Integer, Boolean> {
     String date;
 
     public DBConnection() {
+        this.initializeConnection();
     }
 
-    @Override
+    /*@Override
     protected Boolean doInBackground(Void... voids) {
         this.initializeConnection();
         return null;
-    }
+    }*/
 
     private void initializeConnection() {
 

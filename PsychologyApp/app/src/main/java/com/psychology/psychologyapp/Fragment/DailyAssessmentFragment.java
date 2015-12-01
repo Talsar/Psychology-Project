@@ -38,7 +38,7 @@ public class DailyAssessmentFragment extends Fragment {
     private Button submitButton;
     private EditText editText;
 
-    DBConnection mDBConnection = new DBConnection();
+    DBConnection mDBConnection;
 
     private OnFragmentInteractionListener mListener;
 
@@ -86,7 +86,9 @@ public class DailyAssessmentFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                mDBConnection.execute();
+                Toast.makeText(getActivity(), "Connection to Database!", Toast.LENGTH_SHORT).show();
+                mDBConnection = new DBConnection();
+                //mDBConnection.execute();
 
                 }
         });
