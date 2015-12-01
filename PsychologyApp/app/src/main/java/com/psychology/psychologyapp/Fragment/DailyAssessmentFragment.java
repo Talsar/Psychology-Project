@@ -38,6 +38,8 @@ public class DailyAssessmentFragment extends Fragment {
     private Button submitButton;
     private EditText editText;
 
+    DBConnection mDBConnection = new DBConnection();
+
     private OnFragmentInteractionListener mListener;
 
     /**
@@ -72,13 +74,24 @@ public class DailyAssessmentFragment extends Fragment {
             public void onClick(View arg0) {
                 if (!(editText.getText().length()==0)) {
 
-                    DBConnection mDBConnection = new DBConnection();
-
                     Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), mDBConnection.getDate(), Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
+
+        Button dbTest = (Button) fragmentView.findViewById(R.id.dbTestButton);
+        dbTest.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                mDBConnection.execute();
+
+                }
+        });
+
+
 
     }
 
