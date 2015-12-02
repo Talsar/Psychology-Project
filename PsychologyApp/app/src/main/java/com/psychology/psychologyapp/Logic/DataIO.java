@@ -102,12 +102,24 @@ public class DataIO {
 
     }
 
+    /**
+     * Return the time in minutes of the random assessment with the assessmentIndex
+     * @param context The activity
+     * @param assessmentIndex Index of the assessment whose time should be returned
+     * @return Time in minutes when the random assessment with index assessmentIndex should appear
+     */
     public static int getRandomAssessmentTime(Context context, int assessmentIndex){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("randomAssessmentTime"+assessmentIndex, 0);
 
     }
 
+    /**
+     * Saves the times of the random assessments in minutes
+     * @param context The activity
+     * @param randomAssessmentTimes ArrayList with all times in minutes when the notifications
+     *                              for the random assessments should appear during a day
+     */
     public static void setRandomAssessmentTimes(Context context, ArrayList<Integer> randomAssessmentTimes) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -117,6 +129,12 @@ public class DataIO {
         editor.commit();
     }
 
+    /**
+     * Saves the time of the earliest possible random assessment in minutes during a day
+     * (Time is set by user in settings)
+     * @param context The activity
+     * @param startTimeMin The time in minutes of earliest possible random assessment
+     */
     public static void setStartTimeMin(Context context, int startTimeMin) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -124,6 +142,12 @@ public class DataIO {
         editor.commit();
     }
 
+    /**
+     * Saves the time of the latest possible random assessment in minutes during a day
+     * (Time is set by user in settings)
+     * @param context The activity
+     * @param endTimeMin The time in minutes of latest possible random assessment
+     */
     public static void setEndTimeMin(Context context, int endTimeMin) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
