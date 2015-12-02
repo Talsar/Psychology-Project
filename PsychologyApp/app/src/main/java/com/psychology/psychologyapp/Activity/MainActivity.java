@@ -41,6 +41,7 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
         mAssessmentNotification = new AssessmentNotification();
         //mAssessmentNotification.notificationRandomAssessment(this);
 
+        //Get the String from the Intent created in AssessmentNotification
         String menuFragment = getIntent().getStringExtra("menuFragment");
 
         if (findViewById(R.id.fragment_container) != null) {
@@ -56,7 +57,11 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
             //DataIO.pushTheRedButton(this);
 
             if (menuFragment != null) {
+
                 if (menuFragment.equals("randomAssessmentFragment")) {
+                    //If the Intent was set in AssessmentNotification, the mainMenuFragment is added
+                    //to the fragment container(just to add it to the backStack) and afterwards it's
+                    //replaced immediately by the randomAssessmentFragment.
                     RandomAssessmentFragment mRandomAssessmentFragment = new RandomAssessmentFragment();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, mMainMenuFragment)

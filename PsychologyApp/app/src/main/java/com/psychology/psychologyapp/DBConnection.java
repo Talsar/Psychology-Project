@@ -29,6 +29,9 @@ public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
         return null;
     }*/
 
+    /**
+     * Initiates the connection to the database
+     */
     private void initializeConnection() {
 
         try {
