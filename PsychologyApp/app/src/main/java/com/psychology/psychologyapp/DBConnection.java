@@ -40,8 +40,8 @@ public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
             e.printStackTrace();
         }
 
-        String username = "psych";
-        String password = "vakna25^";
+        String username = "";
+        String password = "";
 
         Connection con;
         try {
