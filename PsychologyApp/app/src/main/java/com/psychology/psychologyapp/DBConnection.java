@@ -7,7 +7,7 @@ import java.sql.* ;
 /**
  * Created by oliverbammann on 29.11.15.
  */
-public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
+public class DBConnection extends AsyncTask<Void, Integer, Boolean> {
 
     public String getDate() {
         return date;
@@ -21,14 +21,14 @@ public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
 
 
     public DBConnection() {
-        this.initializeConnection();
+        //this.initializeConnection();
     }
 
-    /*@Override
+    @Override
     protected Boolean doInBackground(Void... voids) {
         this.initializeConnection();
         return null;
-    }*/
+    }
 
     /**
      * Initiates the connection to the database
@@ -37,8 +37,15 @@ public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
 
         try {
             //DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-        } catch (SQLException e) {
+            //DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        /*} catch (SQLException e) {
+            e.printStackTrace();*/
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 
@@ -50,8 +57,13 @@ public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
             /*con = DriverManager.getConnection(
                     "jdbc:oracle:thin:@cedar:1521:student",
                     username, password);*/
-            con = DriverManager.getConnection(
+
+            /*con = DriverManager.getConnection(
                     "jdbc:mysql://w013ade6.kasserver.com/d0203ec7",
+                    username, password);*/
+
+            con = DriverManager.getConnection(
+                    "jdbc:mysql://w013ade6.kasserver.com:3306/d0203ec7",
                     username, password);
 
             Statement dateQueryStmt = con.createStatement();

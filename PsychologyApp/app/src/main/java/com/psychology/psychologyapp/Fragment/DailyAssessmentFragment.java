@@ -88,7 +88,7 @@ public class DailyAssessmentFragment extends Fragment {
             public void onClick(View arg0) {
                 Toast.makeText(getActivity(), "Connection to Database!", Toast.LENGTH_SHORT).show();
                 mDBConnection = new DBConnection();
-                //mDBConnection.execute();
+                mDBConnection.execute();
 
                 }
         });
