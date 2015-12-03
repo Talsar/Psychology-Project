@@ -17,7 +17,8 @@ public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
         this.date = date;
     }
 
-    String date;
+    String date = "Test String";
+
 
     public DBConnection() {
         this.initializeConnection();
@@ -35,18 +36,22 @@ public class DBConnection /*extends AsyncTask<Void, Integer, Boolean>*/ {
     private void initializeConnection() {
 
         try {
-            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+            //DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        String username = "";
-        String password = "";
+        String username = "d0203ec7";
+        String password = "aikido90";
 
         Connection con;
         try {
-            con = DriverManager.getConnection(
+            /*con = DriverManager.getConnection(
                     "jdbc:oracle:thin:@cedar:1521:student",
+                    username, password);*/
+            con = DriverManager.getConnection(
+                    "jdbc:mysql://w013ade6.kasserver.com/d0203ec7",
                     username, password);
 
             Statement dateQueryStmt = con.createStatement();

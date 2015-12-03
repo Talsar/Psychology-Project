@@ -75,7 +75,7 @@ public class DailyAssessmentFragment extends Fragment {
                 if (!(editText.getText().length()==0)) {
 
                     Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getActivity(), "This is the time: "+mDBConnection.getDate(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), mDBConnection.getDate(), Toast.LENGTH_SHORT).show();
 
                 }
             }
