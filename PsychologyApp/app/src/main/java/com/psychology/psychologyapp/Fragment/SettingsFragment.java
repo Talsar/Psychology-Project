@@ -95,11 +95,13 @@ public class SettingsFragment extends Fragment {
 
                 int startTimeMin = DataIO.getStartTimeMin(getActivity());
                 int endTimeMin = DataIO.getEndTimeMin(getActivity());
-                //AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
-                //DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+                AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
+                DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
-                /*int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
+
+                int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
                 int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()))-currentTimeInMin;
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
                 nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
@@ -107,7 +109,7 @@ public class SettingsFragment extends Fragment {
                 nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+2);
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
                 nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+3);
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();*/
+                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
             }
 
         });

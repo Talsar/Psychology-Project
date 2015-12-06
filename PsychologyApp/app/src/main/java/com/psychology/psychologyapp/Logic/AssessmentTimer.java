@@ -40,6 +40,13 @@ public class AssessmentTimer {
     }
 
 
+    /**
+     * Calculates the times of the random
+     * assessments and saves it in an Arraylist
+     * @param earliestTimeMin The earliest possible time for a random assessment
+     * @param latestTimeMin The latest possible time for a random assessment
+     * @param numberOfAssessments The number of random assessments during a day
+     */
     private void initAssessmentTimes(int earliestTimeMin, int latestTimeMin, int numberOfAssessments) {
         assessmentTimesMin = new ArrayList<>();
         this.numberOfAssessments = numberOfAssessments;
