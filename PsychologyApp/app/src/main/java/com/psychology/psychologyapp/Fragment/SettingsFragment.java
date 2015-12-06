@@ -113,11 +113,11 @@ public class SettingsFragment extends Fragment {
                 int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
                 int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()))-currentTimeInMin;
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
+                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1)-currentTimeInMin;
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+2);
+                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+2)-currentTimeInMin;
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+3);
+                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+3)-currentTimeInMin;
                 Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
             }
 
