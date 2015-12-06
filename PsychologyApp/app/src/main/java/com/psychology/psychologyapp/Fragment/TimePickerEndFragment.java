@@ -27,9 +27,16 @@ public class TimePickerEndFragment extends DialogFragment
                 DateFormat.is24HourFormat(getActivity()));
     }
 
+    /**
+     * Saves the picked time in minutes and shows it as a toast;
+     * Is executed when timepicker is closed
+     * @param view
+     * @param hourOfDay The picked hours
+     * @param minute The picked minutes
+     */
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        // Do something with the time chosen by the user
+        //Saves the picked time in minutes and shows it as a toast
         DataIO.setEndTimeMin(getActivity(), hourOfDay*60+minute);
-        Toast.makeText(getActivity(), hourOfDay + " : " + minute, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), hourOfDay + " : " + minute + " saved!", Toast.LENGTH_SHORT).show();
     }
 }

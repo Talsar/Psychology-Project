@@ -93,11 +93,20 @@ public class SettingsFragment extends Fragment {
                 DataIO.saveSettings(a, b, getActivity());
                 Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
 
+                //Set number of finished random assessments to 0 when settings are saved
+                DataIO.setFinishedRandomAssessments(getActivity(), 0);
+
                 int startTimeMin = DataIO.getStartTimeMin(getActivity());
                 int endTimeMin = DataIO.getEndTimeMin(getActivity());
+
+                //Creates an instance of AssessmentTimer with the picked
+                //start and end time and with 5 random assessments during a day
                 AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
+
+                //Saves times of the random assessments
                 DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
 
+                //Creates an instance of AssessmentNotification and creates a new notification
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
 
@@ -191,25 +200,6 @@ public class SettingsFragment extends Fragment {
         mDialogFragment.show(getFragmentManager(), "timePicker");
 
     }
-
-    /*@Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the current time as the default values for the picker
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
-
-        // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), timePickerListener, hour, minute,
-                DateFormat.is24HourFormat(getActivity()));
-    }
-
-    private TimePickerDialog.OnTimeSetListener timePickerListener =
-            new TimePickerDialog.OnTimeSetListener() {
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    // Do something with the time chosen by the user
-                }
-            };*/
 
 
     // TODO: Rename method, update argument and hook method into UI event
