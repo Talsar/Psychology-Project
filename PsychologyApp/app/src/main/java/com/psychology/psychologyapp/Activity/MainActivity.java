@@ -1,5 +1,6 @@
 package com.psychology.psychologyapp.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.StrictMode;
@@ -20,7 +21,7 @@ import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
 
-public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, LogInFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
+public class MainActivity extends Activity implements MainMenuFragment.OnFragmentInteractionListener, LogInFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
 
     LogInFragment mLogInFragment;
     MainMenuFragment mMainMenuFragment;
