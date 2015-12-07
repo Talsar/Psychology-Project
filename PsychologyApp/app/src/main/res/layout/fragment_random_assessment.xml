@@ -493,13 +493,6 @@
                         android:id="@+id/submitButton"
                         android:layout_centerHorizontal="true" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Load"
-                        android:layout_below="@+id/submitButton"
-                        android:id="@+id/loadButton"
-                        android:layout_centerHorizontal="true" />
 
                 </RelativeLayout>
             </ScrollView>
