@@ -43,15 +43,23 @@
                 <TextView
                     style="@style/headline"
                     android:id="@+id/headlineButtonOne"
-                    android:text="Initiative Assessment"/>
+                    android:text="Initiative Assessment"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    style="@style/question"
+                    android:text="Take it whenever you want to express your urges and feelings"
+                    android:padding="0dp"
+                    android:layout_below="@+id/headlineButtonOne"
+                    android:id="@+id/descriptionOne" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="take Assessment"
+                    android:text="take survey"
                     android:id="@+id/initiativeAssessmentButton"
                     android:layout_marginTop="6dp"
-                    android:layout_below="@+id/headlineButtonOne"
+                    android:layout_below="@+id/descriptionOne"
                     android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
@@ -77,15 +85,37 @@
                 <TextView
                     style="@style/headline"
                     android:id="@+id/headlineButtonTwo"
-                    android:text="Random Assessment"/>
+                    android:text="Random Assessment"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    style="@style/question"
+                    android:layout_width="wrap_content"
+                    android:text="Assessments due today: "
+                    android:padding="0dp"
+                    android:layout_below="@+id/headlineButtonTwo"
+                    android:gravity="center_vertical|right"
+                    android:layout_weight="1"
+                    android:id="@+id/descriptionTwoA" />
+
+                <TextView
+                    style="@style/question"
+                    android:layout_width="wrap_content"
+                    android:text="5"
+                    android:padding="0dp"
+                    android:layout_below="@+id/headlineButtonTwo"
+                    android:layout_toRightOf="@+id/descriptionTwoA"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:id="@+id/descriptionTwoB"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="take Assessment"
+                    android:text="take survey"
                     android:id="@+id/randomAssessmentButton"
                     android:layout_marginTop="6dp"
-                    android:layout_below="@+id/headlineButtonTwo"
+                    android:layout_below="@+id/descriptionTwoA"
                     android:layout_centerHorizontal="true" />
 
             </RelativeLayout>
@@ -111,51 +141,24 @@
                     <TextView
                         style="@style/headline"
                         android:id="@+id/headlineButtonThree"
-                        android:text="End of Day Assessment"/>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="take Assessment"
-                        android:id="@+id/eodAssessmentButton"
-                        android:layout_marginTop="6dp"
-                        android:layout_below="@+id/headlineButtonThree"
-                        android:layout_centerHorizontal="true" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardViewButtonFour"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:elevation="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginRight="8dp"
-                android:layout_below="@+id/cardViewButtonThree">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp">
+                        android:text="End of Day Assessment"
+                        android:layout_centerHorizontal="true"/>
 
                     <TextView
-                        style="@style/headline"
-                        android:id="@+id/headlineButtonFour"
-                        android:text="Settings"/>
+                        style="@style/question"
+                        android:text="Take it at the end of the day, after you finished all the random assessments"
+                        android:padding="0dp"
+                        android:layout_below="@+id/headlineButtonThree"
+                        android:id="@+id/descriptionThree" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Edit"
-                        android:id="@+id/editSettingsButton"
+                        android:text="take survey"
+                        android:id="@+id/eodAssessmentButton"
                         android:layout_marginTop="6dp"
-                        android:layout_below="@+id/headlineButtonFour"
+                        android:layout_below="@+id/descriptionThree"
                         android:layout_centerHorizontal="true" />
-
 
                 </RelativeLayout>
 
