@@ -121,21 +121,6 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        final Button mEditSettingsButton = (Button) view.findViewById(R.id.editSettingsButton);
-        mEditSettingsButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Create fragment
-                mSettingsFragment = new SettingsFragment();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mSettingsFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
 
         return view;
     }
