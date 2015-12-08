@@ -75,7 +75,6 @@ public class SettingsFragment extends Fragment {
 
 
     private void initiateSettings() {
-        loadText = (TextView) fragmentView.findViewById(R.id.loadText);
 
         submitButton = (Button) fragmentView.findViewById(R.id.confirmSettingsButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -123,24 +122,6 @@ public class SettingsFragment extends Fragment {
 
         });
 
-
-        loadButton = (Button) fragmentView.findViewById(R.id.loadSettingsButton);
-        loadButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                int a = DataIO.getStartTimeHrs(getActivity());
-                int b = DataIO.getEndTimeHrs(getActivity());
-                ArrayList<Boolean> bools = DataIO.getAssessmentsDone(getActivity());
-                loadText.setText("StartTime: " + a + "\n" +
-                        "EndTime: " + b + "\n" +
-                        "Assessments: " + bools.get(0) + ", " + bools.get(1) + ", "
-                        + bools.get(2) + ", " + bools.get(3) + ", " + bools.get(4));
-
-            }
-
-        });
 
     }
 
