@@ -22,12 +22,11 @@
         <item name="cardElevation">2dp</item>
     </style>
 
+    
 
     <style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:textColor">@color/text_color</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">6dp</item>
+        <item name="android:padding">0dp</item>
         <item name="android:checked">false</item>
     </style>
 
@@ -42,7 +41,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/text_color</item>
-        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingTop">16dp</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
 
