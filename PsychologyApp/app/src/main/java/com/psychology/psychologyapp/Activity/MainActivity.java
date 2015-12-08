@@ -26,6 +26,7 @@ public class MainActivity extends Activity implements MainMenuFragment.OnFragmen
     LogInFragment mLogInFragment;
     MainMenuFragment mMainMenuFragment;
     AssessmentNotification mAssessmentNotification;
+    private SettingsFragment mSettingsFragment;
 
 
     @Override
@@ -138,6 +139,11 @@ public class MainActivity extends Activity implements MainMenuFragment.OnFragmen
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            mSettingsFragment = new SettingsFragment();
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, mSettingsFragment)
+                    .addToBackStack(null)
+                    .commit();
             return true;
         }
 
