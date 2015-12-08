@@ -57,71 +57,50 @@
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Work"
-                                    android:tag="Work"
-                                    android:id="@+id/optionOneRadioButtonQuestionOne"
-                                    android:checked="false" />
+                                    android:id="@+id/optionOneRadioButtonQuestionOne"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Home"
-                                    android:tag="Home"
                                     android:id="@+id/optionTwoRadioButtonQuestionOne"
-                                    android:layout_below="@+id/optionOneRadioButtonQuestionOne"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionOneRadioButtonQuestionOne"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Bar/Restaurant"
-                                    android:tag="Bar/Restaurant"
                                     android:id="@+id/optionThreeRadioButtonQuestionOne"
-                                    android:layout_below="@+id/optionTwoRadioButtonQuestionOne"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionTwoRadioButtonQuestionOne"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Friend's Home"
-                                    android:tag="Friend's Home"
                                     android:id="@+id/optionFourRadioButtonQuestionOne"
-                                    android:layout_below="@+id/optionThreeRadioButtonQuestionOne"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionThreeRadioButtonQuestionOne"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Car"
-                                    android:tag="Car"
                                     android:id="@+id/optionFiveRadioButtonQuestionOne"
-                                    android:layout_below="@+id/optionFourRadioButtonQuestionOne"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionFourRadioButtonQuestionOne"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="On Campus"
-                                    android:tag="On Campus"
                                     android:id="@+id/optionSixRadioButtonQuestionOne"
-                                    android:layout_below="@+id/optionFiveRadioButtonQuestionOne"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionFiveRadioButtonQuestionOne"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Other"
-                                    android:tag="Other"
                                     android:id="@+id/optionSevenRadioButtonQuestionOne"
-                                    android:layout_below="@+id/optionSixRadioButtonQuestionOne"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionSixRadioButtonQuestionOne"/>
 
                             </RadioGroup>
 
@@ -143,51 +122,36 @@
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Working"
-                                    android:tag="Working"
-                                    android:id="@+id/optionOneRadioButtonQuestionOneA"
-                                    android:checked="false" />
+                                    android:id="@+id/optionOneRadioButtonQuestionOneA"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Socializing"
-                                    android:tag="Socializing"
                                     android:id="@+id/optionTwoRadioButtonQuestionOneA"
-                                    android:layout_below="@+id/optionOneRadioButtonQuestionOneA"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionOneRadioButtonQuestionOneA" />
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Waiting"
-                                    android:tag="Waiting"
                                     android:id="@+id/optionThreeRadioButtonQuestionOneA"
-                                    android:layout_below="@+id/optionTwoRadioButtonQuestionOneA"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionTwoRadioButtonQuestionOneA"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Relaxing"
-                                    android:tag="Relaxing"
                                     android:id="@+id/optionFourRadioButtonQuestionOneA"
-                                    android:layout_below="@+id/optionThreeRadioButtonQuestionOneA"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionThreeRadioButtonQuestionOneA"/>
 
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="2dp"
                                     android:text="Car"
-                                    android:tag="Car"
                                     android:id="@+id/optionFiveRadioButtonQuestionOneA"
-                                    android:layout_below="@+id/optionFourRadioButtonQuestionOneA"
-                                    android:checked="false" />
+                                    android:layout_below="@+id/optionFourRadioButtonQuestionOneA"/>
 
                             </RadioGroup>
 

@@ -121,7 +121,7 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        final Button mEditSettingsButton = (Button) view.findViewById(R.id.editSettingsButton);
+        /*final Button mEditSettingsButton = (Button) view.findViewById(R.id.editSettingsButton);
         mEditSettingsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Create fragment
@@ -134,7 +134,7 @@ public class MainMenuFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
             }
-        });
+        });*/
 
 
         return view;
