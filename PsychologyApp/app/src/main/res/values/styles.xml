@@ -10,5 +10,18 @@
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:colorBackground">@color/background</item>
         <item name="android:color">@color/accent</item>
+        <item name="android:colorButtonNormal">@color/button_material_dark</item>
+        <item name="android:textColor">@color/primary</item>
+
+
     </style>
+
+    <style name="CardViewStyle" parent="CardView">
+        <item name="cardElevation">2dp</item>
+    </style>
+
+    <style name="RadioButtonStyle" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="textColor">@color/primary</item>
+    </style>
+
 </resources>
