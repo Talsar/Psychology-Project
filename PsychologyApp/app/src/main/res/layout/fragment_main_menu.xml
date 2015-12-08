@@ -41,11 +41,9 @@
                 android:padding="12dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/headline"
                     android:id="@+id/headlineButtonOne"
-                    android:text="Initiative Assessment"
-                    android:paddingBottom="6dp" />
+                    android:text="Initiative Assessment"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -77,12 +75,9 @@
                 android:padding="12dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#1296E1"
+                    style="@style/headline"
                     android:id="@+id/headlineButtonTwo"
-                    android:text="Random Assessment"
-                    android:paddingBottom="6dp" />
+                    android:text="Random Assessment"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -114,12 +109,9 @@
                     android:padding="12dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#1296E1"
+                        style="@style/headline"
                         android:id="@+id/headlineButtonThree"
-                        android:text="End of Day Assessment"
-                        android:paddingBottom="6dp" />
+                        android:text="End of Day Assessment"/>
 
                     <Button
                         android:layout_width="wrap_content"
@@ -151,12 +143,9 @@
                     android:padding="12dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#1296E1"
+                        style="@style/headline"
                         android:id="@+id/headlineButtonFour"
-                        android:text="Settings"
-                        android:paddingBottom="6dp" />
+                        android:text="Settings"/>
 
                     <Button
                         android:layout_width="wrap_content"
@@ -167,14 +156,6 @@
                         android:layout_below="@+id/headlineButtonFour"
                         android:layout_centerHorizontal="true" />
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/RadioButtonStyle"
-                        android:text="New RadioButton"
-                        android:id="@+id/radioButton"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignStart="@+id/editSettingsButton" />
 
                 </RelativeLayout>
 

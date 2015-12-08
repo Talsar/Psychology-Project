@@ -18,22 +18,6 @@
                     android:weightSum="1"
                     android:id="@+id/relativeLayout">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#1296E1"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:id="@+id/textHeadline"
-                        android:text="Assessment"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginRight="12dp"
-                        android:gravity="center_horizontal" />
-
-
                     <android.support.v7.widget.CardView
                         android:id="@+id/cardViewQuestion1"
                         android:layout_height="wrap_content"
@@ -51,22 +35,15 @@
                             android:padding="16dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#1296E1"
+                                style="@style/headline"
                                 android:id="@+id/headlineQuestionOne"
-                                android:text="Question 1"
-                                android:paddingBottom="6dp" />
+                                android:text="Question 1"/>
 
                             <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                style="@style/question"
                                 android:text="Where are you?"
-                                android:padding="6dp"
                                 android:layout_below="@+id/headlineQuestionOne"
-                                android:id="@+id/questionOneText"
-                                android:gravity="center_horizontal" />
+                                android:id="@+id/questionOneText" />
 
                             <RadioGroup
                                 android:layout_width="wrap_content"
@@ -149,14 +126,10 @@
                             </RadioGroup>
 
                             <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                style="@style/question"
                                 android:text="What are you doing now??"
-                                android:padding="6dp"
                                 android:layout_below="@+id/radioGroupQuestionOne"
-                                android:id="@+id/questionOneAText"
-                                android:gravity="center_horizontal" />
+                                android:id="@+id/questionOneAText" />
 
                             <RadioGroup
                                 android:layout_width="wrap_content"
@@ -241,22 +214,15 @@
                             android:padding="16dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#1296E1"
+                                style="@style/headline"
                                 android:text="Question 2"
-                                android:id="@+id/headlineQuestionTwo"
-                                android:paddingBottom="6dp"/>
+                                android:id="@+id/headlineQuestionTwo"/>
 
                             <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                style="@style/question"
                                 android:text="What is your urge to smoke? (from 0= no urge to 10 = maximum urge)"
-                                android:padding="6dp"
                                 android:layout_below="@+id/headlineQuestionTwo"
-                                android:id="@+id/questionTwoText"
-                                android:gravity="center_horizontal" />
+                                android:id="@+id/questionTwoText" />
 
                             <SeekBar
                                 android:layout_width="fill_parent"
@@ -299,21 +265,15 @@
                             android:padding="16dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#1296E1"
+                                style="@style/headline"
                                 android:text="Question 3"
                                 android:id="@+id/headlineQuestionThree" />
 
                             <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                style="@style/question"
                                 android:text="What is your mood? (from 1= no urge to 5 = extremely)"
-                                android:padding="6dp"
                                 android:layout_below="@+id/headlineQuestionThree"
-                                android:id="@+id/questionThreeText"
-                                android:gravity="center_horizontal" />
+                                android:id="@+id/questionThreeText"/>
 
                             <TextView
                                 android:layout_width="fill_parent"
@@ -497,5 +457,4 @@
                 </RelativeLayout>
             </ScrollView>
         </LinearLayout>
-
     </FrameLayout>
