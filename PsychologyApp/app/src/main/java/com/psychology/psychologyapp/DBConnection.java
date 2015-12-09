@@ -6,6 +6,7 @@ import java.sql.* ;
 
 /**
  * Created by oliverbammann on 29.11.15.
+ * Edited by Carruth Topham 12/08/15
  */
 public class DBConnection extends AsyncTask<Void, Integer, Boolean> {
 
@@ -17,14 +18,13 @@ public class DBConnection extends AsyncTask<Void, Integer, Boolean> {
         this.date = date;
     }
 
-    String date = "Test String";
-
+    String date;
 
     public DBConnection() {
-        //this.initializeConnection();
+        this.initializeConnection();
     }
 
-    @Override
+
     protected Boolean doInBackground(Void... voids) {
         this.initializeConnection();
         return null;
@@ -36,34 +36,18 @@ public class DBConnection extends AsyncTask<Void, Integer, Boolean> {
     private void initializeConnection() {
 
         try {
-            //DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            //DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-        /*} catch (SQLException e) {
-            e.printStackTrace();*/
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        String username = "d0203ec7";
-        String password = "aikido90";
+        String username = "java";
+        String password = "java";
 
         Connection con;
         try {
-            /*con = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@cedar:1521:student",
-                    username, password);*/
-
-            /*con = DriverManager.getConnection(
-                    "jdbc:mysql://w013ade6.kasserver.com/d0203ec7",
-                    username, password);*/
-
             con = DriverManager.getConnection(
-                    "jdbc:mysql://w013ade6.kasserver.com:3306/d0203ec7",
+                    "jdbc:oracle:thin:@cedar.humboldt.edu:1521:student",
                     username, password);
 
             Statement dateQueryStmt = con.createStatement();
