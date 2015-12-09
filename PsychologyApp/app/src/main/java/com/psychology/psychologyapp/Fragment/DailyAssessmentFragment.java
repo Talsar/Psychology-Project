@@ -80,21 +80,6 @@ public class DailyAssessmentFragment extends Fragment {
                 }
             }
         });
-
-        Button dbTest = (Button) fragmentView.findViewById(R.id.dbTestButton);
-        dbTest.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                Toast.makeText(getActivity(), "Connection to Database!", Toast.LENGTH_SHORT).show();
-                mDBConnection = new DBConnection();
-                mDBConnection.execute();
-
-                }
-        });
-
-
-
     }
 
 
