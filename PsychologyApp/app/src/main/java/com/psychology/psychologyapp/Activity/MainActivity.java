@@ -149,6 +149,16 @@ public class MainActivity extends Activity implements MainMenuFragment.OnFragmen
             return true;
         }
 
+        /*if (id==R.id.action_refresh) {
+            mMainMenuFragment = new MainMenuFragment();
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, mMainMenuFragment)
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        }*/
+
         return super.onOptionsItemSelected(item);
     }
 

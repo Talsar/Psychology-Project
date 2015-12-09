@@ -6,7 +6,13 @@
           android:icon="@drawable/ic_settings"
           android:title="@string/action_settings"
           android:orderInCategory="100"
-          app:showAsAction="ifRoom"/>
+          android:showAsAction="ifRoom"/>
+
+    <!--<item
+        android:id="@+id/action_refresh"
+        android:title="Refresh"
+        android:icon="@drawable/ic_action_action_autorenew"
+        android:showAsAction="ifRoom"/>-->
       <!--<item
           android:id="@+id/action_favorite"
           android:icon="@drawable/ic_action_action_settings"

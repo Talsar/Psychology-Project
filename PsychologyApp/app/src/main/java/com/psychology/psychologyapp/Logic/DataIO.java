@@ -2,6 +2,7 @@ package com.psychology.psychologyapp.Logic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 import android.widget.Toast;
 
 
@@ -53,17 +54,16 @@ public class DataIO {
         return answers;
     }
 
-
-
-    public static int getStartTimeHrs(Context context){
-        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        return settings.getInt("startTimeHrs", 10);
-
-    }
-
-    public static int getEndTimeHrs(Context context){
-        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        return settings.getInt("endTimeHrs", 22);
+    public static int getTimeNextAssessment(Context context) {
+        int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
+        int finishedAss = DataIO.getFinishedRandomAssessments(context);
+        for (int i=finishedAss;i<5;i++) {
+            int currentAssTime = getRandomAssessmentTime(context, i);
+            if (currentAssTime > currentTimeInMin) {
+                return currentAssTime-currentTimeInMin;
+            }
+        }
+        return 0;
 
     }
 

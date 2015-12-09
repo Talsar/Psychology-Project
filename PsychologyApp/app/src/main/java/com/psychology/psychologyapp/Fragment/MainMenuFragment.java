@@ -132,9 +132,9 @@ public class MainMenuFragment extends Fragment {
         //Put the time until next assessment in text view
         int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
         int timeToNextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())) - currentTimeInMin;
-        String timeToNextAssessment = Integer.toString(timeToNextAss);
+        String timeToNextAssessment = Integer.toString(DataIO.getTimeNextAssessment(getActivity()));
         TextView nTextView = (TextView) view.findViewById(R.id.descriptionTwoD);
-        nTextView.setText(numberofAssessments);
+        nTextView.setText(timeToNextAssessment);
 
         return view;
     }
