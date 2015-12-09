@@ -98,11 +98,6 @@ public class SettingsFragment extends Fragment {
                     AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                     mAssessmentNotification.nextNotification(getActivity());
 
-                    int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
-                    int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())) - currentTimeInMin;
-
-                    Toast.makeText(getActivity(), "Next ass: "+nextAss, Toast.LENGTH_SHORT).show();
-
                     Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
                 } else {
                     //Get this message when picked start and end time are less than two hours apart

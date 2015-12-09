@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
@@ -97,15 +98,21 @@ public class MainMenuFragment extends Fragment {
         final Button mRandomAssessmentButton = (Button) view.findViewById(R.id.randomAssessmentButton);
         mRandomAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Create fragment
-                mRandomAssessmentFragment = new RandomAssessmentFragment();
 
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mRandomAssessmentFragment)
-                        .addToBackStack(null)
-                        .commit();
+                if (DataIO.getTimeNextAssessment(getActivity())<11) {
+                    // Create fragment
+                    mRandomAssessmentFragment = new RandomAssessmentFragment();
+
+                    // Replace whatever is in the fragment_container view with this fragment,
+                    // and add the transaction to the back stack so the user can navigate back
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, mRandomAssessmentFragment)
+                            .addToBackStack(null)
+                            .commit();
+                } else {
+                    Toast.makeText(getActivity(), R.string.randomAssessmentAlert, Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -125,13 +132,12 @@ public class MainMenuFragment extends Fragment {
         });
 
         //Put the number of finished assessments in the text view
-        String numberofAssessments = Integer.toString(DataIO.getFinishedRandomAssessments(getActivity()));
+        int assNumber = DataIO.getRandomAssessmentsNumber(getActivity())-DataIO.getFinishedRandomAssessments(getActivity());
+        String numberofAssessments = Integer.toString(assNumber);
         TextView mTextView = (TextView) view.findViewById(R.id.descriptionTwoB);
         mTextView.setText(numberofAssessments);
 
         //Put the time until next assessment in text view
-        int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
-        int timeToNextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())) - currentTimeInMin;
         String timeToNextAssessment = Integer.toString(DataIO.getTimeNextAssessment(getActivity()));
         TextView nTextView = (TextView) view.findViewById(R.id.descriptionTwoD);
         nTextView.setText(timeToNextAssessment);

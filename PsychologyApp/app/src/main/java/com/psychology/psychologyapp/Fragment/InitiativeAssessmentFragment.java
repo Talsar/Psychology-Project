@@ -151,6 +151,12 @@ public class InitiativeAssessmentFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
                 Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+                // Add the fragment to the 'fragment_container' FrameLayout
+                MainMenuFragment mMainMenuFragment = new MainMenuFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, mMainMenuFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
 
         });

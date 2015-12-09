@@ -62,6 +62,7 @@ public class DataIO {
             if (currentAssTime > currentTimeInMin) {
                 return currentAssTime-currentTimeInMin;
             }
+            DataIO.setFinishedRandomAssessments(context, DataIO.getFinishedRandomAssessments(context)+1);
         }
         return 0;
 
@@ -94,6 +95,7 @@ public class DataIO {
             int latestTime = DataIO.getEndTimeMin(context);
             AssessmentTimer mAssessmentTimer = new AssessmentTimer(earliestTime, latestTime, 5);
             DataIO.setRandomAssessmentTimes(context, mAssessmentTimer.getAssessmentTimesMin());
+            DataIO.setFinishedRandomAssessments(context, 0);
         }
         editor.putInt("finishedRandomAssessments", finishedAssessments);
         editor.commit();
@@ -102,7 +104,23 @@ public class DataIO {
     public static int getFinishedRandomAssessments(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("finishedRandomAssessments", 0);
+    }
 
+    /**
+     * Return the number of random assessments
+     * @param context
+     * @return
+     */
+    public static int getRandomAssessmentsNumber(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("randomAssessments", 5);
+    }
+
+    public static void setRandomAssessmentsNumber(Context context, int numberOfAssessments) {
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("randomAssessments", numberOfAssessments);
+        editor.commit();
     }
 
     /**

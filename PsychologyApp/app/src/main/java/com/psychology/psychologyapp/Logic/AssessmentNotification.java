@@ -70,11 +70,8 @@ public class AssessmentNotification {
      */
     public void nextNotification(Context context) {
 
-        int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
-
         //time for next random assessment is set by using the method of DataIO class
-        //and subtracted by the current time
-        int nextAssessment = DataIO.getRandomAssessmentTime(context, DataIO.getFinishedRandomAssessments(context))-currentTimeInMin;
+        int nextAssessment = DataIO.getTimeNextAssessment(context)*60000;
 
         //test long value; set the time of next notification to 10 seconds (10*1000)
         Long notificationTime = SystemClock.elapsedRealtime()+10*1000;

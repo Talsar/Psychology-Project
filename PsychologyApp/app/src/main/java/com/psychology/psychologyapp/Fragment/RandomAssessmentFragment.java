@@ -161,10 +161,17 @@ public class RandomAssessmentFragment extends Fragment {
                         moods,
                         getActivity());
 
-                //Increase the number of finished assessments for today by one
-                DataIO.setFinishedRandomAssessments(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
+                //Increase the number of finished assessments for this day by one
+                DataIO.setFinishedRandomAssessments(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()) + 1);
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                MainMenuFragment mMainMenuFragment = new MainMenuFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, mMainMenuFragment)
+                        .addToBackStack(null)
+                        .commit();
 
             }
 
