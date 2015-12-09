@@ -109,7 +109,7 @@ public class SettingsFragment extends Fragment {
                     int currentTimeInMin = (hour*60)+minute;
 
                     Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
- Few               } else {
+                    } else {
                     //Get this message when picked start and end time are less than two hours apart
                     Toast.makeText(getActivity(), R.string.timePickerAlert, Toast.LENGTH_LONG).show();
 
