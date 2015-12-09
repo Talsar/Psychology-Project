@@ -150,7 +150,7 @@ public class RandomAssessmentFragment extends Fragment {
                 DataIO.setAssessmentDone(bools, getActivity());
                 RadioButton radioButtonQOne = (RadioButton)radioGroupQuestionOne.findViewById(radioGroupQuestionOne.getCheckedRadioButtonId());
                 RadioButton radioButtonQOneA = (RadioButton)radioGroupQuestionOneA.findViewById(radioGroupQuestionOneA.getCheckedRadioButtonId());
-                Toast.makeText(getActivity(), radioButtonQOneA.getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), radioButtonQOneA.getText(), Toast.LENGTH_SHORT).show();
                 ArrayList<String> moods = new ArrayList<String>(6);
                 for (int i = 0; i < 6; i++){
                     moods.add(i, Integer.toString(seekBars.get(i).getProgress()));
@@ -166,12 +166,8 @@ public class RandomAssessmentFragment extends Fragment {
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
 
-                // Add the fragment to the 'fragment_container' FrameLayout
-                MainMenuFragment mMainMenuFragment = new MainMenuFragment();
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mMainMenuFragment)
-                        .addToBackStack(null)
-                        .commit();
+                Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
+                getActivity().onBackPressed();
 
             }
 
@@ -264,7 +260,7 @@ public class RandomAssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
-                    Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
                         //locationSpinnerQuestion1.setVisibility(View.GONE);
                         headlineQuestionOneA.setVisibility(View.VISIBLE);
@@ -295,7 +291,7 @@ public class RandomAssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
-                    Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     cardViewQuestion2.setVisibility(View.VISIBLE);
                     cardViewQuestion3.setVisibility(View.VISIBLE);
                     submitButton.setVisibility(View.VISIBLE);

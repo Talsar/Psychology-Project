@@ -76,14 +76,7 @@ public class DailyAssessmentFragment extends Fragment {
             public void onClick(View arg0) {
                 if (!(editText.getText().length()==0)) {
 
-                    Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
-
-                    // Add the fragment to the 'fragment_container' FrameLayout
-                    MainMenuFragment mMainMenuFragment = new MainMenuFragment();
-                    getFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, mMainMenuFragment)
-                            .addToBackStack(null)
-                            .commit();
+                    Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
 
 
                     int startTimeMin = DataIO.getStartTimeMin(getActivity());
@@ -94,6 +87,8 @@ public class DailyAssessmentFragment extends Fragment {
 
                     //Saves times of the random assessments
                     DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+
+                    getActivity().onBackPressed();
                 }
             }
         });
