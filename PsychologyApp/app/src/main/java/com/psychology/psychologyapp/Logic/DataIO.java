@@ -96,9 +96,9 @@ public class DataIO {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         if (DataIO.getFinishedRandomAssessments(context)==DataIO.getRandomAssessmentsNumber(context)) {
-            int earliestTime = DataIO.getStartTimeMin(context);
-            int latestTime = DataIO.getEndTimeMin(context);
-            AssessmentTimer mAssessmentTimer = new AssessmentTimer(earliestTime, latestTime, 5);
+            //int earliestTime = DataIO.getStartTimeMin(context);
+            //int latestTime = DataIO.getEndTimeMin(context);
+            //AssessmentTimer mAssessmentTimer = new AssessmentTimer(earliestTime, latestTime, 5);
             //DataIO.setRandomAssessmentTimes(context, mAssessmentTimer.getAssessmentTimesMin());
             editor.putInt("finishedRandomAssessments", 0);
         } else {
@@ -202,6 +202,9 @@ public class DataIO {
         editor.putInt("startTimeMin", 0);
         editor.putInt("endTimeMin", 0);
         editor.putInt("finishedRandomAssessments", 0);
+        for (int i=0; i<getRandomAssessmentsNumber(context);i++) {
+            editor.putInt("randomAssessmentTime"+i, 0);
+        }
         editor.commit();
     }
 
