@@ -119,7 +119,7 @@ public class DataIO {
      */
     public static int getRandomAssessmentsNumber(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        return settings.getInt("randomAssessments", 5);
+        return settings.getInt("randomAssessments", 2);
     }
 
     public static void setRandomAssessmentsNumber(Context context, int numberOfAssessments) {

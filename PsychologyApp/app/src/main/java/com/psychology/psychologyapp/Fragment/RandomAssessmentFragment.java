@@ -165,7 +165,7 @@ public class RandomAssessmentFragment extends Fragment {
                 DataIO.setFinishedRandomAssessments(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()) + 1);
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
-                
+
                 Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
                 getActivity().onBackPressed();
 
