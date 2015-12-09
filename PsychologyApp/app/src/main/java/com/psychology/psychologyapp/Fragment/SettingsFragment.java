@@ -19,6 +19,8 @@ import com.psychology.psychologyapp.Logic.AssessmentTimer;
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
+import java.util.Calendar;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -89,7 +91,7 @@ public class SettingsFragment extends Fragment {
 
                     //Creates an instance of AssessmentTimer with the picked
                     //start and end time and with 5 random assessments during a day
-                    AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
+                    AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, DataIO.getRandomAssessmentsNumber(getActivity()));
 
                     //Saves times of the random assessments
                     DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
@@ -98,8 +100,16 @@ public class SettingsFragment extends Fragment {
                     AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                     mAssessmentNotification.nextNotification(getActivity());
 
+
+
+                    final Calendar c = Calendar.getInstance();
+                    int hour = c.get(Calendar.HOUR_OF_DAY);
+                    int minute = c.get(Calendar.MINUTE);
+
+                    int currentTimeInMin = (hour*60)+minute;
+
                     Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
-                } else {
+ Few               } else {
                     //Get this message when picked start and end time are less than two hours apart
                     Toast.makeText(getActivity(), R.string.timePickerAlert, Toast.LENGTH_LONG).show();
 

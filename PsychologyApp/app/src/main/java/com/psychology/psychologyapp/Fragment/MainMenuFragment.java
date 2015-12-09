@@ -99,7 +99,8 @@ public class MainMenuFragment extends Fragment {
         mRandomAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (DataIO.getTimeNextAssessment(getActivity())<11) {
+                int finishedAssess = DataIO.getFinishedRandomAssessments(getActivity());
+                if (DataIO.getTimeNextAssessment(getActivity())<11 && finishedAssess!=0) {
                     // Create fragment
                     mRandomAssessmentFragment = new RandomAssessmentFragment();
 
@@ -109,8 +110,10 @@ public class MainMenuFragment extends Fragment {
                             .replace(R.id.fragment_container, mRandomAssessmentFragment)
                             .addToBackStack(null)
                             .commit();
+                } else if(finishedAssess==0) {
+                    Toast.makeText(getActivity(), R.string.randomAssessmentAlertNumber, Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getActivity(), R.string.randomAssessmentAlert, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), R.string.randomAssessmentAlertTime, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -119,15 +122,21 @@ public class MainMenuFragment extends Fragment {
         final Button mDailyAssessmentButton = (Button) view.findViewById(R.id.eodAssessmentButton);
         mDailyAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Create fragment
-                mDailyAssessmentFragment = new DailyAssessmentFragment();
 
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mDailyAssessmentFragment)
-                        .addToBackStack(null)
-                        .commit();
+                if(DataIO.getFinishedRandomAssessments(getActivity())==DataIO.getRandomAssessmentsNumber(getActivity())) {
+                    // Create fragment
+                    mDailyAssessmentFragment = new DailyAssessmentFragment();
+
+                    // Replace whatever is in the fragment_container view with this fragment,
+                    // and add the transaction to the back stack so the user can navigate back
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, mDailyAssessmentFragment)
+                            .addToBackStack(null)
+                            .commit();
+                } else {
+                    Toast.makeText(getActivity(), R.string.dailyAssessmentAlert, Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

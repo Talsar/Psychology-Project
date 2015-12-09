@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 /**
@@ -55,7 +56,11 @@ public class DataIO {
     }
 
     public static int getTimeNextAssessment(Context context) {
-        int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+        int currentTimeInMin = (hour*60)+minute;
+        //int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
         int finishedAss = DataIO.getFinishedRandomAssessments(context);
         for (int i=finishedAss;i<5;i++) {
             int currentAssTime = getRandomAssessmentTime(context, i);
@@ -90,14 +95,15 @@ public class DataIO {
     public static void setFinishedRandomAssessments(Context context, int finishedAssessments) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
-        if (DataIO.getFinishedRandomAssessments(context)==5) {
+        if (DataIO.getFinishedRandomAssessments(context)==DataIO.getRandomAssessmentsNumber(context)) {
             int earliestTime = DataIO.getStartTimeMin(context);
             int latestTime = DataIO.getEndTimeMin(context);
             AssessmentTimer mAssessmentTimer = new AssessmentTimer(earliestTime, latestTime, 5);
-            DataIO.setRandomAssessmentTimes(context, mAssessmentTimer.getAssessmentTimesMin());
-            DataIO.setFinishedRandomAssessments(context, 0);
+            //DataIO.setRandomAssessmentTimes(context, mAssessmentTimer.getAssessmentTimesMin());
+            editor.putInt("finishedRandomAssessments", 0);
+        } else {
+            editor.putInt("finishedRandomAssessments", finishedAssessments);
         }
-        editor.putInt("finishedRandomAssessments", finishedAssessments);
         editor.commit();
     }
 
@@ -147,6 +153,7 @@ public class DataIO {
         for (int i=0; i<randomAssessmentTimes.size();i++) {
             editor.putInt("randomAssessmentTime"+i, randomAssessmentTimes.get(i));
         }
+        DataIO.setFinishedRandomAssessments(context, 0);
         editor.commit();
     }
 
