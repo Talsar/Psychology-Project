@@ -19,8 +19,6 @@ import com.psychology.psychologyapp.Logic.AssessmentTimer;
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
-import java.util.ArrayList;
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -81,43 +79,35 @@ public class SettingsFragment extends Fragment {
 
             @Override
             public void onClick(View arg0) {
-                int a = 11;
-                int b = 23;
-                ArrayList<Boolean> bools = new ArrayList(5);
-                bools.add(false);
-                bools.add(false);
-                bools.add(true);
-                bools.add(false);
-                bools.add(false);
-                DataIO.saveSettings(a, b, getActivity());
-                Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
-
-                //Set number of finished random assessments to 0 when settings are saved
-                DataIO.setFinishedRandomAssessments(getActivity(), 0);
-
+                //Times picked by the user
                 int startTimeMin = DataIO.getStartTimeMin(getActivity());
                 int endTimeMin = DataIO.getEndTimeMin(getActivity());
+                if (startTimeMin + 120 < endTimeMin) {
 
-                //Creates an instance of AssessmentTimer with the picked
-                //start and end time and with 5 random assessments during a day
-                AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
+                    //Set number of finished random assessments to 0 when settings are saved
+                    DataIO.setFinishedRandomAssessments(getActivity(), 0);
 
-                //Saves times of the random assessments
-                DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+                    //Creates an instance of AssessmentTimer with the picked
+                    //start and end time and with 5 random assessments during a day
+                    AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
 
-                //Creates an instance of AssessmentNotification and creates a new notification
-                AssessmentNotification mAssessmentNotification = new AssessmentNotification();
-                mAssessmentNotification.nextNotification(getActivity());
+                    //Saves times of the random assessments
+                    DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
 
-                int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
-                int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()))-currentTimeInMin;
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1)-currentTimeInMin;
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+2)-currentTimeInMin;
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+3)-currentTimeInMin;
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
+                    //Creates an instance of AssessmentNotification and creates a new notification
+                    AssessmentNotification mAssessmentNotification = new AssessmentNotification();
+                    mAssessmentNotification.nextNotification(getActivity());
+
+                    int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
+                    int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())) - currentTimeInMin;
+
+                    Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
+                } else {
+                    //Get this message when picked start and end time are less than two hours apart
+                    Toast.makeText(getActivity(), R.string.timePickerAlert, Toast.LENGTH_LONG).show();
+
+                }
+
             }
 
         });

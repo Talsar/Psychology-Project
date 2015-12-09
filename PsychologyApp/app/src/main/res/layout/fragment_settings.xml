@@ -16,8 +16,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
-            android:layout_marginRight="8dp"
-            android:layout_below="@+id/cardViewEndTime">
+            android:layout_marginRight="8dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -26,8 +25,7 @@
                 <TextView
                     style="@style/question"
                     android:id="@+id/headlineStartTime"
-                    android:text="@string/timePickerStart"
-                    android:layout_below="@+id/timePickerStart"/>
+                    android:text="@string/timePickerStart"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -35,8 +33,10 @@
                     android:id="@+id/timePickerStart"
                     android:text="Start Time"
                     android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal|top"/>
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_below="@+id/headlineStartTime"/>
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
@@ -50,7 +50,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
                     android:layout_marginRight="8dp"
-                    android:layout_below="@+id/cardViewConfirmSettings">
+                    android:layout_below="@+id/cardViewStartTime">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -66,6 +66,7 @@
                     android:id="@+id/timePickerEnd"
                     android:text="End Time"
                     android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal|top"
                     android:layout_below="@+id/headlineEndTime"/>
@@ -81,7 +82,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
-            android:layout_marginRight="8dp">
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/cardViewEndTime">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -94,6 +96,7 @@
                     android:text="Save Settings"
                     android:id="@+id/confirmSettingsButton"
                     android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal|top" />
 

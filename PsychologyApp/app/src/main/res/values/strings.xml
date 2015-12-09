@@ -2,9 +2,11 @@
     <string name="app_name">Psych</string>
     <string name="action_settings">Settings</string>
 
-    <string name="timePickerStart">Pick the time for earliest possible time for a random assessment during a day.</string>
-    <string name="timePickerEnd">Pick the time for latest possible time for a random assessment during a day.</string>
+    <string name="timePickerStart">Pick the earliest possible time for a random assessment during a day.</string>
+    <string name="timePickerEnd">Pick the latest possible time for a random assessment during a day.</string>
     <string name="confirmSettings"></string>
+    <string name="timePickerAlert">The picked times have to be at least two hours apart!</string>
+    <string name="submitMessage">You submitted your data!</string>
 
     <string-array name="locations">
         <item>Home</item>

@@ -15,16 +15,6 @@ public class DataIO {
 
     public static final String PREFS_NAME = "PsychData";
 
-
-    public static void saveSettings(int startTime, int endTime, Context context){
-
-        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("startTime", startTime);
-        editor.putInt("endTime", endTime);
-        editor.commit();
-    }
-
     public static void setAssessmentDone(ArrayList<Boolean> assessmentsDone, Context context){
 
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
