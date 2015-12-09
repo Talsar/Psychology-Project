@@ -8,14 +8,4 @@
           android:orderInCategory="100"
           android:showAsAction="ifRoom"/>
 
-    <!--<item
-        android:id="@+id/action_refresh"
-        android:title="Refresh"
-        android:icon="@drawable/ic_action_action_autorenew"
-        android:showAsAction="ifRoom"/>-->
-      <!--<item
-          android:id="@+id/action_favorite"
-          android:icon="@drawable/ic_action_action_settings"
-          android:title="@string/action_settings"
-          app:showAsAction="ifRoom"/>-->
 </menu>
