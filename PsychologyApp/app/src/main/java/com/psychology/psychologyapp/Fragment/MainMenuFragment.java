@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
 
@@ -121,21 +124,17 @@ public class MainMenuFragment extends Fragment {
             }
         });
 
-        /*final Button mEditSettingsButton = (Button) view.findViewById(R.id.editSettingsButton);
-        mEditSettingsButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Create fragment
-                mSettingsFragment = new SettingsFragment();
+        //Put the number of finished assessments in the text view
+        String numberofAssessments = Integer.toString(DataIO.getFinishedRandomAssessments(getActivity()));
+        TextView mTextView = (TextView) view.findViewById(R.id.descriptionTwoB);
+        mTextView.setText(numberofAssessments);
 
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mSettingsFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });*/
-
+        //Put the time until next assessment in text view
+        int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
+        int timeToNextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())) - currentTimeInMin;
+        String timeToNextAssessment = Integer.toString(timeToNextAss);
+        TextView nTextView = (TextView) view.findViewById(R.id.descriptionTwoD);
+        nTextView.setText(numberofAssessments);
 
         return view;
     }

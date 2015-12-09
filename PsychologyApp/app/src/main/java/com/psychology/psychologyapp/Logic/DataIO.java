@@ -79,9 +79,22 @@ public class DataIO {
 
     }
 
+    /**
+     * Set the number of finished random assessments to
+     * the integer parameter; When number is at 5, times of the random
+     * assessments are set newly.
+     * @param context
+     * @param finishedAssessments Number of finished assessments
+     */
     public static void setFinishedRandomAssessments(Context context, int finishedAssessments) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
+        if (DataIO.getFinishedRandomAssessments(context)==5) {
+            int earliestTime = DataIO.getStartTimeMin(context);
+            int latestTime = DataIO.getEndTimeMin(context);
+            AssessmentTimer mAssessmentTimer = new AssessmentTimer(earliestTime, latestTime, 5);
+            DataIO.setRandomAssessmentTimes(context, mAssessmentTimer.getAssessmentTimesMin());
+        }
         editor.putInt("finishedRandomAssessments", finishedAssessments);
         editor.commit();
     }
