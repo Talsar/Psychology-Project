@@ -100,7 +100,8 @@ public class MainMenuFragment extends Fragment {
             public void onClick(View v) {
 
                 int finishedAssess = DataIO.getFinishedRandomAssessments(getActivity());
-                if (DataIO.getTimeNextAssessment(getActivity())<11 && finishedAssess!=0) {
+                int assessNumber = DataIO.getRandomAssessmentsNumber(getActivity());
+                if (DataIO.getTimeNextAssessment(getActivity())<11 && finishedAssess!=assessNumber) {
                     // Create fragment
                     mRandomAssessmentFragment = new RandomAssessmentFragment();
 
@@ -110,7 +111,7 @@ public class MainMenuFragment extends Fragment {
                             .replace(R.id.fragment_container, mRandomAssessmentFragment)
                             .addToBackStack(null)
                             .commit();
-                } else if(finishedAssess==0) {
+                } else if(finishedAssess==assessNumber) {
                     Toast.makeText(getActivity(), R.string.randomAssessmentAlertNumber, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getActivity(), R.string.randomAssessmentAlertTime, Toast.LENGTH_LONG).show();
