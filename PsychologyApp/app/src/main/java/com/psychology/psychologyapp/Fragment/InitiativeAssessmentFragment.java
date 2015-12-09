@@ -44,6 +44,13 @@ public class InitiativeAssessmentFragment extends Fragment {
 
     private View fragmentView;
 
+    private int answerOne = 0;
+    private int answerOneA = 0;
+    private int answerOneB = 0;
+    private int answerOneC = 0;
+    private int answerOneD = 0;
+    private int answerOneE = 0;
+    private int answerOneF = 0;
 
     int iSeekBarQuestionThree;
 
@@ -260,7 +267,6 @@ public class InitiativeAssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
-                    Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
                         //locationSpinnerQuestion1.setVisibility(View.GONE);
                         questionOneDText.setVisibility(View.GONE);
@@ -268,10 +274,56 @@ public class InitiativeAssessmentFragment extends Fragment {
                         questionOneAText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneA.setVisibility(View.VISIBLE);
 
-                        cardViewQuestion2.setVisibility(View.GONE);
-                        cardViewQuestion3.setVisibility(View.GONE);
-                        submitButton.setVisibility(View.GONE);
+                        if (answerOneA == 1) {
+                            questionOneBText.setVisibility(View.VISIBLE);
+                            radioGroupQuestionOneB.setVisibility(View.VISIBLE);
+                            if (answerOneB == 2) {
+                                cardViewQuestion2.setVisibility(View.VISIBLE);
+                                cardViewQuestion3.setVisibility(View.VISIBLE);
+                                submitButton.setVisibility(View.VISIBLE);
+                            } else if (answerOneB == 1) {
+                                questionOneCText.setVisibility(View.VISIBLE);
+                                radioGroupQuestionOneC.setVisibility(View.VISIBLE);
+                                if (answerOneC != 0) {
+                                    cardViewQuestion2.setVisibility(View.VISIBLE);
+                                    cardViewQuestion3.setVisibility(View.VISIBLE);
+                                    submitButton.setVisibility(View.VISIBLE);
+                                } else {
+                                    cardViewQuestion2.setVisibility(View.GONE);
+                                    cardViewQuestion3.setVisibility(View.GONE);
+                                    submitButton.setVisibility(View.GONE);
+                                }
+                            } else {
+                                cardViewQuestion2.setVisibility(View.GONE);
+                                cardViewQuestion3.setVisibility(View.GONE);
+                                submitButton.setVisibility(View.GONE);
+                            }
 
+                            questionOneDText.setVisibility(View.GONE);
+                            radioGroupQuestionOneD.setVisibility(View.GONE);
+                            questionOneEText.setVisibility(View.GONE);
+                            radioGroupQuestionOneE.setVisibility(View.GONE);
+                        }else if (answerOneA == 2){
+                            questionOneBText.setVisibility(View.GONE);
+                            radioGroupQuestionOneB.setVisibility(View.GONE);
+                            questionOneCText.setVisibility(View.GONE);
+                            radioGroupQuestionOneC.setVisibility(View.GONE);
+                            questionOneEText.setVisibility(View.VISIBLE);
+                            radioGroupQuestionOneE.setVisibility(View.VISIBLE);
+                            if (answerOneE != 0) {
+                                cardViewQuestion2.setVisibility(View.VISIBLE);
+                                cardViewQuestion3.setVisibility(View.VISIBLE);
+                                submitButton.setVisibility(View.VISIBLE);
+                            }else{
+                                cardViewQuestion2.setVisibility(View.GONE);
+                                cardViewQuestion3.setVisibility(View.GONE);
+                                submitButton.setVisibility(View.GONE);
+                            }
+                        }else{
+                            cardViewQuestion2.setVisibility(View.GONE);
+                            cardViewQuestion3.setVisibility(View.GONE);
+                            submitButton.setVisibility(View.GONE);
+                        }
 
                     } else {
                         //locationSpinnerQuestion1.setVisibility(View.VISIBLE);
@@ -285,10 +337,17 @@ public class InitiativeAssessmentFragment extends Fragment {
                         radioGroupQuestionOneC.setVisibility(View.GONE);
                         questionOneEText.setVisibility(View.GONE);
                         radioGroupQuestionOneE.setVisibility(View.GONE);
+                        if (answerOneD != 0) {
+                            cardViewQuestion2.setVisibility(View.VISIBLE);
+                            cardViewQuestion3.setVisibility(View.VISIBLE);
+                            submitButton.setVisibility(View.VISIBLE);
+                        }else{
+                            cardViewQuestion2.setVisibility(View.GONE);
+                            cardViewQuestion3.setVisibility(View.GONE);
+                            submitButton.setVisibility(View.GONE);
+                        }
 
-                        cardViewQuestion2.setVisibility(View.GONE);
-                        cardViewQuestion3.setVisibility(View.GONE);
-                        submitButton.setVisibility(View.GONE);
+
                     }
                 }
             }
@@ -304,29 +363,56 @@ public class InitiativeAssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
-                    Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
+                        answerOneA = 1;
                         questionOneBText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneB.setVisibility(View.VISIBLE);
+                        if (answerOneB == 2) {
+                            cardViewQuestion2.setVisibility(View.VISIBLE);
+                            cardViewQuestion3.setVisibility(View.VISIBLE);
+                            submitButton.setVisibility(View.VISIBLE);
+                        }else if (answerOneB == 1) {
+                            questionOneCText.setVisibility(View.VISIBLE);
+                            radioGroupQuestionOneC.setVisibility(View.VISIBLE);
+                            if (answerOneC!=0) {
+                                cardViewQuestion2.setVisibility(View.VISIBLE);
+                                cardViewQuestion3.setVisibility(View.VISIBLE);
+                                submitButton.setVisibility(View.VISIBLE);
+                            }else{
+                                cardViewQuestion2.setVisibility(View.GONE);
+                                cardViewQuestion3.setVisibility(View.GONE);
+                                submitButton.setVisibility(View.GONE);
+                            }
+                        }else{
+                            cardViewQuestion2.setVisibility(View.GONE);
+                            cardViewQuestion3.setVisibility(View.GONE);
+                            submitButton.setVisibility(View.GONE);
+                        }
+
                         questionOneDText.setVisibility(View.GONE);
                         radioGroupQuestionOneD.setVisibility(View.GONE);
                         questionOneEText.setVisibility(View.GONE);
                         radioGroupQuestionOneE.setVisibility(View.GONE);
 
-                        cardViewQuestion2.setVisibility(View.GONE);
-                        cardViewQuestion3.setVisibility(View.GONE);
-                        submitButton.setVisibility(View.GONE);
+
                     }else{
+                        answerOneA = 2;
                         questionOneBText.setVisibility(View.GONE);
                         radioGroupQuestionOneB.setVisibility(View.GONE);
                         questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
                         questionOneEText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneE.setVisibility(View.VISIBLE);
+                        if (answerOneE != 0) {
+                            cardViewQuestion2.setVisibility(View.VISIBLE);
+                            cardViewQuestion3.setVisibility(View.VISIBLE);
+                            submitButton.setVisibility(View.VISIBLE);
+                        }else{
+                            cardViewQuestion2.setVisibility(View.GONE);
+                            cardViewQuestion3.setVisibility(View.GONE);
+                            submitButton.setVisibility(View.GONE);
+                        }
 
-                        cardViewQuestion2.setVisibility(View.GONE);
-                        cardViewQuestion3.setVisibility(View.GONE);
-                        submitButton.setVisibility(View.GONE);
                     }
                 }
             }
@@ -341,15 +427,24 @@ public class InitiativeAssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
-                    Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
+                        answerOneB = 1;
                         questionOneCText.setVisibility(View.VISIBLE);
                         radioGroupQuestionOneC.setVisibility(View.VISIBLE);
+                        if (answerOneC != 0) {
+                            cardViewQuestion2.setVisibility(View.VISIBLE);
+                            cardViewQuestion3.setVisibility(View.VISIBLE);
+                            submitButton.setVisibility(View.VISIBLE);
+                        }else{
+                            cardViewQuestion2.setVisibility(View.GONE);
+                            cardViewQuestion3.setVisibility(View.GONE);
+                            submitButton.setVisibility(View.GONE);
+                        }
 
-                        cardViewQuestion2.setVisibility(View.GONE);
-                        cardViewQuestion3.setVisibility(View.GONE);
-                        submitButton.setVisibility(View.GONE);
+
+
                     }else{
+                        answerOneB = 2;
                         questionOneCText.setVisibility(View.GONE);
                         radioGroupQuestionOneC.setVisibility(View.GONE);
 
@@ -368,7 +463,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                 // This puts the value (true/false) into the variable
                 boolean isChecked = checkedRadioButton.isChecked();
                 // If the radiobutton that has changed in check state is now checked...
-                Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                answerOneC = 1;
                 cardViewQuestion2.setVisibility(View.VISIBLE);
                 cardViewQuestion3.setVisibility(View.VISIBLE);
                 submitButton.setVisibility(View.VISIBLE);
@@ -382,7 +477,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                 // This puts the value (true/false) into the variable
                 boolean isChecked = checkedRadioButton.isChecked();
                 // If the radiobutton that has changed in check state is now checked...
-                Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                answerOneD = 1;
                 cardViewQuestion2.setVisibility(View.VISIBLE);
                 cardViewQuestion3.setVisibility(View.VISIBLE);
                 submitButton.setVisibility(View.VISIBLE);
@@ -396,7 +491,7 @@ public class InitiativeAssessmentFragment extends Fragment {
                 // This puts the value (true/false) into the variable
                 boolean isChecked = checkedRadioButton.isChecked();
                 // If the radiobutton that has changed in check state is now checked...
-                Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                answerOneE = 1;
                 cardViewQuestion2.setVisibility(View.VISIBLE);
                 cardViewQuestion3.setVisibility(View.VISIBLE);
                 submitButton.setVisibility(View.VISIBLE);
