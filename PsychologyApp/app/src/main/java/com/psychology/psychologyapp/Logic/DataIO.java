@@ -199,8 +199,8 @@ public class DataIO {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("firstName", "");
         editor.putString("lastName", "");
-        editor.putInt("startTimeMin", 0);
-        editor.putInt("endTimeMin", 0);
+        editor.putInt("startTimeMin", 600);
+        editor.putInt("endTimeMin", 1200);
         editor.putInt("finishedRandomAssessments", 0);
         for (int i=0; i<getRandomAssessmentsNumber(context);i++) {
             editor.putInt("randomAssessmentTime"+i, 0);

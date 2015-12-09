@@ -83,10 +83,10 @@ public class DailyAssessmentFragment extends Fragment {
                     int endTimeMin = DataIO.getEndTimeMin(getActivity());
                     //Creates an instance of AssessmentTimer with the picked
                     //start and end time and with 5 random assessments during a day
-                    AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, DataIO.getRandomAssessmentsNumber(getActivity()));
+                    //AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, DataIO.getRandomAssessmentsNumber(getActivity()));
 
                     //Saves times of the random assessments
-                    DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+                    //DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
 
                     getActivity().onBackPressed();
                 }
