@@ -52,7 +52,6 @@ public class RandomAssessmentFragment extends Fragment {
 
 
     private Button submitButton;
-    private Button loadButton;
     private TextView textSeekBarQuestionTwo;
     private TextView textSeekBarQuestionThreeA;
     private TextView textSeekBarQuestionThreeB;
@@ -138,44 +137,6 @@ public class RandomAssessmentFragment extends Fragment {
         seekBarTexts.add(textSeekBarQuestionThreeF);
         textSeekBarMap = new HashMap<>(6);
 
-        loadButton = (Button) fragmentView.findViewById(R.id.loadButton);
-        loadButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                ArrayList<String> answers = DataIO.getRandomAssessment(getActivity());
-
-
-
-                if (!(answers.get(0).equals(""))) {
-                    RadioButton buttonOne = (RadioButton) radioGroupQuestionOne.findViewWithTag(answers.get(0));
-                    buttonOne.setChecked(true);
-                    headlineQuestionOneA.setVisibility(View.VISIBLE);
-                    radioGroupQuestionOneA.setVisibility(View.VISIBLE);
-                }
-
-                if (!(answers.get(1).equals(""))) {
-                    RadioButton buttonOneA = (RadioButton) radioGroupQuestionOneA.findViewWithTag(answers.get(1));
-                    buttonOneA.setChecked(true);
-                    cardViewQuestion2.setVisibility(View.VISIBLE);
-                    cardViewQuestion3.setVisibility(View.VISIBLE);
-                    submitButton.setVisibility(View.VISIBLE);
-                }
-                seekBarQuestionTwo.setProgress(Integer.parseInt(answers.get(2)));
-                seekBarQuestionThreeA.setProgress(Integer.parseInt(answers.get(3)));
-                seekBarQuestionThreeB.setProgress(Integer.parseInt(answers.get(4)));
-                seekBarQuestionThreeC.setProgress(Integer.parseInt(answers.get(5)));
-                seekBarQuestionThreeD.setProgress(Integer.parseInt(answers.get(6)));
-                seekBarQuestionThreeE.setProgress(Integer.parseInt(answers.get(7)));
-                seekBarQuestionThreeF.setProgress(Integer.parseInt(answers.get(8)));
-
-
-
-
-            }
-
-        });
 
         submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
         submitButton.setVisibility(View.GONE);
@@ -189,7 +150,7 @@ public class RandomAssessmentFragment extends Fragment {
                 DataIO.setAssessmentDone(bools, getActivity());
                 RadioButton radioButtonQOne = (RadioButton)radioGroupQuestionOne.findViewById(radioGroupQuestionOne.getCheckedRadioButtonId());
                 RadioButton radioButtonQOneA = (RadioButton)radioGroupQuestionOneA.findViewById(radioGroupQuestionOneA.getCheckedRadioButtonId());
-                Toast.makeText(getActivity(), radioButtonQOneA.getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), radioButtonQOneA.getText(), Toast.LENGTH_SHORT).show();
                 ArrayList<String> moods = new ArrayList<String>(6);
                 for (int i = 0; i < 6; i++){
                     moods.add(i, Integer.toString(seekBars.get(i).getProgress()));
@@ -200,10 +161,13 @@ public class RandomAssessmentFragment extends Fragment {
                         moods,
                         getActivity());
 
-                //Increase the number of finished assessments for today by one
-                DataIO.setFinishedRandomAssessments(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
+                //Increase the number of finished assessments for this day by one
+                DataIO.setFinishedRandomAssessments(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()) + 1);
                 AssessmentNotification mAssessmentNotification = new AssessmentNotification();
                 mAssessmentNotification.nextNotification(getActivity());
+
+                Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
+                getActivity().onBackPressed();
 
             }
 
@@ -296,7 +260,7 @@ public class RandomAssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
-                    Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "You selected " + checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     if (checkedRadioButton.getText().equals("Yes")) {
                         //locationSpinnerQuestion1.setVisibility(View.GONE);
                         headlineQuestionOneA.setVisibility(View.VISIBLE);
@@ -327,11 +291,11 @@ public class RandomAssessmentFragment extends Fragment {
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked) {
                     // Changes the textview's text to "Checked: example radiobutton text"
-                    Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "You selected "+ checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
                     cardViewQuestion2.setVisibility(View.VISIBLE);
                     cardViewQuestion3.setVisibility(View.VISIBLE);
                     submitButton.setVisibility(View.VISIBLE);
-                    loadButton.setVisibility(View.VISIBLE);
+
 
                 }
             }

@@ -1,8 +1,15 @@
 <resources>
-    <string name="app_name">PsychologyApp</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Psych</string>
     <string name="action_settings">Settings</string>
+
+    <string name="timePickerStart">Pick the earliest possible time for a random assessment during a day.</string>
+    <string name="timePickerEnd">Pick the latest possible time for a random assessment during a day.</string>
+    <string name="confirmSettings"></string>
+    <string name="timePickerAlert">The picked times have to be at least two hours apart!</string>
+    <string name="submitMessage">You submitted your data!</string>
+    <string name="randomAssessmentAlertTime">Please wait at least until 10 Minutes before the assessment is due!</string>
+    <string name="randomAssessmentAlertNumber">You finished all random assessments today, please take the daily assessment!</string>
+    <string name="dailyAssessmentAlert">There are assessments due today, please take these first!</string>
 
     <string-array name="locations">
         <item>Home</item>
@@ -13,6 +20,6 @@
         <item>Other</item>
     </string-array>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

@@ -40,42 +40,28 @@ public class AssessmentTimer {
     }
 
 
+    /**
+     * Calculates the times of the random
+     * assessments and saves it in an Arraylist
+     * @param earliestTimeMin The earliest possible time for a random assessment
+     * @param latestTimeMin The latest possible time for a random assessment
+     * @param numberOfAssessments The number of random assessments during a day
+     */
     private void initAssessmentTimes(int earliestTimeMin, int latestTimeMin, int numberOfAssessments) {
         assessmentTimesMin = new ArrayList<>();
         this.numberOfAssessments = numberOfAssessments;
         Random random = new Random();
         for (int i=0; i<numberOfAssessments; i++) {
-            int randomNumber = random.nextInt(latestTimeMin-earliestTimeMin)+earliestTimeMin;
-            assessmentTimesMin.add(randomNumber);
-            /*if ((latestTimeMin-earliestTimeMin)/numberOfAssessments>30){
-                for (int k : assessmentTimesMin) {
+            //Creates a random number between the earliest and latest time
+            int randomNumber = random.nextInt(latestTimeMin-earliestTimeMin) + earliestTimeMin;
 
-                }
-            }*/
+            //Adds the random time to Arraylist
+            assessmentTimesMin.add(randomNumber);
+
         }
+        //Sorts the random times in the Arraylist
         Collections.sort(assessmentTimesMin);
 
-        /*for (int i=0; i<numberOfAssessments; i++) {
-            int randomNumber = random.nextInt(latestTimeMin-earliestTimeMin)+earliestTimeMin;
-            if (latestTimeHrs-earliestTimeHrs >= numberOfAssessments) {
-                while (assessmentTimesHrs.contains(randomNumber)) {
-                    randomNumber = random.nextInt(latestTimeHrs - earliestTimeHrs) + earliestTimeHrs;
-                }
-            }
-            assessmentTimesHrs.add(randomNumber);
-        }
-        Collections.sort(assessmentTimesHrs);
-
-        for (int i=0; i<numberOfAssessments; i++) {
-            int randomNumber = random.nextInt(59);
-            if (i>0 && latestTimeHrs-earliestTimeHrs >= numberOfAssessments) {
-                while ((assessmentTimesHrs.get(i)*60+randomNumber)-
-                        (assessmentTimesHrs.get(i-1)*60+assessmentTimesMin.get(i-1))<30) {
-                    randomNumber = random.nextInt(59);
-                }
-            }
-            assessmentTimesMin.add(randomNumber);
-        }*/
     }
 
 

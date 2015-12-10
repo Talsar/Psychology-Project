@@ -4,11 +4,15 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
 
@@ -94,48 +98,59 @@ public class MainMenuFragment extends Fragment {
         final Button mRandomAssessmentButton = (Button) view.findViewById(R.id.randomAssessmentButton);
         mRandomAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Create fragment
-                mRandomAssessmentFragment = new RandomAssessmentFragment();
 
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mRandomAssessmentFragment)
-                        .addToBackStack(null)
-                        .commit();
+                int finishedAssess = DataIO.getFinishedRandomAssessments(getActivity());
+                int assessNumber = DataIO.getRandomAssessmentsNumber(getActivity());
+                if (DataIO.getTimeNextAssessment(getActivity())<11 && finishedAssess!=assessNumber) {
+                    // Create fragment
+                    mRandomAssessmentFragment = new RandomAssessmentFragment();
+
+                    // Replace whatever is in the fragment_container view with this fragment,
+                    // and add the transaction to the back stack so the user can navigate back
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, mRandomAssessmentFragment)
+                            .addToBackStack(null)
+                            .commit();
+                } else if(finishedAssess==assessNumber) {
+                    Toast.makeText(getActivity(), R.string.randomAssessmentAlertNumber, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getActivity(), R.string.randomAssessmentAlertTime, Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
         final Button mDailyAssessmentButton = (Button) view.findViewById(R.id.eodAssessmentButton);
         mDailyAssessmentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Create fragment
-                mDailyAssessmentFragment = new DailyAssessmentFragment();
 
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mDailyAssessmentFragment)
-                        .addToBackStack(null)
-                        .commit();
+                if(DataIO.getFinishedRandomAssessments(getActivity())==DataIO.getRandomAssessmentsNumber(getActivity())) {
+                    // Create fragment
+                    mDailyAssessmentFragment = new DailyAssessmentFragment();
+
+                    // Replace whatever is in the fragment_container view with this fragment,
+                    // and add the transaction to the back stack so the user can navigate back
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, mDailyAssessmentFragment)
+                            .addToBackStack(null)
+                            .commit();
+                } else {
+                    Toast.makeText(getActivity(), R.string.dailyAssessmentAlert, Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
-        final Button mEditSettingsButton = (Button) view.findViewById(R.id.editSettingsButton);
-        mEditSettingsButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Create fragment
-                mSettingsFragment = new SettingsFragment();
+        //Put the number of finished assessments in the text view
+        int assNumber = DataIO.getRandomAssessmentsNumber(getActivity())-DataIO.getFinishedRandomAssessments(getActivity());
+        String numberofAssessments = Integer.toString(assNumber);
+        TextView mTextView = (TextView) view.findViewById(R.id.descriptionTwoB);
+        mTextView.setText(numberofAssessments);
 
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, mSettingsFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
+        //Put the time until next assessment in text view
+        String timeToNextAssessment = Integer.toString(DataIO.getTimeNextAssessment(getActivity()));
+        TextView nTextView = (TextView) view.findViewById(R.id.descriptionTwoD);
+        nTextView.setText(timeToNextAssessment);
 
         return view;
     }

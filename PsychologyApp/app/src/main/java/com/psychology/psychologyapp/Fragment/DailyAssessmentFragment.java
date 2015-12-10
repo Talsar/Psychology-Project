@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.psychology.psychologyapp.DBConnection;
+import com.psychology.psychologyapp.Logic.AssessmentTimer;
+import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
 
@@ -36,6 +39,8 @@ public class DailyAssessmentFragment extends Fragment {
 
     private Button submitButton;
     private EditText editText;
+
+    DBConnection mDBConnection;
 
     private OnFragmentInteractionListener mListener;
 
@@ -71,12 +76,22 @@ public class DailyAssessmentFragment extends Fragment {
             public void onClick(View arg0) {
                 if (!(editText.getText().length()==0)) {
 
-                    Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
 
+
+                    int startTimeMin = DataIO.getStartTimeMin(getActivity());
+                    int endTimeMin = DataIO.getEndTimeMin(getActivity());
+                    //Creates an instance of AssessmentTimer with the picked
+                    //start and end time and with 5 random assessments during a day
+                    //AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, DataIO.getRandomAssessmentsNumber(getActivity()));
+
+                    //Saves times of the random assessments
+                    //DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+
+                    getActivity().onBackPressed();
                 }
             }
         });
-
     }
 
 

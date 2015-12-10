@@ -19,7 +19,7 @@ import com.psychology.psychologyapp.Logic.AssessmentTimer;
 import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,61 +75,50 @@ public class SettingsFragment extends Fragment {
 
 
     private void initiateSettings() {
-        loadText = (TextView) fragmentView.findViewById(R.id.loadText);
 
         submitButton = (Button) fragmentView.findViewById(R.id.confirmSettingsButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                int a = 11;
-                int b = 23;
-                ArrayList<Boolean> bools = new ArrayList(5);
-                bools.add(false);
-                bools.add(false);
-                bools.add(true);
-                bools.add(false);
-                bools.add(false);
-                DataIO.saveSettings(a, b, getActivity());
-                Toast.makeText(getActivity(), "You submitted your data!", Toast.LENGTH_SHORT).show();
-
+                //Times picked by the user
                 int startTimeMin = DataIO.getStartTimeMin(getActivity());
                 int endTimeMin = DataIO.getEndTimeMin(getActivity());
-                //AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, 5);
-                //DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
-                AssessmentNotification mAssessmentNotification = new AssessmentNotification();
-                mAssessmentNotification.nextNotification(getActivity());
-                /*int currentTimeInMin = (int)SystemClock.elapsedRealtime()/60000;
-                int nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity()))-currentTimeInMin;
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+1);
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+2);
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();
-                nextAss = DataIO.getRandomAssessmentTime(getActivity(), DataIO.getFinishedRandomAssessments(getActivity())+3);
-                Toast.makeText(getActivity(), "Next Assessment in "+nextAss+" min!", Toast.LENGTH_SHORT).show();*/
+                if (startTimeMin + 120 < endTimeMin) {
+
+                    //Set number of finished random assessments to 0 when settings are saved
+                    DataIO.setFinishedRandomAssessments(getActivity(), 0);
+
+                    //Creates an instance of AssessmentTimer with the picked
+                    //start and end time and with 5 random assessments during a day
+                    AssessmentTimer mAssessmentTimer = new AssessmentTimer(startTimeMin, endTimeMin, DataIO.getRandomAssessmentsNumber(getActivity()));
+
+                    //Saves times of the random assessments
+                    DataIO.setRandomAssessmentTimes(getActivity(), mAssessmentTimer.getAssessmentTimesMin());
+
+                    //Creates an instance of AssessmentNotification and creates a new notification
+                    AssessmentNotification mAssessmentNotification = new AssessmentNotification();
+                    mAssessmentNotification.nextNotification(getActivity());
+
+
+
+                    final Calendar c = Calendar.getInstance();
+                    int hour = c.get(Calendar.HOUR_OF_DAY);
+                    int minute = c.get(Calendar.MINUTE);
+
+                    int currentTimeInMin = (hour*60)+minute;
+
+                    Toast.makeText(getActivity(), R.string.submitMessage, Toast.LENGTH_SHORT).show();
+                    } else {
+                    //Get this message when picked start and end time are less than two hours apart
+                    Toast.makeText(getActivity(), R.string.timePickerAlert, Toast.LENGTH_LONG).show();
+
+                }
+
             }
 
         });
 
-
-        loadButton = (Button) fragmentView.findViewById(R.id.loadSettingsButton);
-        loadButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                int a = DataIO.getStartTimeHrs(getActivity());
-                int b = DataIO.getEndTimeHrs(getActivity());
-                ArrayList<Boolean> bools = DataIO.getAssessmentsDone(getActivity());
-                loadText.setText("StartTime: " + a + "\n" +
-                        "EndTime: " + b + "\n" +
-                        "Assessments: " + bools.get(0) + ", " + bools.get(1) + ", "
-                        + bools.get(2) + ", " + bools.get(3) + ", " + bools.get(4));
-
-            }
-
-        });
 
     }
 
@@ -189,25 +178,6 @@ public class SettingsFragment extends Fragment {
         mDialogFragment.show(getFragmentManager(), "timePicker");
 
     }
-
-    /*@Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the current time as the default values for the picker
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
-
-        // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), timePickerListener, hour, minute,
-                DateFormat.is24HourFormat(getActivity()));
-    }
-
-    private TimePickerDialog.OnTimeSetListener timePickerListener =
-            new TimePickerDialog.OnTimeSetListener() {
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    // Do something with the time chosen by the user
-                }
-            };*/
 
 
     // TODO: Rename method, update argument and hook method into UI event

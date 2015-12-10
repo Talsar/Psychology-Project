@@ -1,7 +1,9 @@
 package com.psychology.psychologyapp.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,20 +21,25 @@ import com.psychology.psychologyapp.Logic.DataIO;
 import com.psychology.psychologyapp.R;
 
 
-public class MainActivity extends ActionBarActivity implements MainMenuFragment.OnFragmentInteractionListener, LogInFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
+public class MainActivity extends Activity implements MainMenuFragment.OnFragmentInteractionListener, LogInFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener, InitiativeAssessmentFragment.OnFragmentInteractionListener, DailyAssessmentFragment.OnFragmentInteractionListener, RandomAssessmentFragment.OnFragmentInteractionListener {
 
     LogInFragment mLogInFragment;
     MainMenuFragment mMainMenuFragment;
-    AssessmentNotification mAssessmentNotification;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAssessmentNotification = new AssessmentNotification();
-        //mAssessmentNotification.notificationRandomAssessment(this);
 
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+
+        //Get the String from the Intent created in AssessmentNotification
         String menuFragment = getIntent().getStringExtra("menuFragment");
 
         if (findViewById(R.id.fragment_container) != null) {
@@ -48,7 +55,11 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
             //DataIO.pushTheRedButton(this);
 
             if (menuFragment != null) {
+
                 if (menuFragment.equals("randomAssessmentFragment")) {
+                    //If the Intent was set in AssessmentNotification, the mainMenuFragment is added
+                    //to the fragment container(just to add it to the backStack) and afterwards it's
+                    //replaced immediately by the randomAssessmentFragment.
                     RandomAssessmentFragment mRandomAssessmentFragment = new RandomAssessmentFragment();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, mMainMenuFragment)
@@ -87,7 +98,11 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
 
         }
 
+
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -122,8 +137,23 @@ public class MainActivity extends ActionBarActivity implements MainMenuFragment.
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            SettingsFragment mSettingsFragment = new SettingsFragment();
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, mSettingsFragment)
+                    .addToBackStack(null)
+                    .commit();
             return true;
         }
+
+        /*if (id==R.id.action_refresh) {
+            mMainMenuFragment = new MainMenuFragment();
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, mMainMenuFragment)
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

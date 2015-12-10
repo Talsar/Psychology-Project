@@ -2,10 +2,12 @@ package com.psychology.psychologyapp.Logic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 /**
@@ -14,16 +16,6 @@ import java.util.ArrayList;
 public class DataIO {
 
     public static final String PREFS_NAME = "PsychData";
-
-
-    public static void saveSettings(int startTime, int endTime, Context context){
-
-        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("startTime", startTime);
-        editor.putInt("endTime", endTime);
-        editor.commit();
-    }
 
     public static void setAssessmentDone(ArrayList<Boolean> assessmentsDone, Context context){
 
@@ -63,17 +55,21 @@ public class DataIO {
         return answers;
     }
 
-
-
-    public static int getStartTimeHrs(Context context){
-        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        return settings.getInt("startTimeHrs", 10);
-
-    }
-
-    public static int getEndTimeHrs(Context context){
-        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        return settings.getInt("endTimeHrs", 22);
+    public static int getTimeNextAssessment(Context context) {
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+        int currentTimeInMin = (hour*60)+minute;
+        //int currentTimeInMin = (int) SystemClock.elapsedRealtime() / 60000;
+        int finishedAss = DataIO.getFinishedRandomAssessments(context);
+        for (int i=finishedAss;i<5;i++) {
+            int currentAssTime = getRandomAssessmentTime(context, i);
+            if (currentAssTime > currentTimeInMin) {
+                return currentAssTime-currentTimeInMin;
+            }
+            DataIO.setFinishedRandomAssessments(context, DataIO.getFinishedRandomAssessments(context)+1);
+        }
+        return 0;
 
     }
 
@@ -89,34 +85,84 @@ public class DataIO {
 
     }
 
+    /**
+     * Set the number of finished random assessments to
+     * the integer parameter; When number is at 5, times of the random
+     * assessments are set newly.
+     * @param context
+     * @param finishedAssessments Number of finished assessments
+     */
     public static void setFinishedRandomAssessments(Context context, int finishedAssessments) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("finishedRandomAssessments", finishedAssessments);
+        if (DataIO.getFinishedRandomAssessments(context)==DataIO.getRandomAssessmentsNumber(context)) {
+            //int earliestTime = DataIO.getStartTimeMin(context);
+            //int latestTime = DataIO.getEndTimeMin(context);
+            //AssessmentTimer mAssessmentTimer = new AssessmentTimer(earliestTime, latestTime, 5);
+            //DataIO.setRandomAssessmentTimes(context, mAssessmentTimer.getAssessmentTimesMin());
+            editor.putInt("finishedRandomAssessments", 0);
+        } else {
+            editor.putInt("finishedRandomAssessments", finishedAssessments);
+        }
         editor.commit();
     }
 
     public static int getFinishedRandomAssessments(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("finishedRandomAssessments", 0);
-
     }
 
+    /**
+     * Return the number of random assessments
+     * @param context
+     * @return
+     */
+    public static int getRandomAssessmentsNumber(Context context){
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        return settings.getInt("randomAssessments", 2);
+    }
+
+    public static void setRandomAssessmentsNumber(Context context, int numberOfAssessments) {
+        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("randomAssessments", numberOfAssessments);
+        editor.commit();
+    }
+
+    /**
+     * Return the time in minutes of the random assessment with the assessmentIndex
+     * @param context The activity
+     * @param assessmentIndex Index of the assessment whose time should be returned
+     * @return Time in minutes when the random assessment with index assessmentIndex should appear
+     */
     public static int getRandomAssessmentTime(Context context, int assessmentIndex){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("randomAssessmentTime"+assessmentIndex, 0);
 
     }
 
+    /**
+     * Saves the times of the random assessments in minutes
+     * @param context The activity
+     * @param randomAssessmentTimes ArrayList with all times in minutes when the notifications
+     *                              for the random assessments should appear during a day
+     */
     public static void setRandomAssessmentTimes(Context context, ArrayList<Integer> randomAssessmentTimes) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         for (int i=0; i<randomAssessmentTimes.size();i++) {
             editor.putInt("randomAssessmentTime"+i, randomAssessmentTimes.get(i));
         }
+        DataIO.setFinishedRandomAssessments(context, 0);
         editor.commit();
     }
 
+    /**
+     * Saves the time of the earliest possible random assessment in minutes during a day
+     * (Time is set by user in settings)
+     * @param context The activity
+     * @param startTimeMin The time in minutes of earliest possible random assessment
+     */
     public static void setStartTimeMin(Context context, int startTimeMin) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -124,6 +170,12 @@ public class DataIO {
         editor.commit();
     }
 
+    /**
+     * Saves the time of the latest possible random assessment in minutes during a day
+     * (Time is set by user in settings)
+     * @param context The activity
+     * @param endTimeMin The time in minutes of latest possible random assessment
+     */
     public static void setEndTimeMin(Context context, int endTimeMin) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -147,6 +199,12 @@ public class DataIO {
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("firstName", "");
         editor.putString("lastName", "");
+        editor.putInt("startTimeMin", 600);
+        editor.putInt("endTimeMin", 1200);
+        editor.putInt("finishedRandomAssessments", 0);
+        for (int i=0; i<getRandomAssessmentsNumber(context);i++) {
+            editor.putInt("randomAssessmentTime"+i, 0);
+        }
         editor.commit();
     }
 

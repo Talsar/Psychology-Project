@@ -29,13 +29,21 @@ public class AssessmentNotification {
 
     }
 
+    /**
+     * Build a notification with several settings;
+     * Create an Intent that is used in mainActivity to make sure that
+     * the randomAssessmentFragment is opened by clicking the notification
+     * @param context The activity
+     */
     public void notificationRandomAssessment(Context context) {
+        //New notification with title, icon, text and autoCancel when clicked
         mBuilder = new NotificationCompat.Builder(context);
         mBuilder.setContentTitle("Assessment");
         mBuilder.setSmallIcon(R.drawable.icon_assessment);
         mBuilder.setContentText("An Assessment is due!");
         mBuilder.setAutoCancel(true);
 
+        //New intent used in mainActivity
         Intent resultIntent = new Intent(context, MainActivity.class);
         resultIntent.putExtra("menuFragment", "randomAssessmentFragment");
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
@@ -54,10 +62,22 @@ public class AssessmentNotification {
         mNotificationManager.notify(mId, mBuilder.build());
     }
 
+
+    /**
+     * Set the notification for the next random assessment by using
+     * the data saved in DataIO (time for next assessment)
+     * @param context Context of the notification -> activity
+     */
     public void nextNotification(Context context) {
-        //int nextAssessment = DataIO.getRandomAssessmentTime(context, DataIO.getFinishedRandomAssessments(context));
+
+        //time for next random assessment is set by using the method of DataIO class
+        int nextAssessment = DataIO.getTimeNextAssessment(context)*60000;
+
+        //test long value; set the time of next notification to 10 seconds (10*1000)
         Long notificationTime = SystemClock.elapsedRealtime()+10*1000;
+
         //Long notificationTime = (nextAssessment*60000) - SystemClock.elapsedRealtime();
+
         Intent intentAlarm = new Intent(context, AlarmReceiver.class);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME, notificationTime, PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
