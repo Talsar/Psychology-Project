@@ -17,8 +17,12 @@ public class DataIO {
 
     public static final String PREFS_NAME = "PsychData";
 
+    /**
+     * set the assessment that is finished
+     * @param context The activity
+     * @param assessmentsDone the arraylist of all done assessments
+     */
     public static void setAssessmentDone(ArrayList<Boolean> assessmentsDone, Context context){
-
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         for (int i = 0; i < 5; i++) {
@@ -28,6 +32,13 @@ public class DataIO {
 
     }
 
+    /**
+     * saves the data put in in a random assessment
+     * @param context The activity
+     * @param answerOneA the answer of one a
+     * @param answerTwo the answer of two
+     * @param answerThree the answer og three
+     */
     public static void saveRandomAssessment(String answerOne, String answerOneA, String answerTwo, ArrayList<String> answerThree, Context context){
 
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
@@ -43,18 +54,11 @@ public class DataIO {
     }
 
 
-    public static ArrayList<String> getRandomAssessment(Context context){
-        ArrayList<String> answers = new ArrayList<>(9);
-        SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
-        answers.add(settings.getString("RandomAssessmentQuestionOne", ""));
-        answers.add(settings.getString("RandomAssessmentQuestionOneA", ""));
-        answers.add(settings.getString("RandomAssessmentQuestionTwo", "0"));
-        for (int i = 0; i < 6; i++){
-            answers.add(settings.getString("RandomAssessmentQuestionThree" + i, "0"));
-        }
-        return answers;
-    }
-
+    /**
+     * calculates the time to next assessment and returns it
+     * @param context The activity
+     * @return gets the time to next assessment back
+     */
     public static int getTimeNextAssessment(Context context) {
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -73,12 +77,22 @@ public class DataIO {
 
     }
 
+    /**
+     * gives back the start time of the user set random assessment times
+     * @param context The activity
+     * @return start time of random assessments
+     */
     public static int getStartTimeMin(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("startTimeMin", 0);
 
     }
 
+    /**
+     * gives back the end time of the user set random assessment times
+     * @param context The activity
+     * @return end time of random assessments
+     */
     public static int getEndTimeMin(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("endTimeMin", 0);
@@ -115,13 +129,19 @@ public class DataIO {
     /**
      * Return the number of random assessments
      * @param context
-     * @return
+     * @return returns the number of random assessments
      */
     public static int getRandomAssessmentsNumber(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt("randomAssessments", 2);
     }
 
+    /**
+     * Sets the random assessment number
+     * @param context The activity
+     * @param numberOfAssessments Number of assessments
+     *
+     */
     public static void setRandomAssessmentsNumber(Context context, int numberOfAssessments) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -183,6 +203,11 @@ public class DataIO {
         editor.commit();
     }
 
+    /**
+     * Returns all assessments done
+     * @param context The activity
+     * @return ArrayList of all assessments done
+     */
     public static ArrayList<Boolean> getAssessmentsDone(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         ArrayList<Boolean> assessmentsDone = new ArrayList<>(5);
@@ -194,6 +219,10 @@ public class DataIO {
 
     }
 
+    /**
+     * Deletes every data in the shared preferences (data saved on phone)
+     * @param context The activity
+     */
     public static void pushTheRedButton(Context context) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -208,6 +237,11 @@ public class DataIO {
         editor.commit();
     }
 
+    /**
+     * returns back a boolean
+     * @param context The activity
+     * @return boolean if there are login information
+     */
     public static boolean isLogInInformationExisting(Context context) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
 
@@ -218,6 +252,13 @@ public class DataIO {
         }
     }
 
+    /**
+     * Saves the name of the user
+     * @param context The activity
+     * @param fname First name of the user
+     * @param lname Last name of the user
+     *
+     */
     public static void setLogInInformation(String fname, String lname, Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -227,6 +268,11 @@ public class DataIO {
         editor.commit();
     }
 
+    /**
+     * gives back the login information
+     * @param context The activity
+     * @return returns the login information
+     */
     public static String getLogInName(Context context){
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
 

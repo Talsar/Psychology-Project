@@ -67,6 +67,11 @@ public class DailyAssessmentFragment extends Fragment {
     }
 
 
+    /**
+     * Initiates the assessment. Calls all the widgets and sets their options.
+     * Also creates the action listener for when questions are answered
+     * to make the next widget visible.
+     */
     private void initiateAssessment() {
         submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
         editText = (EditText) fragmentView.findViewById(R.id.editText);

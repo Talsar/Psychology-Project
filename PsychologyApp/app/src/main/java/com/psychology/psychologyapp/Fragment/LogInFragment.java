@@ -60,6 +60,11 @@ public class LogInFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Initiates the assessment. Calls all the widgets and sets their options.
+     * Also creates the action listener for when questions are answered
+     * to make the next widget visible.
+     */
     public void initiateAssessment() {
         logInButton = (Button) fragmentView.findViewById(R.id.logInButton);
         editFName = (EditText) fragmentView.findViewById(R.id.editFName);

@@ -98,8 +98,6 @@ public class MainActivity extends Activity implements MainMenuFragment.OnFragmen
 
         }
 
-
-
     }
 
 
@@ -124,6 +122,7 @@ public class MainActivity extends Activity implements MainMenuFragment.OnFragmen
         if (getFragmentManager().getBackStackEntryCount() > 0) {
             getFragmentManager().popBackStack();
         } else {
+            //when pressed the back button it goes back one in the stack and loads the last fragment
             super.onBackPressed();
         }
     }
@@ -144,16 +143,6 @@ public class MainActivity extends Activity implements MainMenuFragment.OnFragmen
                     .commit();
             return true;
         }
-
-        /*if (id==R.id.action_refresh) {
-            mMainMenuFragment = new MainMenuFragment();
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, mMainMenuFragment)
-                    .addToBackStack(null)
-                    .commit();
-            return true;
-        }*/
 
         return super.onOptionsItemSelected(item);
     }

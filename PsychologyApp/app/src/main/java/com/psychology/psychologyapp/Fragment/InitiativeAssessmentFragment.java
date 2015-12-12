@@ -114,8 +114,14 @@ public class InitiativeAssessmentFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Initiates the assessment. Calls all the widgets and sets their options.
+     * Also creates all the action listeners for when questions are answered
+     * to make the next widget visible.
+     */
     private void initiateAssessment() {
 
+        //Creates all the seekbars and set their parameters, after that the belonging texts
         seekBars = new ArrayList<>(6);
         seekBarQuestionThreeA = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeA);
         seekBars.add(seekBarQuestionThreeA);
@@ -151,6 +157,7 @@ public class InitiativeAssessmentFragment extends Fragment {
         seekBarTexts.add(textSeekBarQuestionThreeF);
         textSeekBarMap = new HashMap<>(6);
 
+        //Creates the submitButton and sets its listener
         submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
         submitButton.setVisibility(View.GONE);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -168,6 +175,7 @@ public class InitiativeAssessmentFragment extends Fragment {
 
         });
 
+        //sets the listener of the seekbars
         for (iSeekBarQuestionThree=0; iSeekBarQuestionThree<6; iSeekBarQuestionThree++) {
             seekBars.get(iSeekBarQuestionThree).setMax(5);
             textSeekBarMap.put(seekBars.get(iSeekBarQuestionThree), seekBarTexts.get(iSeekBarQuestionThree));
@@ -195,6 +203,7 @@ public class InitiativeAssessmentFragment extends Fragment {
             });
         }
 
+        //creates all the elements belong to the questions
         cardViewQuestion1 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion1);
         cardViewQuestion1.setVisibility(View.VISIBLE);
 
@@ -257,7 +266,8 @@ public class InitiativeAssessmentFragment extends Fragment {
             }
         });
 
-
+        //the next listeners created shows the correct next questions
+        //of the quiz because the questions depend on the answers
         radioGroupQuestionOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
                 // This will get the radiobutton that has changed in its check state

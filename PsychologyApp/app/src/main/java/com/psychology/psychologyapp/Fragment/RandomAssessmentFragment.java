@@ -41,6 +41,8 @@ public class RandomAssessmentFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+
     private View fragmentView;
 
     int iSeekBarQuestionThree;
@@ -84,7 +86,6 @@ public class RandomAssessmentFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment RandomAssessmentFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static RandomAssessmentFragment newInstance(String param1, String param2) {
         RandomAssessmentFragment fragment = new RandomAssessmentFragment();
         Bundle args = new Bundle();
@@ -98,8 +99,14 @@ public class RandomAssessmentFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Initiates the assessment. Calls all the widgets and sets their options.
+     * Also creates all the action listeners for when questions are answered
+     * to make the next widget visible.
+     */
     private void initiateAssessment() {
 
+        //Creates all the seekbars and set their parameters, after that the belonging texts
         seekBars = new ArrayList<>(6);
         seekBarQuestionThreeA = (SeekBar) fragmentView.findViewById(R.id.seekBarQuestionThreeA);
         seekBars.add(seekBarQuestionThreeA);
@@ -137,7 +144,7 @@ public class RandomAssessmentFragment extends Fragment {
         seekBarTexts.add(textSeekBarQuestionThreeF);
         textSeekBarMap = new HashMap<>(6);
 
-
+        //Creates the submitButton and sets its listener
         submitButton = (Button) fragmentView.findViewById(R.id.submitButton);
         submitButton.setVisibility(View.GONE);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -173,7 +180,7 @@ public class RandomAssessmentFragment extends Fragment {
 
         });
 
-
+        //sets the listener of the seekbars
         for (iSeekBarQuestionThree=0; iSeekBarQuestionThree<6; iSeekBarQuestionThree++) {
             seekBars.get(iSeekBarQuestionThree).setMax(5);
             textSeekBarMap.put(seekBars.get(iSeekBarQuestionThree), seekBarTexts.get(iSeekBarQuestionThree));
@@ -202,6 +209,8 @@ public class RandomAssessmentFragment extends Fragment {
             });
         }
 
+
+        //creates all the elements belong to the questions
         cardViewQuestion1 = (CardView) fragmentView.findViewById(R.id.cardViewQuestion1);
         cardViewQuestion1.setVisibility(View.VISIBLE);
 
@@ -250,7 +259,8 @@ public class RandomAssessmentFragment extends Fragment {
             }
         });
 
-
+        //the next listeners created shows the correct next questions
+        //of the quiz because the questions depend on the answers
         radioGroupQuestionOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup rGroup, int checkedId) {
                 // This will get the radiobutton that has changed in its check state
